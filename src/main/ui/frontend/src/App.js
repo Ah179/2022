@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Auth0ProviderWithHistory from './auth0Provider';
+import Auth0ProviderWithHistory from './auth/auth0Provider';
+import LoginButton from './components/LoginButton';
 
 function App() {
   return (
     <Auth0ProviderWithHistory>
-    <div className="App">
+    {/* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,18 +21,10 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </div> */}
+    <LoginButton />
     </Auth0ProviderWithHistory>
   );
 }
-
-// import React from "react"
-
-
-// function App() {
-// 	return (
-// 		<h1>Hello World!</h1>
-// 	)
-// }
 
 export default App;

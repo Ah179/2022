@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Auth0ProviderWithHistory from './auth/auth0Provider';
 import LoginButton from './components/LoginButton';
+import profile from './Images/brightform.png'
 
 function App() {
   return (
@@ -22,6 +23,23 @@ function App() {
         </a>
       </header>
     </div> */}
+    <div className='login-main'>
+      <div className='sub-login'>
+        <div>
+          <div className='imgs'>
+            <div className='container-img'>
+                <img src = {profile} alt ='profile'></img>
+                //The profile image is NOT IT, 
+                  Looking like a whole mess 
+            </div>
+          </div>
+            <h1>Login Page</h1>
+            <div>
+            //Insert more images, EMPLOYEE ID, PASSWORD
+            </div>
+        </div>
+      </div>
+    </div>
     <LoginButton />
     </Auth0ProviderWithHistory>
   );

@@ -1,8 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Auth0ProviderWithHistory from './auth0Provider';
 
 function App() {
   return (
+    <Auth0ProviderWithHistory>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,6 +21,7 @@ function App() {
         </a>
       </header>
     </div>
+    </Auth0ProviderWithHistory>
   );
 }
 

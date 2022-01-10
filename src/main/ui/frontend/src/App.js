@@ -1,8 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Auth0ProviderWithHistory from './auth/auth0Provider';
-import LoginButton from './components/LoginButton';
-import profile from './Images/brightform.png'
+
 
 function App() {
   return (

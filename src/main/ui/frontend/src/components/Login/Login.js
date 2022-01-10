@@ -1,7 +1,7 @@
 import React from "react";
-import Auth0ProviderWithHistory from './auth/auth0Provider';
-import LoginButton from './components/Login/LoginButton';
-import profile from './Images/brightform.png'
+import Auth0ProviderWithHistory from '../../auth/auth0Provider';
+import LoginButton from './LoginButton';
+import profile from '../Images/brightform.png'
 
 const Login = () => {
     return (

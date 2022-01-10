@@ -1,8 +1,9 @@
-.login-main{
+.main{
     text-align: center;
     justify-content: center;
     display: flex;
     padding: 90px 0 90px 0;
+    background-color: rgb(252, 252, 252);
   }
   
   .sub-login{
@@ -25,6 +26,17 @@
     background-color: white;
     border: 150px;
     align-items: center;
-  
+    display: flex;
+    height: 115px;
+    width: 115px;
   }
+
+  .input{
+    width: 300px;
+    height: 50px;
+    border-radius: 60px;
+    box-shadow: inset 0px 0px 25px 0px #888;
+  }
+
+
   

@@ -17,7 +17,6 @@ import {
 import LoginNavbar from '../Navbar/LoginNavbar'
 import profile from '../Images/brightform.png'
 
-//const Login = () =>
 class Login extends Component {
   constructor(props) {
     super(props);

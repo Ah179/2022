@@ -17,8 +17,7 @@ import {
 import LoginNavbar from '../Navbar/LoginNavbar'
 import profile from '../Images/brightform.png'
 
-//const Login = () =>
-class Login extends Component {
+class CreateAccount extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +76,7 @@ class Login extends Component {
           </div>
         </Navbar> */}
       <div className="LoginPage">
-        <h2>Sign In</h2>
+        <h2>Create Account</h2>
         <Form className="form">
           <FormGroup>
             <Label for="exampleEmail">Employee ID</Label>
@@ -109,4 +108,4 @@ class Login extends Component {
   }
 };
 
-export default Login;
+export default CreateAccount;

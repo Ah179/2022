@@ -1,0 +1,71 @@
+.App {
+  text-align: center;
+}
+
+.projectOne,
+.projectTwo,
+.projectThree,
+.projectFour {
+  height: 100%;
+}
+
+.projectOne,
+.projectOneDescriptionContainer,
+.projectOneStatusContainer,
+.projectOneCollabContainer,
+.projectTwo,
+.projectTwoDescriptionContainer,
+.projectTwoStatusContainer,
+.projectTwoCollabContainer
+.projectThree,
+.projectThreeDescriptionContainer,
+.projectThreeStatusContainer,
+.projectThreeCollabContainer,
+.projectFour,
+.projectFourDescriptionContainer,
+.projectFourStatusContainer,
+.projectFourCollabContainer {
+  display: flex;
+  justify-content: center;
+  align-items: normal;
+}
+
+.projectOneDescriptionContainer,
+.projectOneStatusContainer,
+.projectOneCollabContainer {
+  border: 1px solid #2563eb;
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.projectTwoDescriptionContainer,
+.projectTwoStatusContainer,
+.projectTwoCollabContainer {
+  border: 1px solid #7c3aed;
+  background-color: #ede9fe;
+  color: #7c3aed;
+}
+
+.projectThreeDescriptionContainer,
+.projectThreeStatusContainer,
+.projectThreeCollabContainer {
+  border: 1px solid #c91350;
+  background-color: #fee9f8;
+  color: #c91350;
+}
+
+.projectFourDescriptionContainer,
+.projectFourStatusContainer,
+.projectFourCollabContainer {
+  border: 1px solid #13c992;
+  background-color: #e9f9fe;
+  color: #13c992;
+}
+
+.tileLayout {
+  width: 100%;
+}
+
+.dashboardAside {
+  width: 15rem;
+}

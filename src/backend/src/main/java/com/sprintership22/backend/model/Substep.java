@@ -7,11 +7,12 @@ import javax.persistence.Id;
 public class Substep {
 	
 	@Id
-	private int project_id;
+	private int projectID;
+	
 	private String name;
 	private String description;
-	private String  start_time;
-	private String end_time;
+	private String  startTime;
+	private String endTime;
 	private String status;
 
 	public Substep()
@@ -21,12 +22,12 @@ public class Substep {
 	
 	public int getProjectID()
 	{
-		return this.project_id;
+		return this.projectID;
 	}
 	
-	public void setID(int project_id)
+	public void setID(int projectID)
 	{
-		this.project_id = project_id;
+		this.projectID = projectID;
 	}
 	
 	public String getName()
@@ -51,22 +52,22 @@ public class Substep {
 	
 	public String getStartTime()
 	{
-		return this.start_time;
+		return this.startTime;
 	}
 	
-	public void setStartTime(String start_time)
+	public void setStartTime(String startTime)
 	{
-		this.start_time = start_time;
+		this.startTime = startTime;
 	}
 	
 	public String getEndTime()
 	{
-		return this.end_time;
+		return this.endTime;
 	}
 	
-	public void setEndTime(String end_time)
+	public void setEndTime(String endTime)
 	{
-		this.end_time = end_time;
+		this.endTime = endTime;
 	}
 	
 	public String getStatus()

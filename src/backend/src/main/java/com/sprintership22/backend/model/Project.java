@@ -8,10 +8,11 @@ public class Project {
 	
 	@Id
 	private int id;
+	
 	private String name;
 	private String description;
-	private String  start_time;
-	private String end_time;
+	private String  startTime;
+	private String endTime;
 	private String status;
 	
 	public Project()
@@ -51,22 +52,22 @@ public class Project {
 	
 	public String getStartTime()
 	{
-		return this.start_time;
+		return this.startTime;
 	}
 	
-	public void setStartTime(String start_time)
+	public void setStartTime(String startTime)
 	{
-		this.start_time = start_time;
+		this.startTime = startTime;
 	}
 	
 	public String getEndTime()
 	{
-		return this.end_time;
+		return this.endTime;
 	}
 	
-	public void setEndTime(String end_time)
+	public void setEndTime(String endTime)
 	{
-		this.end_time = end_time;
+		this.endTime = endTime;
 	}
 	
 	public String getStatus()

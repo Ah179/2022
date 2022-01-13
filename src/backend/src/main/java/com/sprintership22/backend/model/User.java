@@ -2,19 +2,18 @@ package com.sprintership22.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="user")
 public class User 
-{
-	
+{	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int employee_id;
-	private String first_name;
-	private String last_name;
-	private String company_role;
+	private int employeeID;
+	
+	private String firstName;
+	private String lastName;
+	private String companyRole;
 	private String email;
 	private String password;
 	
@@ -25,42 +24,42 @@ public class User
 	
 	public int getEmployeeID()
 	{
-		return this.employee_id;
+		return this.employeeID;
 	}
 	
-	public void setEmployeeID(int employee_id)
+	public void setEmployeeID(int employeeID)
 	{
-		this.employee_id = employee_id;
+		this.employeeID = employeeID;
 	}
 	
 	public String getFirstName()
 	{
-		return this.first_name;
+		return this.firstName;
 	}
 	
-	public void setFirstName(String first_name)
+	public void setFirstName(String firstName)
 	{
-		this.first_name = first_name;
+		this.firstName = firstName;
 	}
 	
 	public String getLastName()
 	{
-		return this.last_name;
+		return this.lastName;
 	}
 	
-	public void setLastName(String last_name)
+	public void setLastName(String lastName)
 	{
-		this.last_name = last_name;
+		this.lastName = lastName;
 	}
 	
 	public String getCompanyRole()
 	{
-		return this.company_role;
+		return this.companyRole;
 	}
 	
-	public void setCompanyRole(String company_role)
+	public void setCompanyRole(String companyRole)
 	{
-		this.company_role = company_role;
+		this.companyRole = companyRole;
 	}
 	
 	public String getEmail()

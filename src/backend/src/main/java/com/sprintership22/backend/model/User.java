@@ -15,6 +15,7 @@ public class User
 	private String first_name;
 	private String last_name;
 	private String company_role;
+	private String email;
 	private String password;
 	
 	public User()
@@ -60,6 +61,16 @@ public class User
 	public void setCompanyRole(String company_role)
 	{
 		this.company_role = company_role;
+	}
+	
+	public String getEmail()
+	{
+		return this.email;
+	}
+	
+	public void setEmail(String email)
+	{
+		this.email = email;
 	}
 	
 	public String getPassword()

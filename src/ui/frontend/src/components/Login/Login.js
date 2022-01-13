@@ -84,7 +84,7 @@ class Login extends Component {
           <FormGroup>
          <Link to={'./Home'}><Button>LOGIN</Button></Link>
         </FormGroup>
-        <FormText><ul><Link to={"./CreateAccount.js"}> Don't have an account? Create one here!</Link></ul></FormText>
+        <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>
     </div>
     </Auth0ProviderWithHistory>

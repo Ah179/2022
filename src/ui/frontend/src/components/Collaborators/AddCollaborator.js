@@ -4,7 +4,7 @@ import {
 	FormGroup,
 	Input,
 } from "reactstrap"
-import '../AddProjectForm.css'
+import '../../Pages/AddProjectFrom.css'
 
 class AddCollaborator extends React.Component {
 	constructor(props) {

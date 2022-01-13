@@ -7,9 +7,9 @@ import {
 	Input,
 	Label
 } from "reactstrap"
-import './AddProjectForm.css'
-import Collaborators from "./Collaborators/Collaborators"
-import Tasks from './Tasks/Tasks'
+import './AddProjectFrom.css'
+import Collaborators from "../components/Collaborators/Collaborators.js"
+import Tasks from '../components/Tasks/Tasks.js'
 
 class AddProjectForm extends Component {
 	constructor(props) {
@@ -83,7 +83,6 @@ class AddProjectForm extends Component {
 
 	render() {
 		return (
-		
 			<div className='AddProjectForm'>
 				<h2>Add Project</h2>
 				<Form className='addProjectForm'>
@@ -133,7 +132,7 @@ class AddProjectForm extends Component {
 					</FormGroup>
 					<FormGroup>
 						<Label>Tasks</Label>
-						<Tasks />
+							<Tasks />
 					</FormGroup>
 					<Button>SUBMIT</Button>
 				</Form>

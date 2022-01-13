@@ -1,7 +1,7 @@
 import "@progress/kendo-theme-material/dist/all.css";
 import { TileLayout } from "@progress/kendo-react-layout";
 import { useState } from "react";
-import "./App.css";
+import "./Home.css";
 import ProjectOne from "./components/Widgets/ProjectOne";
 import ProjectThree from "./components/Widgets/ProjectThree";
 import ProjectFour from "./components/Widgets/ProjectFour";
@@ -39,7 +39,7 @@ const getPositions = initialPositions => {
   );
 };
 
-function App() {
+function Home() {
   const [positions, setPositions] = useState(getPositions(initialPositions));
 
   const widgets = [
@@ -83,4 +83,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

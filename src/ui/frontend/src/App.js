@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import App from './components/Home/App.js';
+import Home from './components/Home/Home.js';
 import CreateAccount from './components/Login/CreateAccount';
 
 
@@ -20,7 +20,7 @@ function App() {
             <CreateAccount />
           </Route>
           <Route path="/Home">
-            <App />
+            <Home />
           </Route>
         </Switch>
       </div>

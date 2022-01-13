@@ -65,14 +65,38 @@ class CreateAccount extends Component {
         <h2>Create Account</h2>
         <Form className="form">
           <FormGroup>
-            <Label for="exampleEmail">Employee ID</Label>
+            <Label for= "examplefirstname">First Name</Label>
+            <Input 
+              type="text"
+              name="FirstName"
+              id="examplefirstname"
+              placeholder="John"
+              />
+            <Label for = "examplelastname">Last Name</Label>
+            <Input 
+              type ="text"
+              name="lastname"
+              id="lastname"
+              placeholder="Smith"
+              />
+          </FormGroup>
+          <FormGroup>
+            <Label for ="exampleID">Employee ID </Label>
+            <Input 
+              type ="number"
+              name="number"
+              id="exampleID"
+              placeholder="Employee ID"
+              />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleEmail">Employee Email</Label>
             <Input
               type="email"
               name="email"
               id="exampleEmail"
               placeholder="example@brightform.com"
             />
-            <FormText>Your Employee ID is your Employee Email.</FormText>
           </FormGroup>
           <FormGroup>
             <Label for="examplePassword">Password</Label>
@@ -84,9 +108,9 @@ class CreateAccount extends Component {
             />
           </FormGroup>
           <FormGroup>
-         <Button>LOGIN</Button>
+         <Button>Sign Up</Button>
         </FormGroup>
-        <FormText><ul><Link to={"./CreateAccount.js"}> Don't have an account? Create one here!</Link></ul></FormText>
+        <FormText><ul><Link to={"/"}> Already have an account? Click here!</Link></ul></FormText>
       </Form>
     </div>
     </Auth0ProviderWithHistory>

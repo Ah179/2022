@@ -14,7 +14,6 @@ import {
   Label,
   Navbar
 } from 'reactstrap'; 
-import LoginNavbar from '../Navbar/LoginNavbar'
 import profile from '../Images/brightform.png'
 
 class CreateAccount extends Component {

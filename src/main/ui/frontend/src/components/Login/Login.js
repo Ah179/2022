@@ -3,7 +3,7 @@ import {Component} from 'react';
 import './Login.css'
 import Auth0ProviderWithHistory from '../../auth/auth0Provider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Button,
   Container,
@@ -12,12 +12,13 @@ import {
   FormText,
   Input,
   Label,
-  Navbar
 } from 'reactstrap'; 
 import LoginNavbar from '../Navbar/LoginNavbar'
 import profile from '../Images/brightform.png'
 
-class Login extends Component {
+
+
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +29,8 @@ class Login extends Component {
       },
     };
     this.handleChange = this.handleChange.bind(this);
-  } 
+    } 
+  
   handleChange = (event) => {
     const { target } = event;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -57,25 +59,12 @@ class Login extends Component {
     e.preventDefault();
     console.log(`Email: ${this.state.email}`);
   }
+ 
   render() {
     const {email, password} = this.state;
     return (  
     <Auth0ProviderWithHistory>
-      {/* <Navbar fixed = "top">
-        <div>
-          <Container>
-            <Navbar.Brand className='BrightForm'>
-              <img 
-                alt =''
-                src = 'profile'
-                width= '30'
-                height='30'
-                />
-            </Navbar.Brand>
-          </Container>
-          </div>
-        </Navbar> */}
-      <div className="LoginPage">
+       <div className="LoginPage">
         <h2>Sign In</h2>
         <Form className="form">
           <FormGroup>
@@ -100,7 +89,7 @@ class Login extends Component {
           <FormGroup>
          <Button>LOGIN</Button>
         </FormGroup>
-        <FormText><ul><Link to={"./CreateAccount.js"}> Don't have an account? Create one here!</Link></ul></FormText>
+        <FormText><ul><Link to='./CreateAccount'> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>
     </div>
     </Auth0ProviderWithHistory>

@@ -61,20 +61,6 @@ class CreateAccount extends Component {
     const {email, password} = this.state;
     return (  
     <Auth0ProviderWithHistory>
-      {/* <Navbar fixed = "top">
-        <div>
-          <Container>
-            <Navbar.Brand className='BrightForm'>
-              <img 
-                alt =''
-                src = 'profile'
-                width= '30'
-                height='30'
-                />
-            </Navbar.Brand>
-          </Container>
-          </div>
-        </Navbar> */}
       <div className="LoginPage">
         <h2>Create Account</h2>
         <Form className="form">

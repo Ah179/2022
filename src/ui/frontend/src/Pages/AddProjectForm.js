@@ -7,7 +7,7 @@ import {
 	Input,
 	Label
 } from "reactstrap"
-import './AddProjectFrom.css'
+import './AddProjectForm.css'
 import Collaborators from "../components/Collaborators/Collaborators.js"
 import Tasks from '../components/Tasks/Tasks.js'
 

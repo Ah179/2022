@@ -4,7 +4,7 @@ import {
 	FormGroup,
 	Input
 } from 'reactstrap'
-import '../../Pages/AddProjectFrom.css'
+import '../../Pages/AddProjectForm.css'
 
 class AddTask extends React.Component {
 	constructor(props) {

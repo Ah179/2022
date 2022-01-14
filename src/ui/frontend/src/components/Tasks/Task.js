@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Pages/AddProjectFrom.css'
+import '../../Pages/AddProjectForm.css'
 
 class Task extends React.Component {
 	renderTask() {

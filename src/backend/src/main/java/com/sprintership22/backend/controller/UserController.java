@@ -24,4 +24,12 @@ public class UserController {
 		
 		return "new user is added";
 	}
+	
+	@PostMapping("/delete")
+	public String delete(@RequestBody User user) { //Debug line
+		
+		userService.deleteUser(user);
+		
+		return "user is deleted";
+	}
 }

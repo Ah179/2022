@@ -1,0 +1,38 @@
+body {
+    /*background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);*/
+    background: #e5e5e5 !important;
+}
+
+.card {
+    width: 20rem;
+}
+
+.card:hover {
+    box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+}
+
+.card-body {
+    padding: 3rem 0 !important;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    padding: 0.4rem 1.9rem;
+}
+
+.card-progress {
+    background-color: white !important;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 0px;
+}
+
+.btn {
+    padding-bottom: 8px !important;
+    justify-content: center !important;
+}
+
+.container-fluid.row {
+    padding-top: 6rem;
+}

@@ -17,9 +17,10 @@ public class UserProjects {
 	private int userID;
 	private int projectID;
 	
-	public UserProjects()
+	public UserProjects(int userID, int projectID)
 	{
-		
+		this.userID = userID;
+		this.projectID = projectID;
 	}
 	
 	public int getUserID()

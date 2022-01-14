@@ -38,7 +38,7 @@ class AddCollaborator extends React.Component {
 				<FormGroup className="taskInput">
 					<Input 
 						className="textInputBox"
-						type='text' 
+						type='number' 
 						id='collaboratorValue' 
 						placeholder="Add Collaborator"
 						onChange={this.handleChange}

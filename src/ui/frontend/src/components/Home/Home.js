@@ -1,12 +1,11 @@
 //import "@progress/kendo-theme-material/dist/all.css";
-import { useState } from "react";
 import "./Home.css";
 import Navbar from "./components/Navbar/Navbar";
-import Button from 'react-bootstrap/Button';
 import React from "react";
-
+// import AddProjectPopup
 //import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Card from './components/Cards/Cards'
+import AddProject from "./components/AddProject/AddProject";
 
 function Home() {
   return (
@@ -14,7 +13,8 @@ function Home() {
       <Navbar />
       <h1 className="app-title">Project Dashboard</h1>
       <Card />
-      <Button variant="outline-dark" onClick={clicked}>Add Project</Button>{' '}
+	  <AddProject />
+      {/* <Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>{' '} */}
     </div>
   );
 }

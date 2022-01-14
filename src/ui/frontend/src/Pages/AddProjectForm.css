@@ -44,6 +44,6 @@ h2 {
 	  font-family: "Lucinda Console", "Courier New", monospace;
 	  font-weight: bold;
 	  justify-content: space-between;
-		align-items: center;
+	  align-items: center;
 	  display: flex;
   }

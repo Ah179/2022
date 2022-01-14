@@ -30,7 +30,7 @@ public class SubstepController {
 		
 		substepService.deleteSubstep(substep);
 		
-		return "new substep is delete";
+		return "substep is deleted";
 	}
 	
 }

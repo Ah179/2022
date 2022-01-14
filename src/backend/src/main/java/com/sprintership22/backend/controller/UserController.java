@@ -20,8 +20,39 @@ public class UserController {
 	@PostMapping("/add")
 	public String add(@RequestBody User user) { //Debug line
 		
-		userService.saveUser(user);
+		User temp = userService.saveUser(user);
+		
+		if (temp == null)
+		{
+			return "user was not able to be added";
+		}
 		
 		return "new user is added";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(@RequestBody User user) { //Debug line
+		
+		Boolean temp = userService.deleteUser(user);
+		
+		if (!temp)
+		{
+			return "user was not able to be deleted";
+		}
+		
+		return "user is deleted";
+	}
+	
+	@PostMapping("/verify")
+	public String verify(@RequestBody User user) { //Debug line
+		
+		Boolean temp = userService.verifyUser(user);
+		
+		if (!temp)
+		{
+			return "user is not in the system";
+		}
+		
+		return "user is in the system";
 	}
 }

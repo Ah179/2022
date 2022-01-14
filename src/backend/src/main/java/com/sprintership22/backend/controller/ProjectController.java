@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.sprintership22.backend.model.Project;
+import com.sprintership22.backend.model.User;
 import com.sprintership22.backend.service.ProjectService;
 
 @RestController
@@ -18,10 +19,17 @@ public class ProjectController {
 	private ProjectService projectService;
 	
 	@PostMapping("/add")
-	public String add(@RequestBody Project project) {
+	public String add(@RequestBody  User user, @RequestBody Project project) {
 		
-		projectService.saveProject(project);
+		projectService.saveProject(user, project);
 		
 		return "new project is added";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(@RequestBody Project project) {
+		projectService.deleteProject(project);
+		
+		return "project has been deleted";
 	}
 }

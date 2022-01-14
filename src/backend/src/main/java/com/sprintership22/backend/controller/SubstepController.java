@@ -24,4 +24,13 @@ public class SubstepController {
 		
 		return "new substep is added";
 	}
+	
+	@PostMapping("/delete")
+	public String delete(@RequestBody Substep substep) {
+		
+		substepService.deleteSubstep(substep);
+		
+		return "substep is deleted";
+	}
+	
 }

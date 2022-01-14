@@ -15,5 +15,10 @@ public class ProjectServiceImplementation implements ProjectService{
 	public Project saveProject(Project project) {
 		return projectRepository.save(project);
 	}
+	
+	@Override
+	public void deleteProject(Project project) {
+		projectRepository.delete(project);
+	}
 
 }

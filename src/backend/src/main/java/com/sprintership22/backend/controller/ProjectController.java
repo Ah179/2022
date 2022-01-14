@@ -24,4 +24,11 @@ public class ProjectController {
 		
 		return "new project is added";
 	}
+	
+	@PostMapping("/delete")
+	public String delete(@RequestBody Project project) {
+		projectService.deleteProject(project);
+		
+		return "project has been deleted";
+	}
 }

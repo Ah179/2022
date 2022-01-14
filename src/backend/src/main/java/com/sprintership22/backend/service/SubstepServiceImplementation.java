@@ -15,5 +15,9 @@ public class SubstepServiceImplementation implements SubstepService{
 	public Substep saveSubstep(Substep substep) {
 		return substepRepository.save(substep);
 	}
+	@Override
+	public void deleteSubstep(Substep substep) {
+		substepRepository.delete(substep);
+	}
 
 }

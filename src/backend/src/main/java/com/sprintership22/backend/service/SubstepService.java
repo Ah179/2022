@@ -4,4 +4,5 @@ import com.sprintership22.backend.model.Substep;
 
 public interface SubstepService {
 	public Substep saveSubstep(Substep substep);
+	public void deleteSubstep(Substep substep);
 }

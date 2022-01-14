@@ -18,10 +18,10 @@ class CreateAccount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //employeeID: '',
-      //firstname:'',
-      //last_name:'',
-      //companyRole: '',
+      employeeID: '',
+      firstname:'',
+      last_name:'',
+      companyRole: '',
       email: '',
       password: '',
       validate: {
@@ -59,12 +59,12 @@ class CreateAccount extends Component {
     console.log(`Email: ${this.state.email}`);
   }
   render() {
-    const {email, password} = this.state;
+    const {employeeID,firstname,last_name,companyRole,email, password} = this.state;
     return (  
     <Auth0ProviderWithHistory>
       <div className="LoginPage">
         <h2>Create Account</h2>
-        <Form className="form">
+        <Form className="form" onSubmit={this.submitForm}>
           <FormGroup>
             <Label for= "examplefirstname">First Name</Label>
             <Input 
@@ -72,14 +72,14 @@ class CreateAccount extends Component {
               name="FirstName"
               id="examplefirstname"
               placeholder="John"
-              />
+              onChange={this.handleChange}/>
             <Label for = "examplelastname">Last Name</Label>
             <Input 
               type ="text"
               name="lastname"
               id="lastname"
               placeholder="Smith"
-              />
+              onChange={this.handleChange}/>
           </FormGroup> 
           <FormGroup>
             <Label for ="exampleID">Employee ID </Label>
@@ -88,7 +88,7 @@ class CreateAccount extends Component {
               name="number"
               id="exampleID"
               placeholder="Employee ID"
-              />
+              onChange={this.handleChange}/>
           </FormGroup>
           <FormGroup>
             <Label for="examplecompanyRole">Company Role</Label>
@@ -97,7 +97,7 @@ class CreateAccount extends Component {
               name="compnayRole"
               id="companyRole"
               placeholder="Software Engineer"
-            />
+              onChange={this.handleChange}/>
           </FormGroup>
           <FormGroup>
             <Label for="exampleEmail">Employee Email</Label>
@@ -106,7 +106,7 @@ class CreateAccount extends Component {
               name="email"
               id="exampleEmail"
               placeholder="example@brightform.com"
-            />
+              onChange={this.handleChange}/>
           </FormGroup>
           <FormGroup>
             <Label for="examplePassword">Password</Label>
@@ -115,10 +115,10 @@ class CreateAccount extends Component {
               name="password"
               id="examplePassword"
               placeholder="********"
-            />
+              onChange={this.handleChange}/>
           </FormGroup>
           <FormGroup>
-         <Link to={"/Home"}><Button>Sign Up</Button></Link>
+         <Link to={"/Home"}><Button type="submit">Sign Up</Button></Link>
         </FormGroup>
          <FormText><ul><Link to={"/"}> Already have an account? Click here!</Link></ul></FormText>
       </Form>

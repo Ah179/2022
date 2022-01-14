@@ -12,7 +12,6 @@ import {
   FormText,
   Input,
   Label,
-  Navbar
 } from 'reactstrap'; 
 
 class Login extends Component {

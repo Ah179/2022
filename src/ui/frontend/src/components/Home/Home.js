@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./Home.css";
 import Navbar from "./components/Navbar/Navbar";
 import Button from 'react-bootstrap/Button';
+import React from "react";
 
 //import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Card from './components/Cards/Cards'

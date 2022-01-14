@@ -14,8 +14,6 @@ import {
   Label,
   Navbar
 } from 'reactstrap'; 
-import LoginNavbar from '../Navbar/LoginNavbar'
-import profile from '../Images/brightform.png'
 
 class Login extends Component {
   constructor(props) {
@@ -61,20 +59,6 @@ class Login extends Component {
     const {email, password} = this.state;
     return (  
     <Auth0ProviderWithHistory>
-      {/* <Navbar fixed = "top">
-        <div>
-          <Container>
-            <Navbar.Brand className='BrightForm'>
-              <img 
-                alt =''
-                src = 'profile'
-                width= '30'
-                height='30'
-                />
-            </Navbar.Brand>
-          </Container>
-          </div>
-        </Navbar> */}
       <div className="LoginPage">
         <h2>Sign In</h2>
         <Form className="form">
@@ -98,9 +82,9 @@ class Login extends Component {
             />
           </FormGroup>
           <FormGroup>
-         <Button>LOGIN</Button>
+         <Link to={'./Home'}><Button>LOGIN</Button></Link>
         </FormGroup>
-        <FormText><ul><Link to={"./CreateAccount.js"}> Don't have an account? Create one here!</Link></ul></FormText>
+        <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>
     </div>
     </Auth0ProviderWithHistory>

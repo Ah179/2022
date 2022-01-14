@@ -1,3 +1,5 @@
+import React from "react";
+
 const ProjectThree = props => {
     return (
       <div className="projectThree">

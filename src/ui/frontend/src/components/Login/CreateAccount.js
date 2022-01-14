@@ -6,21 +6,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import {
   Button,
-  Container,
   Form,
   FormGroup,
   FormText,
   Input,
   Label,
-  Navbar
 } from 'reactstrap'; 
-import LoginNavbar from '../Navbar/LoginNavbar'
-import profile from '../Images/brightform.png'
+//import axios from 'axios';
 
 class CreateAccount extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      //employeeID: '',
+      //firstname:'',
+      //last_name:'',
+      //companyRole: '',
       email: '',
       password: '',
       validate: {
@@ -79,7 +80,7 @@ class CreateAccount extends Component {
               id="lastname"
               placeholder="Smith"
               />
-          </FormGroup>
+          </FormGroup> 
           <FormGroup>
             <Label for ="exampleID">Employee ID </Label>
             <Input 
@@ -88,6 +89,15 @@ class CreateAccount extends Component {
               id="exampleID"
               placeholder="Employee ID"
               />
+          </FormGroup>
+          <FormGroup>
+            <Label for="examplecompanyRole">Company Role</Label>
+            <Input 
+              type ="text"
+              name="compnayRole"
+              id="companyRole"
+              placeholder="Software Engineer"
+            />
           </FormGroup>
           <FormGroup>
             <Label for="exampleEmail">Employee Email</Label>
@@ -108,9 +118,9 @@ class CreateAccount extends Component {
             />
           </FormGroup>
           <FormGroup>
-         <Button>Sign Up</Button>
+         <Link to={"/Home"}><Button>Sign Up</Button></Link>
         </FormGroup>
-        <FormText><ul><Link to={"/"}> Already have an account? Click here!</Link></ul></FormText>
+         <FormText><ul><Link to={"/"}> Already have an account? Click here!</Link></ul></FormText>
       </Form>
     </div>
     </Auth0ProviderWithHistory>

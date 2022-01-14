@@ -1,12 +1,14 @@
-import "@progress/kendo-theme-material/dist/all.css";
-import { TileLayout } from "@progress/kendo-react-layout";
+// import "@progress/kendo-theme-material/dist/all.css";
+// import { TileLayout } from "@progress/kendo-react-layout";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
-import "./App.css";
+import "./Home.css";
 import ProjectOne from "./components/Widgets/ProjectOne";
 import ProjectThree from "./components/Widgets/ProjectThree";
 import ProjectFour from "./components/Widgets/ProjectFour";
 import ProjectTwo from "./components/Widgets/ProjectTwo";
 import Navbar from "./components/Navbar/Navbar";
+import React from "react";
 
 const initialPositions = [
   {
@@ -39,7 +41,7 @@ const getPositions = initialPositions => {
   );
 };
 
-function App() {
+function Home() {
   const [positions, setPositions] = useState(getPositions(initialPositions));
 
   const widgets = [
@@ -70,7 +72,7 @@ function App() {
     <div className="App">
       <Navbar />
       <h1>Project Dashboard</h1>
-      <TileLayout
+      {/* <TileLayout
         className="tileLayout"
         columns={4}
         rowHeight={255}
@@ -78,9 +80,9 @@ function App() {
         gap={{ rows: 10, columns: 10 }}
         items={widgets}
         onReposition={handleReposition}
-      />
+      /> */}
     </div>
   );
 }
 
-export default App;
+export default Home;

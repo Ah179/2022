@@ -9,7 +9,8 @@ function AddProject() {
 	return (
 		<div className='updateProject'>
 			<br></br>
-			<button className='addProjectBtn' onClick={() => setAddProjectButton(true)}>Add Project</button>
+			{/*<button className='addProjectBtn' variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</button>*/}
+			<Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>{' '}
 			<AddProjectPopup trigger={addProjectButton} setTrigger={setAddProjectButton} />
 		</div>
 	)

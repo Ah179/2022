@@ -16,10 +16,10 @@ main {
   /* font-family: "Lucinda Console", "Courier New", monospace; */
 }
 
-.addProjectBtn {
+/*.addProjectBtn {
   border-radius: 5px;
   background-color: #fff;
-}
+}*/
 
 .addPopup {
   position: fixed;

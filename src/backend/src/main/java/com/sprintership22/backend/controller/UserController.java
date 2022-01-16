@@ -18,41 +18,26 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping("/add")
-	public String add(@RequestBody User user) { //Debug line
+	public String add(@RequestBody User user) {
 		
 		User temp = userService.saveUser(user);
 		
-		if (temp == null)
-		{
-			return "user was not able to be added";
-		}
-		
-		return "new user is added";
+		return (temp != null) ? "new user is added" : "user could not be added because user with duplicate ID exist";
 	}
 	
 	@PostMapping("/delete")
-	public String delete(@RequestBody User user) { //Debug line
+	public String delete(@RequestBody User user) {
 		
-		Boolean temp = userService.deleteUser(user);
+		boolean temp = userService.deleteUser(user);
 		
-		if (!temp)
-		{
-			return "user was not able to be deleted";
-		}
-		
-		return "user is deleted";
+		return (temp) ? "user is deleted" : "user could not be deleted because user does not exist";
 	}
 	
 	@PostMapping("/verify")
-	public String verify(@RequestBody User user) { //Debug line
+	public String verify(@RequestBody User user) {
 		
-		Boolean temp = userService.verifyUser(user);
+		boolean temp = userService.verifyUser(user);
 		
-		if (!temp)
-		{
-			return "user is not in the system";
-		}
-		
-		return "user is in the system";
+		return (temp) ? "user is in the system" : "user is not in the system";
 	}
 }

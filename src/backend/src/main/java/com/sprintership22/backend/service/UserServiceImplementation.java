@@ -11,6 +11,9 @@ public class UserServiceImplementation implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private UserProjectsService userProjectService;
+	
 	@Override
 	public User saveUser(User user) {
 		if (verifyUser(user))
@@ -29,6 +32,7 @@ public class UserServiceImplementation implements UserService {
 			return false;
 		}
 		
+		userProjectService.deleteUserAndRelatedProjects(user.getEmployeeID());
 		userRepository.delete(user);
 		return true;
 	}

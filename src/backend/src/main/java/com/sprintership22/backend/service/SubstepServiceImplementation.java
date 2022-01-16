@@ -1,5 +1,7 @@
 package com.sprintership22.backend.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sprintership22.backend.model.Substep;
@@ -18,6 +20,20 @@ public class SubstepServiceImplementation implements SubstepService{
 	@Override
 	public void deleteSubstep(Substep substep) {
 		substepRepository.delete(substep);
+	}
+	@Override
+	public ArrayList<Substep> getSubsteps(int projectID) {
+		return substepRepository.getSubsteps(projectID);
+	}
+	@Override
+	public void deleteProjectAndRelatedSubsteps(int projectID) {
+		
+		ArrayList<Substep> temp = getSubsteps(projectID);
+		
+		for (int i = 0; i < temp.size(); i++)
+		{
+			substepRepository.delete(temp.get(i));
+		}
 	}
 
 }

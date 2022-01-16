@@ -1,13 +1,14 @@
 package com.sprintership22.backend.model;
 
-public class CreateUserProject {
+public class UserProjectObject {
 	
 	private User user;
 	private Project project;
 
-	public CreateUserProject()
+	public UserProjectObject(User user, Project project)
 	{
-		
+		this.user = user;
+		this.project = project;
 	}
 	
 	public User getUser()

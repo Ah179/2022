@@ -14,6 +14,7 @@ public class Project {
 	private String  startTime;
 	private String endTime;
 	private String status;
+	//private int[] collaborators;
 	
 	public Project()
 	{

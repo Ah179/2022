@@ -1,14 +1,18 @@
 package com.sprintership22.backend.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Substep {
 	
 	@Id
-	private int projectID;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 	
+	private int projectID;
 	private String name;
 	private String description;
 	private String  startTime;
@@ -20,12 +24,22 @@ public class Substep {
 		
 	}
 	
+	public int getID()
+	{
+		return this.id;
+	}
+	
+	public void setID(int id)
+	{
+		this.id = id;
+	}
+	
 	public int getProjectID()
 	{
 		return this.projectID;
 	}
 	
-	public void setID(int projectID)
+	public void setProjectID(int projectID)
 	{
 		this.projectID = projectID;
 	}

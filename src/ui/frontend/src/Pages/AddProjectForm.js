@@ -10,11 +10,11 @@ import {
 import './AddProjectForm.css'
 
 function AddProjectForm() {
-	const [projectName, setProjectName] = useState('')
-	const [projectId, setProjectId] = useState('')
-	const [projectDesc, setProjectDesc] = useState('')
-	const [projectStartDate, setProjectStartDate] = useState('')
-	const [projectEndDate, setProjectEndDate] = useState('')
+	const [name, setProjectName] = useState('')
+	const [id, setProjectId] = useState('')
+	const [description, setProjectDesc] = useState('')
+	const [startTime, setProjectStartDate] = useState('')
+	const [endTime, setProjectEndDate] = useState('')
 	const [projectCollaborators, setProjectCollaborators] = useState([])
 	const [projectTasks, setProjectTasks] = useState([])
 	
@@ -39,6 +39,27 @@ function AddProjectForm() {
 		return array.some(function(el) {
 			return el.key === key
 		}) 
+	}
+
+	const handleClickCreateProject = (event) => {
+		event.preventDefault();
+		const employeeID = 23
+		const firstName = "Jane"
+		const lastName = "Doe"
+		const companyRole = "Mr. World Wide"
+		const email = "test@pleasework.plz"
+		const password = "test"
+		const user= {employeeID, firstName, lastName, companyRole, email, password}
+		const project={id, name, description, startTime, endTime}
+		const userProjectObject = {user, project}
+		console.log(userProjectObject)
+		fetch("http://localhost:8080/project/add", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(userProjectObject)
+        }).then(()=>{
+            console.log("New project added")
+        })
 	}
 
 	const addCollaborator = (event) => {
@@ -94,51 +115,51 @@ function AddProjectForm() {
  				<h2>Add Project</h2>
  				<Form className='addProjectForm'>
  					<FormGroup>
- 						<Label for='projectName'>Project Name</Label>
+ 						<Label for='name'>Project Name</Label>
  						<Input
 							type='text'
 							name='name'
-							id='projectName'
+							id='name'
 							required
 							onChange={(e) => handleNameChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
-						<Label for='projectId'>Project ID</Label>
+						<Label for='id'>Project ID</Label>
 						<Input 
 							type='number'
-							name='projectId'
-							id='projectId'
+							name='id'
+							id='id'
 							required
 							onChange={(e) => handleIdChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
-						<Label for='projectDesc'>Project Description</Label>
+						<Label for='description'>Project Description</Label>
 						<Input
 							type='textarea'
 							name='desc'
-							id='projectDesc'
+							id='description'
 							required
 							onChange={(e) => handleDescChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
-						<Label for='projectStartDate'>Start Date</Label>
+						<Label for='startTime'>Start Date</Label>
 						<Input
 							type='date'
 							name="startDate"
-							id='projectStartDate'
+							id='startTime'
 							required
 							onChange={(e) => handleStartDateChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
-						<Label for='projectEndDate'>End Date</Label>
+						<Label for='endTime'>End Date</Label>
 						<Input
 							type='date'
 							name='endDate'
-							id='projectEndDate'
+							id='endTime'
 							required
 							onChange={(e) => handleEndDateChange(e)}
 						/>
@@ -204,7 +225,7 @@ function AddProjectForm() {
 								id='addBtn'>ADD</Button>
 						</FormGroup>
 					</FormGroup>
-					<Button >SUBMIT</Button>
+					<Button onClick={handleClickCreateProject}>SUBMIT</Button>
 				</Form>
 			</div>
 	)

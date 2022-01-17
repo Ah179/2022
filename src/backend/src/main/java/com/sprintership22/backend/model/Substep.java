@@ -15,9 +15,12 @@ public class Substep {
 	private int projectID;
 	private String name;
 	private String description;
+	
+	/*
 	private String  startTime;
 	private String endTime;
 	private String status;
+	*/
 
 	public Substep()
 	{
@@ -64,6 +67,7 @@ public class Substep {
 		this.description = description;
 	}
 	
+	/*
 	public String getStartTime()
 	{
 		return this.startTime;
@@ -93,4 +97,5 @@ public class Substep {
 	{
 		this.status = status;
 	}
+	*/
 }

@@ -7,6 +7,7 @@ import com.sprintership22.backend.model.UserProjects;
 public interface UserProjectsService {
 	public UserProjects saveUserProjects(UserProjects userProjects);
 	public void deleteUserProjects(UserProjects userProjects);
+	public void deleteUserProjects(UserProjectObject userProjectObject);
 	public ArrayList<UserProjects> getUserAndRelatedProjects(int userID);
 	public void deleteUserAndRelatedProjects(int userID);
 	public ArrayList<UserProjects> getProjectAndRelatedUsers(int projectID);

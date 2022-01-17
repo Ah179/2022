@@ -13,8 +13,9 @@ public class Project {
 	private String description;
 	private String  startTime;
 	private String endTime;
+	/*
 	private String status;
-	//private int[] collaborators;
+	*/
 	
 	public Project()
 	{
@@ -71,6 +72,7 @@ public class Project {
 		this.endTime = endTime;
 	}
 	
+	/*
 	public String getStatus()
 	{
 		return this.status;
@@ -80,4 +82,5 @@ public class Project {
 	{
 		this.status = status;
 	}
+	*/
 }

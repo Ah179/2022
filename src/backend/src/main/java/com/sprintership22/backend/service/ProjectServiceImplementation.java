@@ -17,9 +17,6 @@ public class ProjectServiceImplementation implements ProjectService{
 	private UserProjectsService userProjectsService;
 	
 	@Autowired
-	private UserProjectsService userProjectService;
-	
-	@Autowired
 	private SubstepService substepService;
 	
 	@Override
@@ -36,7 +33,24 @@ public class ProjectServiceImplementation implements ProjectService{
 	
 	@Override
 	public boolean addCollaborator(UserProjectObject userProjectObject) {
-		// TODO Auto-generated method stub
+		
+		if (verifyProject(userProjectObject.getProject()))
+		{
+			return false;
+		}
+		
+		userProjectsService.saveUserProjects(new UserProjects(userProjectObject.getUser().getEmployeeID(), userProjectObject.getProject().getID()));
+		return true;
+	}
+	
+	@Override
+	public boolean deleteCollaborator(UserProjectObject userProjectObject) {
+		if (verifyProject(userProjectObject.getProject()) && userProjectsService.findUserProjectID(userProjectObject) == -1)
+		{
+			return false;
+		}
+		
+		userProjectsService.deleteUserProjects(userProjectObject);
 		return false;
 	}
 	
@@ -48,7 +62,7 @@ public class ProjectServiceImplementation implements ProjectService{
 			return false;
 		}
 		
-		userProjectService.deleteProjectAndRelatedUsers(project.getID());
+		userProjectsService.deleteProjectAndRelatedUsers(project.getID());
 		substepService.deleteProjectAndRelatedSubsteps(project.getID());
 		projectRepository.delete(project);
 		return true;
@@ -57,6 +71,8 @@ public class ProjectServiceImplementation implements ProjectService{
 	@Override
 	public boolean verifyProject(Project project) {
 		
+		System.out.println("TEST ID : "+project.getID());
+		System.out.println("TEST NAME : "+project.getName());
 		return projectRepository.existsById(project.getID());
 	}
 }

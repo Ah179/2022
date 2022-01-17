@@ -33,4 +33,20 @@ public class ProjectController {
 		
 		return (temp) ? "project has been deleted" : "project could not be deleted because project does not exist";
 	}
+	
+	@PostMapping("/addcollaborator")
+	public String addcollaborator(@RequestBody UserProjectObject userProjectObject) {
+		
+		boolean temp = projectService.addCollaborator(userProjectObject);
+		
+		return (temp) ? "collaborator has been added" : "collaborator could not be added because project does not exist";
+	}
+	
+	@PostMapping("/deletecollaborator")
+	public String deletecollaborator(@RequestBody UserProjectObject userProjectObject) {
+		
+		boolean temp = projectService.deleteCollaborator(userProjectObject);
+		
+		return (temp) ? "collaborator has been deleted" : "collaborator could not be deleted because project or collaborator does not exist";
+	}
 }

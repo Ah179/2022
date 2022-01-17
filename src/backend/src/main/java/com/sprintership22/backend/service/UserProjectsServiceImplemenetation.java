@@ -22,6 +22,7 @@ public class UserProjectsServiceImplemenetation implements UserProjectsService {
 	
 	@Override
 	public void deleteUserProjects(UserProjects userProjects) {
+		
 		userProjectsRepository.delete(userProjects);
 	}
 	
@@ -62,12 +63,20 @@ public class UserProjectsServiceImplemenetation implements UserProjectsService {
 	
 	@Override
 	public ArrayList<UserProjects> findUserProjectID(int userID, int projectID) {
+		
 		return (ArrayList<UserProjects>) userProjectsRepository.findUserProjectID(userID, projectID);
 	}
 	
 	@Override
 	public int findUserProjectID(UserProjectObject userProjectObject) {
+		
 		ArrayList<UserProjects> temp = findUserProjectID(userProjectObject.getUser().getEmployeeID(), userProjectObject.getProject().getID());
 		return (temp.size() == 1) ? temp.get(0).getID() : -1;
+	}
+
+	@Override
+	public void deleteUserProjects(UserProjectObject userProjectObject) {
+		
+		userProjectsRepository.deleteById(findUserProjectID(userProjectObject));
 	}
 }

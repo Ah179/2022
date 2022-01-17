@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.sprintership22.backend.model.Project;
 import com.sprintership22.backend.model.Substep;
 import com.sprintership22.backend.service.SubstepService;
 
@@ -31,6 +33,14 @@ public class SubstepController {
 		substepService.deleteSubstep(substep);
 		
 		return "substep is deleted";
+	}
+	
+	@PostMapping("/deleteproject")
+	public String deleteproject(@RequestBody Project project) {
+		
+		substepService.deleteProjectAndRelatedSubsteps(project.getID());
+		
+		return "project is deleted";
 	}
 	
 }

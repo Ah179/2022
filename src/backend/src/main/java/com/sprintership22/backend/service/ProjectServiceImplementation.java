@@ -19,6 +19,9 @@ public class ProjectServiceImplementation implements ProjectService{
 	@Autowired
 	private UserProjectsService userProjectService;
 	
+	@Autowired
+	private SubstepService substepService;
+	
 	@Override
 	public Project saveProject(UserProjectObject userProjectObject) {
 		
@@ -46,6 +49,7 @@ public class ProjectServiceImplementation implements ProjectService{
 		}
 		
 		userProjectService.deleteProjectAndRelatedUsers(project.getID());
+		substepService.deleteProjectAndRelatedSubsteps(project.getID());
 		projectRepository.delete(project);
 		return true;
 	}

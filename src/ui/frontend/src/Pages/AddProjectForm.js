@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
 	Button, 
@@ -8,90 +8,99 @@ import {
 	Label
 } from "reactstrap"
 import './AddProjectForm.css'
-import Collaborators from "../components/Collaborators/Collaborators.js"
-import Tasks from '../components/Tasks/Tasks.js'
 
-class AddProjectForm extends Component {
-	constructor(props) {
-		super(props)
+function AddProjectForm() {
+	const [projectName, setProjectName] = useState('')
+	const [projectId, setProjectId] = useState('')
+	const [projectDesc, setProjectDesc] = useState('')
+	const [projectStartDate, setProjectStartDate] = useState('')
+	const [projectEndDate, setProjectEndDate] = useState('')
+	const [projectCollaborators, setProjectCollaborators] = useState([])
+	const [projectTasks, setProjectTasks] = useState([])
+	
+	const [collaboratorInput, setCollaboratorInput] = useState('')
+	const [taskInput, setTaskInput] = useState('')
 
-		this.state = {
-			name: '',
-			projectId: '',
-			desc: '',
-			startDate: '',
-			endDate: '',
-			collaborators: [],
-			tasks: []
-		}
+	const handleNameChange = (event) => {setProjectName(event.target.value)}
 
-		//this.handleInputChange = this.handleInputChange.bind(this)
-		this.addCollaborator = this.addCollaborator.bind(this)
-		this.addTask = this.addTask.bind(this)
+	const handleIdChange = (event) => {setProjectId(event.target.value)}
+
+	const handleDescChange = (event) => {setProjectDesc(event.target.value)}
+
+	const handleStartDateChange = (event) => {setProjectStartDate(event.target.value)}
+
+	const handleEndDateChange = (event) => {setProjectEndDate(event.target.value)}
+
+	const handleCollaboratorInputChange = (event) => {setCollaboratorInput(event.target.value)}
+
+	const handleTaskInputChange = (event) => {setTaskInput(event.target.value)}
+
+	function isInList(array, key) {
+		return array.some(function(el) {
+			return el.key === key
+		}) 
 	}
 
-	// handleInputChange(event) {
-	// 	const target = event.target
-	// 	const value = target.type === 'checkbox' ? target.checked : target.value
-	// 	const name = target.name
-
-	// 	this.setState({
-	// 		[name]: value
-	// 	})
-
-	// 	console.log(`${this.state.name} 
-	// 				${this.state.projectId} 
-	// 				${this.state.desc} 
-	// 				${this.state.startDate}
-	// 				${this.state.endDate}`)
-	// }
-
-	addCollaborator(event) {
-		if(this.collaboratorInput !== '') {
-			var newCollaborator = {
-				key: this.collaboratorInput.value,
-				value: this.collaboratorInput.value
-			}
-
-			this.setState((prevState) => ({
-				collaborators: [...prevState.collaborators, newCollaborator]
-			}))
-
-			this.collaboratorInput.value = ''
-		}
-
-		console.log(this.state.collaborators)
+	const addCollaborator = (event) => {
 		event.preventDefault()
-	}
 
-	addTask(event) {
-		if(this.taskInput !== '') {
-			var newTask = {
-				key: this.taskInput.value,
-				value: this.taskInput.value
-			}
-
-			this.setState((prevState) => ({
-				tasks: [...prevState.tasks, newTask]
-			}))
-
-			this.taskInput.value = ''
+		//Input Validation
+		if(collaboratorInput === '') {return}
+		if(isInList(projectCollaborators, collaboratorInput) === true) {
+			document.getElementById('collaboratorValue').value = ''
+			return
 		}
 
-		event.preventDefault()
+		const newCollaborator = {key: collaboratorInput, value: collaboratorInput}
+		const newCollaboratorList = [...projectCollaborators, newCollaborator]
+
+		setProjectCollaborators(newCollaboratorList)
+		document.getElementById('collaboratorValue').value = ''
+		setCollaboratorInput('')
 	}
 
-	render() {
-		return (
-			<div className='AddProjectForm'>
-				<h2>Add Project</h2>
-				<Form className='addProjectForm'>
-					<FormGroup>
-						<Label for='projectName'>Name</Label>
-						<Input
+	const removeCollaborator = (index) => {
+		const collaborators = projectCollaborators.slice()
+		collaborators.splice(index, 1)
+		setProjectCollaborators(collaborators)
+	}
+
+	const addTask = (event) => {
+		event.preventDefault()
+
+		//Input Validation
+		if(taskInput === '') {return}
+		if(isInList(projectTasks, taskInput) === true) {
+			document.getElementById('taskValue').value = ''
+			return
+		}
+
+		const newTask = {key: taskInput, value: taskInput, isCompleted: false}
+		const newTaskList = [...projectTasks, newTask]
+
+		setProjectTasks(newTaskList)
+		document.getElementById('taskValue').value = ''
+		setTaskInput('')	
+	}
+
+	const removeTask = (index) => {
+		const tasks = projectTasks.slice()
+		tasks.splice(index, 1)
+		setProjectTasks(tasks)
+	}
+
+	return (
+		<div className='AddProjectForm'>
+ 				<h2>Add Project</h2>
+ 				<Form className='addProjectForm'>
+ 					<FormGroup>
+ 						<Label for='projectName'>Project Name</Label>
+ 						<Input
 							type='text'
 							name='name'
 							id='projectName'
+							required
+							onChange={(e) => handleNameChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
@@ -100,14 +109,18 @@ class AddProjectForm extends Component {
 							type='number'
 							name='projectId'
 							id='projectId'
+							required
+							onChange={(e) => handleIdChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
-						<Label for='projectDesc'>Description</Label>
+						<Label for='projectDesc'>Project Description</Label>
 						<Input
 							type='textarea'
 							name='desc'
 							id='projectDesc'
+							required
+							onChange={(e) => handleDescChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
@@ -116,6 +129,8 @@ class AddProjectForm extends Component {
 							type='date'
 							name="startDate"
 							id='projectStartDate'
+							required
+							onChange={(e) => handleStartDateChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
@@ -124,21 +139,75 @@ class AddProjectForm extends Component {
 							type='date'
 							name='endDate'
 							id='projectEndDate'
+							required
+							onChange={(e) => handleEndDateChange(e)}
 						/>
 					</FormGroup>
 					<FormGroup>
 						<Label>Collaborators</Label>
-						<Collaborators />
+						<table>
+							{projectCollaborators.map((collaborator, index) => (
+								<tbody className='list' key={collaborator.key}>
+									{/* <Collaborator index={index} collaborator={collaborator} remove={this.removeCollaborator} /> */}
+									<tr>
+										<td className="listText">{collaborator.value}</td>
+										<td>
+											<button onClick={() => removeCollaborator(index)} className="delBtn"> - </button>
+										</td>
+									</tr>
+								</tbody>
+							))}
+						</table>
+						<FormGroup className="listInput">
+ 							<Input 
+								className="textInputBox"
+								type='number' 
+								id='collaboratorValue' 
+								placeholder="Add Collaborator"
+								onChange={(e) => handleCollaboratorInputChange(e)}
+								// onSubmit={this.addCollaborator}
+							/>
+							<Button
+								className="addBtn"
+								onClick={(e) => addCollaborator(e)}
+								type="button"
+								id='addBtn'>ADD</Button>
+						</FormGroup>
 					</FormGroup>
 					<FormGroup>
 						<Label>Tasks</Label>
-							<Tasks />
+						<table>
+							{projectTasks.map((task, index) => (
+								<tbody className='list' key={task.key}>
+									<tr>
+										<td className="listText">{task.value}</td>
+										<td>
+											<button onClick={() => removeTask(index)} className="delBtn"> - </button>
+										</td>
+									</tr>
+								</tbody>
+							))}
+						</table>
+						<FormGroup className="listInput">
+ 							<Input 
+								className="textInputBox"
+								type='text' 
+								id='taskValue' 
+								placeholder="Add Task"
+								onChange={(e) => handleTaskInputChange(e)}
+								// onSubmit={this.addCollaborator}
+							/>
+							<Button
+								className="addBtn"
+								onClick={(e) => addTask(e)}
+								type="button"
+								id='addBtn'>ADD</Button>
+						</FormGroup>
 					</FormGroup>
-					<Button>SUBMIT</Button>
+					<Button >SUBMIT</Button>
 				</Form>
 			</div>
-		)
-	}
+	)
 }
 
 export default AddProjectForm

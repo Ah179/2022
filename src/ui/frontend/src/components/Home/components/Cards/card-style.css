@@ -30,7 +30,12 @@ body {
 
 .btn {
     padding-bottom: 8px !important;
-    justify-content: center !important;
+}
+
+.edit-dropdown {
+    position: absolute !important;
+    top: 0px !important;
+    right: 8px !important;
 }
 
 .container-fluid.row {

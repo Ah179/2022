@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {Component} from 'react';
 import './Login.css'
 import Auth0ProviderWithHistory from '../../auth/auth0Provider';
@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import {
   Button,
-  Container,
   Form,
   FormGroup,
   FormText,
@@ -18,15 +17,14 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      employeeID: '',
       password: '',
-      validate: {
-        emailState: '',
-      },
     };
     this.handleChange = this.handleChange.bind(this);
   } 
   handleChange = (event) => {
+    console.log(event.target);
+
     const { target } = event;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
@@ -34,42 +32,68 @@ class Login extends Component {
     this.setState({
       [name]: value,
     });
+
+    this.validate(event);
   };
-  validateEmail(e) {
-    const emailRex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    const { validate } = this.state;
-
-    if (emailRex.test(e.target.value)) {
-      validate.emailState = 'has-success';
-    } else {
-      validate.emailState = 'has-danger';
-    }
-
-    this.setState({ validate });
-  }
   //THIS PORTION SHOULD SEND BACK INFO TO DATA BASE
   submitForm(e) {
     e.preventDefault();
-    console.log(`Email: ${this.state.email}`);
+    // if (!this.validate(e)){
+    //   if(!this.state.employeeID){
+    //     alert("Employee ID is required");
+    //   }
+    //   if (!this.state.password){
+    //     alert("Password is required");
+    //   }
+    // }
+    fetch('http://loclalhost:8080/user/add', {
+           method: 'POST',
+    //Convert React state to JSON & Sends it as the POST body
+         body: JSON
+    }).then(function(response){
+      console.log(response)
+      return response.json();
+    })
+     
+    console.log(`Employee ID: ${this.state.employeeID}`);
   }
+
+  // validate(e) {
+  //   const employeeID = this.state.employeeID;
+  //   const password = this.state.password;
+  //   const errors = {};
+  //   const formIsValid = true;
+  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    
+  //   if(!employeeID){
+  //     formIsValid = false;
+  //     errors.employeeID = "Employee ID is required";
+  //   }
+  //   if(!password){
+  //     formIsValid = false;
+  //     errors.password = "Password is required";
+  //   }
+  //   this.setState({ errors: errors });
+  //   return formIsValid;
+  // }
+
   render() {
-    const {email, password} = this.state;
+    const {employeeID, password} = this.state;
     return (  
     <Auth0ProviderWithHistory>
       <div className="LoginPage">
         <h2>Sign In</h2>
-        <Form className="form">
+        <pre>{JSON.stringify}</pre>
+        <Form className="form" onSubmit={this.submitForm}>
           <FormGroup>
-            <Label for="exampleEmail">Employee ID</Label>
+            <Label for="employeeID">Employee ID</Label>
             <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
-              placeholder="example@brightform.com"
+              type="number"
+              name="employeeID"
+              id="employeeId"
+              placeholder="Employee ID"
+              onChange={this.handleChange}
             />
-            <FormText>Your Employee ID is your Employee Email.</FormText>
           </FormGroup>
           <FormGroup>
             <Label for="examplePassword">Password</Label>
@@ -78,10 +102,11 @@ class Login extends Component {
               name="password"
               id="examplePassword"
               placeholder="********"
+              onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
-         <Link to={'./Home'}><Button>LOGIN</Button></Link>
+         <Link to={'./Home'}><Button type="submit">LOGIN</Button></Link>
         </FormGroup>
         <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>

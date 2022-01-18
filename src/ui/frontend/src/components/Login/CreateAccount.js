@@ -57,6 +57,17 @@ class CreateAccount extends Component {
   submitForm(e) {
     e.preventDefault();
     console.log(`Email: ${this.state.email}`);
+    /**
+     * alert('Your account has been created' + this.state);
+     * fetch('http://loclalhost:8080/user/add', {
+     *        method: 'POST',
+     *      //Convert React state to JSON & Sends it as the POST body
+     *        body: JSON
+     * }).then(function(response){
+     *     console.log(response)
+     *     return response.json();
+     * })
+     */
   }
   render() {
     const {employeeID,firstname,last_name,companyRole,email, password} = this.state;

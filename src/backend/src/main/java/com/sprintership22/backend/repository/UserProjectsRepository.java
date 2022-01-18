@@ -15,7 +15,6 @@ public interface UserProjectsRepository extends JpaRepository<UserProjects, Inte
 	@Query("SELECT u FROM UserProjects u WHERE u.userID = ?1 AND u.projectID = ?2")
 	ArrayList<UserProjects> findUserProjectID(int userID, int projectID);
 	
-	
 	@Query("SELECT u FROM UserProjects u WHERE u.userID = ?1")
 	ArrayList<UserProjects> getUserAndRelatedProjects(int userID);
 	

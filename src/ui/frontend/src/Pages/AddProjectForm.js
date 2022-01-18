@@ -60,6 +60,11 @@ function AddProjectForm() {
         }).then(()=>{
             console.log("New project added")
         })
+
+		/*
+		const user = collaboratorInput.map((collaboratorInput)=>
+
+		);*/
 	}
 
 	const addCollaborator = (event) => {

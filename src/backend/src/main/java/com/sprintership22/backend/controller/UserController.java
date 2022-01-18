@@ -40,4 +40,10 @@ public class UserController {
 		
 		return (temp) ? "user is in the system" : "user is not in the system";
 	}
+	
+	@PostMapping("/login")
+	public User login(@RequestBody User user) {
+		
+		return userService.loginUser(user);
+	}
 }

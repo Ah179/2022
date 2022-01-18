@@ -57,17 +57,17 @@ class CreateAccount extends Component {
   submitForm(e) {
     e.preventDefault();
     console.log(`Email: ${this.state.email}`);
-    /**
-     * alert('Your account has been created' + this.state);
-     * fetch('http://loclalhost:8080/user/add', {
-     *        method: 'POST',
-     *      //Convert React state to JSON & Sends it as the POST body
-     *        body: JSON
-     * }).then(function(response){
-     *     console.log(response)
-     *     return response.json();
-     * })
-     */
+    
+      alert('Your account has been created' + this.state);
+      fetch('http://loclalhost:8080/user/add', {
+             method: 'POST',
+           //Convert React state to JSON & Sends it as the POST body
+             body: JSON
+      }).then(function(response){
+          console.log(response)
+          return response.json();
+      })
+     
   }
   render() {
     const {employeeID,firstname,last_name,companyRole,email, password} = this.state;
@@ -83,14 +83,18 @@ class CreateAccount extends Component {
               name="FirstName"
               id="examplefirstname"
               placeholder="John"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              required
+              />
             <Label for = "examplelastname">Last Name</Label>
             <Input 
               type ="text"
               name="lastname"
               id="lastname"
               placeholder="Smith"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              required
+              />
           </FormGroup> 
           <FormGroup>
             <Label for ="exampleID">Employee ID </Label>
@@ -99,7 +103,9 @@ class CreateAccount extends Component {
               name="number"
               id="exampleID"
               placeholder="Employee ID"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              required
+              />
           </FormGroup>
           <FormGroup>
             <Label for="examplecompanyRole">Company Role</Label>
@@ -108,7 +114,9 @@ class CreateAccount extends Component {
               name="compnayRole"
               id="companyRole"
               placeholder="Software Engineer"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              required
+              />
           </FormGroup>
           <FormGroup>
             <Label for="exampleEmail">Employee Email</Label>
@@ -117,7 +125,9 @@ class CreateAccount extends Component {
               name="email"
               id="exampleEmail"
               placeholder="example@brightform.com"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              required
+              />
           </FormGroup>
           <FormGroup>
             <Label for="examplePassword">Password</Label>
@@ -126,7 +136,9 @@ class CreateAccount extends Component {
               name="password"
               id="examplePassword"
               placeholder="********"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              required
+              />
           </FormGroup>
           <FormGroup>
          <Link to={"/Home"}><Button type="submit">Sign Up</Button></Link>

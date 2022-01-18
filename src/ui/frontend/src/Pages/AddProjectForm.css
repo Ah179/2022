@@ -1,0 +1,48 @@
+h2 {
+	text-align: center;
+	font-weight: bold;
+	margin-top: 20px;
+  }
+  
+  .addProjectForm {
+	margin-left: 20px;
+	margin-right: 20px;
+  }
+  
+  .listInput {
+	display: flex;
+	margin-top: 10px;
+  }
+  
+  .textInputBox {
+	margin-top: 5px;
+	width: 300px;
+  }
+  
+  .addBtn {
+	  background-color: rgb(50, 201, 252);
+  }
+  
+  .delBtn {
+	  background-color: lightgray;
+	  border: 0px;
+	  position: relative;
+	  margin: 10px;
+	  font-weight: bolder;
+  }
+  
+  .listText {
+	  position: relative;
+  }
+  
+  .list {
+	  background-color: lightgray;
+	  border-radius: 3px;
+	  margin-top: 3px;
+	  padding: 10px;
+	  font-family: "Lucinda Console", "Courier New", monospace;
+	  font-weight: bold;
+	  justify-content: space-between;
+	  align-items: center;
+	  display: flex;
+  }

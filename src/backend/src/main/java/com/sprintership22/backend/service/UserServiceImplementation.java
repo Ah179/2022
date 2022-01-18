@@ -58,15 +58,15 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public ArrayList<User> findUser(String email, String password) {
+	public ArrayList<User> findUser(int employeeID, String password) {
 		
-		return userRepository.findUser(email, password);
+		return userRepository.findUser(employeeID, password);
 	}
 
 	@Override
 	public User loginUser(User user) {
 		
-		ArrayList<User> temp = findUser(user.getEmail(), user.getPassword());
+		ArrayList<User> temp = findUser(user.getEmployeeID(), user.getPassword());
 		
 		if (temp.size() == 0)
 		{

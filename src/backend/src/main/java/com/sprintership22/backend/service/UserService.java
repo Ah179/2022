@@ -9,6 +9,6 @@ public interface UserService {
 	public boolean deleteUser(User user);
 	public boolean verifyUser(User user);
 	public ArrayList<User> emailExists(String email);
-	public ArrayList<User> findUser(String email, String password);
+	public ArrayList<User> findUser(int employeeID, String password);
 	public User loginUser(User user);
 }

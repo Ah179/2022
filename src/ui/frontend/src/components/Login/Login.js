@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {Component} from 'react';
 import './Login.css'
-import Auth0ProviderWithHistory from '../../auth/auth0Provider';
+//import Auth0ProviderWithHistory from '../../auth/auth0Provider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -105,12 +105,12 @@ class Login extends Component {
   // }
 
   render() {
-    const {employeeID, password} = this.state;
+    ///const {employeeID, password} = this.state;
     return (  
-    <Auth0ProviderWithHistory>
+    //<Auth0ProviderWithHistory>
       <div className="LoginPage">
         <h2>Sign In</h2>
-        <pre>{JSON.stringify}</pre>
+        {/* <pre>{JSON.stringify}</pre> */}
         <Form className="form" onSubmit={this.submitForm}>
           <FormGroup>
             <Label for="employeeID">Employee ID</Label>
@@ -140,7 +140,7 @@ class Login extends Component {
         <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>
     </div>
-    </Auth0ProviderWithHistory>
+    //</Auth0ProviderWithHistory>
     );
   }
 };

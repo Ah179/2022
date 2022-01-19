@@ -87,7 +87,7 @@ class CreateAccount extends Component {
   //THIS PORTION SHOULD SEND BACK INFO TO DATA BASE
   submitForm(e) {
     e.preventDefault();
-    console.log(`Email: ${this.state.email}`);
+    // console.log(`Email: ${this.state.email}`);
     
       // alert('Your account has been created' + this.state);
       fetch('http://loclalhost:8080/user/add', {
@@ -106,14 +106,16 @@ class CreateAccount extends Component {
             password : this.state.password,
            })
       }).then((Response) => Response.json()).then((Result) =>{
-        if (Result == 'new user is added')
+        if (Result == 'new user is added'){
+          this.props.history.push('/Home')
             this.props.history.push('/Home');
+        }
         else 
           alert('Un-authenticated User!')
       })
   }
   render() {
-    const {employeeID,firstname,lastname,companyRole,email, password} = this.state;
+    //const {employeeID,firstname,lastname,companyRole,email, password} = this.state;
     return (  
     <Auth0ProviderWithHistory>
       <div className="LoginPage">

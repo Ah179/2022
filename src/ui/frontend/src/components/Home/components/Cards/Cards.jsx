@@ -17,7 +17,7 @@ class Cards extends Component {
         projects: []
     };
 
-    const user = {
+    user = {
         firstName: 'Harper',
         lastName: 'Perez'
       };

@@ -106,7 +106,7 @@ class CreateAccount extends Component {
             password : this.state.password,
            })
       }).then((Response) => Response.json()).then((Result) =>{
-        if (Result.Status == 'Success') {
+        if (Result == 'new user is added') {
 			this.props.setEmployeeID(this.state.employeeID)
 			this.props.history.push('/Home');
 		}   

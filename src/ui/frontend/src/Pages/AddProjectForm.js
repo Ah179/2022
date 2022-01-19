@@ -127,6 +127,7 @@ function AddProjectForm(props) {
 							name='name'
 							id='name'
 							required
+							maxLength={15}
 							onChange={(e) => handleNameChange(e)}
 						/>
 					</FormGroup>

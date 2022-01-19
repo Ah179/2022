@@ -7,9 +7,11 @@ import './card-style.css';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Popup from './Popup'
 import { useState } from 'react'
+import UpdateProjectPopup from '../UpdateProject/UpdateProjectPopup';
 
 const Card = props => {
     const [buttonPopup, setButtonPopup] = useState(false);
+
     return (
         <div className="card text-center">
             <div className="overflow">
@@ -20,7 +22,7 @@ const Card = props => {
                     <Dropdown.Toggle variant="outline-success"></Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item href="#">Edit</Dropdown.Item>
-                        <Dropdown.Item href="#">Update</Dropdown.Item>
+                        <Dropdown.Item href="#" onClick={() => props.setUpdateProjectPopupBtn(true)}>Update</Dropdown.Item>
                         <Dropdown.Item href="#">Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>

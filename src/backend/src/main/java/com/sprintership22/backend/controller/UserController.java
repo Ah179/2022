@@ -55,4 +55,14 @@ public class UserController {
 		
 		return "user is in the system";
 	}
+	
+	@PostMapping("/login")
+	public User login(@RequestBody User user) {
+		Boolean temp = userService.loginUser(user)
+
+		if (!temp){
+			return  "User does not exist"
+		}
+		return "Success";
+	}
 }

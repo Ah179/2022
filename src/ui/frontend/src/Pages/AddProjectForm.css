@@ -9,12 +9,13 @@ h2 {
 	margin-right: 20px;
   }
   
-  .taskInput {
+  .listInput {
 	display: flex;
 	margin-top: 10px;
   }
   
   .textInputBox {
+	margin-top: 5px;
 	width: 300px;
   }
   
@@ -31,8 +32,6 @@ h2 {
   }
   
   .listText {
-	  width: fit-content;
-	  display: flex;
 	  position: relative;
   }
   
@@ -44,6 +43,6 @@ h2 {
 	  font-family: "Lucinda Console", "Courier New", monospace;
 	  font-weight: bold;
 	  justify-content: space-between;
-		align-items: center;
+	  align-items: center;
 	  display: flex;
   }

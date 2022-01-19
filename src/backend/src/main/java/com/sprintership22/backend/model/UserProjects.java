@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name="userprojects")
 public class UserProjects {
@@ -17,10 +18,20 @@ public class UserProjects {
 	private int userID;
 	private int projectID;
 	
+	public UserProjects()
+	{
+		
+	}
+	
 	public UserProjects(int userID, int projectID)
 	{
 		this.userID = userID;
 		this.projectID = projectID;
+	}
+	
+	public int getID()
+	{
+		return this.id;
 	}
 	
 	public int getUserID()

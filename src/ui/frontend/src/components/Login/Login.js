@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {Component} from 'react';
 import './Login.css'
 //import Auth0ProviderWithHistory from '../../auth/auth0Provider';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,35 +10,42 @@ import {
   FormText,
   Input,
   Label,
-} from 'reactstrap'; 
+} from 'reactstrap';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      employeeID: '',
-      password: '',
-    };
-    this.employeeID = this.employeeID.bind(this);
-    this.password = this.password.bind(this);
-  } 
-  // handleChange = (event) => {
-  //   console.log(event.target);
+function Login(props) {
 
-  //   const { target } = event;
-  //   const value = target.type === 'checkbox' ? target.checked : target.value;
-  //   const { name } = target;
+    const [employeeID, setEmployeeID] = useState('')
+    const [password, setPassword] = useState('')
+    const [temp, setTemp] = useState('')
 
-  //   this.setState({
-  //     [name]: value,
-  //   });
+  const handleClickLoginUser = (event) => {
+    event.preventDefault();
+    //const employeeID = 0
+    const firstName = "garbage"
+	const lastName = "garbage"
+	const companyRole = "garbage"
+	const email = "garbage"
+	const user= {employeeID, firstName, lastName, companyRole, email, password}
+    console.log(user)
+    fetch("http://localhost:8080/user/login", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(user)
+        })
+        .then(res=>res.json())
+        .then((result)=>{
+            setTemp(result)
+            console.log(temp)
 
-  //   this.validate(event);
-  // };
-  employeeID(event){
-    this.setState({employeeID: event.target.value})
+            if(temp)
+            {
+                this.props.setEmployeeID(this.state.employeeID)
+                this.props.history.push("/Home");
+            }
+        })
   }
 
+<<<<<<< HEAD
   password(event){
     this.setState({password: event.target.value})
   }
@@ -112,6 +118,13 @@ class Login extends Component {
         <h2>Sign In</h2>
         {/* <pre>{JSON.stringify}</pre> */}
         <Form className="form" onSubmit={this.submitForm}>
+=======
+  return (  
+    <Auth0ProviderWithHistory>
+      <div className="LoginPage">
+        <h2>Sign In </h2>
+        <Form className="form" onLoad={handleClickLoginUser}>
+>>>>>>> master
           <FormGroup>
             <Label for="employeeID">Employee ID</Label>
             <Input
@@ -119,7 +132,7 @@ class Login extends Component {
               name="employeeID"
               id="employeeId"
               placeholder="Employee ID"
-              onChange={this.employeeID}
+              onChange={(e) => setEmployeeID(e.target.value)}
               required
             />
           </FormGroup>
@@ -130,19 +143,20 @@ class Login extends Component {
               name="password"
               id="examplePassword"
               placeholder="********"
-              onChange={this.password}
+              onChange={(e) => setPassword(e.target.value)}
+              //onChange={(event) => setPassword('password', event.target.value)}
+              //onChange={(e) => handleEndDateChange(e)}
               required
             />
           </FormGroup>
           <FormGroup>
-         <Button type="submit" onClick={this.submitForm}>LOGIN</Button>
+         <Button type="submit" onClick={handleClickLoginUser}>LOGIN</Button>
         </FormGroup>
         <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>
     </div>
     //</Auth0ProviderWithHistory>
     );
-  }
-};
+}
 
-export default Login;
+export default Login

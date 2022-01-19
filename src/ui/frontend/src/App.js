@@ -14,20 +14,25 @@ function App() {
   //   return <Login setToken={setToken} />
   // }
 
+<<<<<<< HEAD
   const history = useHistory();
+=======
+  const [employeeID, setEmployeeID] = useState('')
+  
+>>>>>>> master
   return (
     <Router>
     <div className="wrapper">
       <div>
         <Switch>
           <Route exact path= "/">
-            <Login />
+            <Login setEmployeeID={setEmployeeID}/>
           </Route>
           <Route path= "/CreateAccount">
-            <CreateAccount />
+            <CreateAccount setEmployeeID={setEmployeeID} />
           </Route>
           <Route path="/Home">
-            <Home />
+            <Home employeeID={employeeID} />
           </Route>
           <Route path="/AddProject">
             <AddProjectForm />

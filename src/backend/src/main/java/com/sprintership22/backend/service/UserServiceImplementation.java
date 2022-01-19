@@ -1,5 +1,7 @@
 package com.sprintership22.backend.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sprintership22.backend.model.User;
@@ -11,13 +13,16 @@ public class UserServiceImplementation implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private UserProjectsService userProjectService;
+	
 	@Override
 	public User saveUser(User user) {
 		if (verifyUser(user))
 		{
 			return null;
 		}
-		
+				
 		return userRepository.save(user);
 	}
 
@@ -29,13 +34,52 @@ public class UserServiceImplementation implements UserService {
 			return false;
 		}
 		
+		userProjectService.deleteUserAndRelatedProjects(user.getEmployeeID());
 		userRepository.delete(user);
 		return true;
+	}
+	
+	@Override
+	public ArrayList<User> findUserByID(int employeeID) {
+		
+		return userRepository.findUserByID(employeeID);
 	}
 
 	@Override
 	public boolean verifyUser(User user) {
-		return userRepository.existsById(user.getEmployeeID());
+		
+		ArrayList<User> temp1 = emailExists(user.getEmail());
+		ArrayList<User> temp2 = findUserByID(user.getEmployeeID());
+		
+		if (temp1.size() == 1 || temp2.size() == 1)
+		{
+			return true;
+		}
+		
+		return false;
 	}
 	
+	@Override
+	public ArrayList<User> emailExists(String email) {
+		return userRepository.emailExists(email);
+	}
+
+	@Override
+	public ArrayList<User> findUser(int employeeID, String password) {
+		
+		return userRepository.findUser(employeeID, password);
+	}
+
+	@Override
+	public User loginUser(User user) {
+		
+		ArrayList<User> temp = findUser(user.getEmployeeID(), user.getPassword());
+		
+		if (temp.size() == 0)
+		{
+			return null;
+		}
+		
+		return temp.get(0);
+	}
 }

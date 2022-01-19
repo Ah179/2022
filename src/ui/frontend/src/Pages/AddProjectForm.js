@@ -9,7 +9,8 @@ import {
 } from "reactstrap"
 import './AddProjectForm.css'
 
-function AddProjectForm() {
+function AddProjectForm(props) {
+	const employeeID = props.employeeID
 	const [name, setProjectName] = useState('')
 	const [id, setProjectId] = useState('')
 	const [description, setProjectDesc] = useState('')

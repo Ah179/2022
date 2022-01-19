@@ -8,9 +8,10 @@ import Card from './components/Cards/Cards'
 import AddProject from "./components/AddProject/AddProject";
 import UpdateProjectPopup from "./components/UpdateProject/UpdateProjectPopup";
 
-function Home() {
+function Home(props) {
 
 	const [updateProjectPopupBtn, setUpdateProjectPopupBtn] = useState(false);
+	const employeeID = props.employeeID
 
   return (
     <div className="Home">
@@ -20,7 +21,7 @@ function Home() {
 		<div className="main-dashboard">
 			<h1 className="app-title">Project Dashboard</h1>
 			<Card setUpdateProjectPopupBtn={setUpdateProjectPopupBtn} />
-			<AddProject />
+			<AddProject employeeID={this.employeeID}/>
 			<UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} />
 		</div>  
       {/* <Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>{' '} */}

@@ -80,6 +80,7 @@ class Login extends Component {
       if (Result.Status == 'Invalid')
         alert('Invalid User');
       else 
+		this.props.setEmployeeID(this.state.employeeID)
         this.props.history.push("/Home");
     })
     console.log(`Employee ID: ${this.state.employeeID}`);

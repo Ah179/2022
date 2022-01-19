@@ -106,8 +106,10 @@ class CreateAccount extends Component {
             password : this.state.password,
            })
       }).then((Response) => Response.json()).then((Result) =>{
-        if (Result.Status == 'Success')
-            this.props.history.push('/Home');
+        if (Result.Status == 'Success') {
+			this.props.setEmployeeID(this.state.employeeID)
+			this.props.history.push('/Home');
+		}   
         else 
           alert('Un-authenticated User!')
       })

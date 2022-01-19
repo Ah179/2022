@@ -20,23 +20,33 @@ class Login extends Component {
       employeeID: '',
       password: '',
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.employeeID = this.employeeID.bind(this);
+    this.password = this.password.bind(this);
   } 
-  handleChange = (event) => {
-    console.log(event.target);
+  // handleChange = (event) => {
+  //   console.log(event.target);
 
-    const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name } = target;
+  //   const { target } = event;
+  //   const value = target.type === 'checkbox' ? target.checked : target.value;
+  //   const { name } = target;
 
-    this.setState({
-      [name]: value,
-    });
+  //   this.setState({
+  //     [name]: value,
+  //   });
 
-    this.validate(event);
-  };
+  //   this.validate(event);
+  // };
+  employeeID(event){
+    this.setState({employeeID: event.target.value})
+  }
+
+  password(event){
+    this.setState({password: event.target.value})
+  }
+
   //THIS PORTION SHOULD SEND BACK INFO TO DATA BASE
   submitForm(e) {
+    //debugger;
     e.preventDefault();
     // if (!this.validate(e)){
     //   if(!this.state.employeeID){
@@ -46,15 +56,32 @@ class Login extends Component {
     //     alert("Password is required");
     //   }
     // }
+    // fetch('http://loclalhost:8080/user/add', {
+    //        method: 'POST',
+    // //Convert React state to JSON & Sends it as the POST body
+    //      body: JSON
+    // }).then(function(response){
+    //   console.log(response)
+    //   return response.json();
+    // })
     fetch('http://loclalhost:8080/user/add', {
-           method: 'POST',
+       method: 'POST',
     //Convert React state to JSON & Sends it as the POST body
-         body: JSON
-    }).then(function(response){
-      console.log(response)
-      return response.json();
+        headers: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json'
+    },
+      body: JSON.stringify({
+        employeeID : this.state.employeeID,
+        password : this.state.password,
     })
-     
+    }).then((Response) => Response.json()).then((Result) =>{
+      console.log(Result);
+      if (Result.Status == 'Invalid')
+        alert('Invalid User');
+      else 
+        this.props.history.push("/Home");
+    })
     console.log(`Employee ID: ${this.state.employeeID}`);
   }
 
@@ -92,7 +119,8 @@ class Login extends Component {
               name="employeeID"
               id="employeeId"
               placeholder="Employee ID"
-              onChange={this.handleChange}
+              onChange={this.employeeID}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -102,11 +130,12 @@ class Login extends Component {
               name="password"
               id="examplePassword"
               placeholder="********"
-              onChange={this.handleChange}
+              onChange={this.password}
+              required
             />
           </FormGroup>
           <FormGroup>
-         <Link to={'./Home'}><Button type="submit">LOGIN</Button></Link>
+         <Button type="submit" onClick={this.submitForm}>LOGIN</Button>
         </FormGroup>
         <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>

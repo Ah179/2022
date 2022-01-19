@@ -57,11 +57,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public User login(@RequestBody User user) {
+	public String login(@RequestBody User user) {
 		Boolean temp = userService.loginUser(user)
 
 		if (!temp){
-			return  "User does not exist"
+			return  "Invalid"
 		}
 		return "Success";
 	}

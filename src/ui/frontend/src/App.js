@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home.js';
 import CreateAccount from './components/Login/CreateAccount';
@@ -12,9 +12,11 @@ function App() {
   // if (!token){
   //   return <Login setToken={setToken} />
   // }
-  
+
+  const history = useHistory();
+    
   return (
-    <Router>
+    <Router history={useHistory}>
     <div className="wrapper">
       <div>
         <Switch>

@@ -54,8 +54,9 @@ public class ProjectController {
 		return (temp) ? "collaborator has been deleted" : "collaborator could not be deleted because project or collaborator does not exist";
 	}
 	
-	@GetMapping("/getall")
-    public List<Project> list(){	//@RequestBody User user
-		return projectService.getAllProjects(0); //user.getEmployeeID()
+	@PostMapping("/getall")
+    public List<Project> list(@RequestBody User user){	//@RequestBody User user
+		System.out.println("User ID "+user.getEmployeeID());
+		return projectService.getAllProjects(user.getEmployeeID()); //user.getEmployeeID()
     }
 }

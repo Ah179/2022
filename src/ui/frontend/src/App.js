@@ -14,12 +14,8 @@ function App() {
   //   return <Login setToken={setToken} />
   // }
 
-<<<<<<< HEAD
-  const history = useHistory();
-=======
   const [employeeID, setEmployeeID] = useState('')
   
->>>>>>> master
   return (
     <Router>
     <div className="wrapper">

@@ -3,10 +3,11 @@ import Card from './CardUI'
 
 function Cards(props)
 {
+    const employeeID = props.employeeID
     const [projects, setProjects] = useState([])
 
     useEffect(()=>{
-        const employeeID = 0
+        //const employeeID = 0
 		const firstName = "garbage"
 		const lastName = "garbage"
 		const companyRole = "garbage"

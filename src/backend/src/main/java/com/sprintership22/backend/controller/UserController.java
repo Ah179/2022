@@ -58,10 +58,10 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public String login(@RequestBody User user) {
-		Boolean temp = userService.loginUser(user)
+		Boolean temp = userService.loginUser(user);
 
 		if (!temp){
-			return  "Invalid"
+			return  "Invalid";
 		}
 		return "Success";
 	}

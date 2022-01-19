@@ -3,7 +3,7 @@ import {Component} from 'react';
 import './Login.css'
 import Auth0ProviderWithHistory from '../../auth/auth0Provider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Button,
   Form,
@@ -77,7 +77,7 @@ class Login extends Component {
     })
     }).then((Response) => Response.json()).then((Result) =>{
       console.log(Result);
-      if (Result.Status == 'Invalid')
+      if (Result == 'Invalid')
         alert('Invalid User');
       else 
         this.props.history.push("/Home");

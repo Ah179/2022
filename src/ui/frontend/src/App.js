@@ -21,7 +21,7 @@ function App() {
       <div>
         <Switch>
           <Route exact path= "/">
-            <Login setEmployeeID={setEmployeeID} />
+            <Login setEmployeeID={setEmployeeID}/>
           </Route>
           <Route path= "/CreateAccount">
             <CreateAccount setEmployeeID={setEmployeeID} />

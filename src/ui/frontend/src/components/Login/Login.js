@@ -77,11 +77,12 @@ class Login extends Component {
     })
     }).then((Response) => Response.json()).then((Result) =>{
       console.log(Result);
-      if (Result.Status == 'Invalid')
+      if (Result == null)
         alert('Invalid User');
-      else 
-		this.props.setEmployeeID(this.state.employeeID)
+      else {
+		    this.props.setEmployeeID(this.state.employeeID);
         this.props.history.push("/Home");
+      }
     })
     console.log(`Employee ID: ${this.state.employeeID}`);
   }

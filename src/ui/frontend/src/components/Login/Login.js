@@ -16,6 +16,7 @@ function Login(props) {
 
     const [employeeID, setEmployeeID] = useState('')
     const [password, setPassword] = useState('')
+    const [temp, setTemp] = useState('')
 
   const handleClickLoginUser = (event) => {
     event.preventDefault();
@@ -31,40 +32,24 @@ function Login(props) {
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(user)
         })
+        .then(res=>res.json())
         .then((result)=>{
-            console.log(""+result)
-        })
-    /*
-    fetch("http://localhost:8080/user/login", {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(user)
-    })
-    .then(()=>{
-        console.log("New project added")
-    })
-    .then(res=>res.json())*/
-    /*
-    .then((result)=> {
+            setTemp(result)
+            console.log(temp)
 
-      console.log(result)
-      if(result == null)
-      {
-        alert('Invalid User');
-      }
-      else
-      {
-        this.props.setEmployeeID(this.state.employeeID)
-        this.props.history.push("/Home");
-      }
-    })*/
+            if(temp)
+            {
+                this.props.setEmployeeID(this.state.employeeID)
+                this.props.history.push("/Home");
+            }
+        })
   }
 
   return (  
     <Auth0ProviderWithHistory>
       <div className="LoginPage">
-        <h2>Sign In</h2>
-        <Form className="form" >
+        <h2>Sign In </h2>
+        <Form className="form" onLoad={handleClickLoginUser}>
           <FormGroup>
             <Label for="employeeID">Employee ID</Label>
             <Input

@@ -42,8 +42,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public User login(@RequestBody User user) {
+	public boolean login(@RequestBody User user) {
 		
-		return userService.loginUser(user);
+		if (userService.loginUser(user) == null)
+		{
+			return false;
+		}
+		
+		return true;
 	}
 }

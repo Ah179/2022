@@ -38,13 +38,20 @@ public class UserServiceImplementation implements UserService {
 		userRepository.delete(user);
 		return true;
 	}
+	
+	@Override
+	public ArrayList<User> findUserByID(int employeeID) {
+		
+		return userRepository.findUserByID(employeeID);
+	}
 
 	@Override
 	public boolean verifyUser(User user) {
 		
-		ArrayList<User> temp = emailExists(user.getEmail());
+		ArrayList<User> temp1 = emailExists(user.getEmail());
+		ArrayList<User> temp2 = findUserByID(user.getEmployeeID());
 		
-		if (temp.size() == 1 || userRepository.existsById(user.getEmployeeID()))
+		if (temp1.size() == 1 || temp2.size() == 1)
 		{
 			return true;
 		}
@@ -75,5 +82,4 @@ public class UserServiceImplementation implements UserService {
 		
 		return temp.get(0);
 	}
-	
 }

@@ -1,12 +1,16 @@
 package com.sprintership22.backend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.sprintership22.backend.model.Project;
+import com.sprintership22.backend.model.User;
 import com.sprintership22.backend.model.UserProjectObject;
 import com.sprintership22.backend.service.ProjectService;
 
@@ -49,4 +53,9 @@ public class ProjectController {
 		
 		return (temp) ? "collaborator has been deleted" : "collaborator could not be deleted because project or collaborator does not exist";
 	}
+	
+	@GetMapping("/getall")
+    public List<Project> list(){	//@RequestBody User user
+		return projectService.getAllProjects(0); //user.getEmployeeID()
+    }
 }

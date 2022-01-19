@@ -11,6 +11,7 @@ class Cards extends Component {
                             dur="Project 1 duration goes here"
                             var="success"
                             now={100}
+							setUpdateProjectPopupBtn={this.props.setUpdateProjectPopupBtn}
                         />
                     </div>
                     <div className="col-md-4">
@@ -18,6 +19,7 @@ class Cards extends Component {
                             dur="Project 2 duration goes here"
                             var="warning"
                             now={60}
+							setUpdateProjectPopupBtn={this.props.setUpdateProjectPopupBtn}
                         />
                     </div>
                     <div className="col-md-4">
@@ -25,6 +27,7 @@ class Cards extends Component {
                             dur="Project 3 duration goes here"
                             var="warning"
                             now={20}
+							setUpdateProjectPopupBtn={this.props.setUpdateProjectPopupBtn}
                         />
                     </div>
                 </div>

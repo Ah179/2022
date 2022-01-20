@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name="userprojects")
 public class UserProjects {

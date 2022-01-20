@@ -1,8 +1,12 @@
 package com.sprintership22.backend.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sprintership22.backend.model.Project;
+import com.sprintership22.backend.model.Substep;
 import com.sprintership22.backend.model.UserProjectObject;
 import com.sprintership22.backend.model.UserProjects;
 import com.sprintership22.backend.repository.ProjectRepository;
@@ -32,10 +36,55 @@ public class ProjectServiceImplementation implements ProjectService{
 	}
 	
 	@Override
+	public Project getProject(int id) {
+		return projectRepository.getById(id);
+	}
+	
+	@Override
+	public List<Project> getAllProjects(int employeeID)
+	{
+		List<UserProjects> temp1 = userProjectsService.getUserAndRelatedProjects(employeeID);
+		List<Project> temp2 = new ArrayList<>();
+		Project temp3;
+		
+		for (int i = 0; i < temp1.size(); i++)
+		{
+			temp3 = getProject(temp1.get(i).getProjectID());
+			temp3.setStatus(setStatus(temp3.getID()));
+			temp2.add(temp3);
+		}
+		
+		return temp2;
+	}
+	
+	@Override
+	public float setStatus(int projectID) {
+		
+		ArrayList<Substep> temp = substepService.getSubsteps(projectID);
+		int completed = 0;
+		
+		if (temp.size() == 0)
+		{
+			return 0;
+		}
+		
+		for (int i = 0; i < temp.size(); i++)
+		{
+			if (temp.get(i).getStatus())
+			{
+				completed++;
+			}
+		}
+		
+		return ((float)completed/temp.size())*100;
+	}
+	
+	@Override
 	public boolean addCollaborator(UserProjectObject userProjectObject) {
 		
-		if (verifyProject(userProjectObject.getProject()))
+		if (!verifyProject(userProjectObject.getProject()))
 		{
+			//System.out.println("bullshit");
 			return false;
 		}
 		
@@ -67,12 +116,16 @@ public class ProjectServiceImplementation implements ProjectService{
 		projectRepository.delete(project);
 		return true;
 	}
+	
+	@Override
+	public ArrayList<Project> findProjectByID(int id) {
+		
+		return projectRepository.findProjectByID(id);
+	}
 
 	@Override
 	public boolean verifyProject(Project project) {
 		
-		System.out.println("TEST ID : "+project.getID());
-		System.out.println("TEST NAME : "+project.getName());
-		return projectRepository.existsById(project.getID());
+		return (findProjectByID(project.getID()).size() == 1);
 	}
 }

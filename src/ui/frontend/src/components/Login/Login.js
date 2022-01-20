@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import {Component} from 'react';
 import './Login.css'
-import Auth0ProviderWithHistory from '../../auth/auth0Provider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Button,
   Form,
@@ -11,80 +9,49 @@ import {
   FormText,
   Input,
   Label,
-} from 'reactstrap'; 
+} from 'reactstrap';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      employeeID: '',
-      password: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-  } 
-  handleChange = (event) => {
-    console.log(event.target);
+function Login(props) {
+    const history = useHistory()
+    const [employeeID, setEmployeeID] = useState('')
+    const [password, setPassword] = useState('')
+    const [temp, setTemp] = useState('')
 
-    const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name } = target;
+  const handleClickLoginUser = (event) => {
+    event.preventDefault();
+    //const employeeID = 0
+  const firstName = "garbage"
+	const lastName = "garbage"
+	const companyRole = "garbage"
+	const email = "garbage"
+	const user= {employeeID, firstName, lastName, companyRole, email, password}
+    console.log(user)
+    //history.push("/Home");
+    fetch("http://localhost:8080/user/login", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(user)
+        })
+        .then(res=>res.json())
+        .then((result)=>{
+            setTemp(result)
+            console.log(temp)
 
-    this.setState({
-      [name]: value,
-    });
-
-    this.validate(event);
-  };
-  //THIS PORTION SHOULD SEND BACK INFO TO DATA BASE
-  submitForm(e) {
-    e.preventDefault();
-    // if (!this.validate(e)){
-    //   if(!this.state.employeeID){
-    //     alert("Employee ID is required");
-    //   }
-    //   if (!this.state.password){
-    //     alert("Password is required");
-    //   }
-    // }
-    fetch('http://loclalhost:8080/user/add', {
-           method: 'POST',
-    //Convert React state to JSON & Sends it as the POST body
-         body: JSON
-    }).then(function(response){
-      console.log(response)
-      return response.json();
-    })
-     
-    console.log(`Employee ID: ${this.state.employeeID}`);
+            if(temp)
+            {
+                props.setEmployeeID(employeeID)
+                history.push("/Home");
+            }
+        })
   }
-
-  // validate(e) {
-  //   const employeeID = this.state.employeeID;
-  //   const password = this.state.password;
-  //   const errors = {};
-  //   const formIsValid = true;
-  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    
-  //   if(!employeeID){
-  //     formIsValid = false;
-  //     errors.employeeID = "Employee ID is required";
-  //   }
-  //   if(!password){
-  //     formIsValid = false;
-  //     errors.password = "Password is required";
-  //   }
-  //   this.setState({ errors: errors });
-  //   return formIsValid;
+  // const handleClickMove = (e) => {
+  //   history.push("/Home");
   // }
 
-  render() {
-    const {employeeID, password} = this.state;
-    return (  
-    <Auth0ProviderWithHistory>
+  return (  
       <div className="LoginPage">
-        <h2>Sign In</h2>
-        <pre>{JSON.stringify}</pre>
-        <Form className="form" onSubmit={this.submitForm}>
+        <h2>Sign In </h2>
+        <Form className="form">
           <FormGroup>
             <Label for="employeeID">Employee ID</Label>
             <Input
@@ -92,7 +59,8 @@ class Login extends Component {
               name="employeeID"
               id="employeeId"
               placeholder="Employee ID"
-              onChange={this.handleChange}
+              onChange={(e) => setEmployeeID(e.target.value)}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -102,18 +70,18 @@ class Login extends Component {
               name="password"
               id="examplePassword"
               placeholder="********"
-              onChange={this.handleChange}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </FormGroup>
           <FormGroup>
-         <Link to={'./Home'}><Button type="submit">LOGIN</Button></Link>
+         <Button onClick={handleClickLoginUser}>LOGIN</Button>
+         {/* <Button onClick={handleClickMove}>TRY ME</Button> */}
         </FormGroup>
         <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>
     </div>
-    </Auth0ProviderWithHistory>
     );
-  }
-};
+}
 
 export default Login;

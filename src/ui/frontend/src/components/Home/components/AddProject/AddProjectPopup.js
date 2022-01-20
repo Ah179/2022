@@ -8,7 +8,7 @@ function AddProjectPopup(props) {
 		<div className="addPopup">
 			<div className="popupContent">
 				<button className='closeBtn' onClick={() => props.setTrigger(false)}>x</button>
-				<AddProjectForm />
+				<AddProjectForm setTrigger={props.setTrigger}/>
 				{/* { props.children } */}
 			</div>
 		</div>

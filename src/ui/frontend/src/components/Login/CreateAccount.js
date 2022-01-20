@@ -1,9 +1,8 @@
-import React from "react";
-import {Component} from 'react';
+import React, { useState } from "react";
 import './Login.css'
 import Auth0ProviderWithHistory from '../../auth/auth0Provider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Button,
   Form,
@@ -14,68 +13,56 @@ import {
 } from 'reactstrap'; 
 //import axios from 'axios';
 
-class CreateAccount extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      employeeID: '',
-      firstname:'',
-      last_name:'',
-      companyRole: '',
-      email: '',
-      password: '',
-      validate: {
-        emailState: '',
-      },
-    };
-    this.handleChange = this.handleChange.bind(this);
-  } 
-  handleChange = (event) => {
-    const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name } = target;
+function CreateAccount (props) {
 
-    this.setState({
-      [name]: value,
-    });
-  };
-  validateEmail(e) {
-    const emailRex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const history = useHistory();
+    const [employeeID, setEmployeeID] = useState('')
+    const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [companyRole, setCompanyRole] = useState('')
+    const [email, setEmail] = useState('')
+    const [temp, setTemp] = useState('')
 
-    const { validate } = this.state;
+    // this.employeeID = this.employeeID.bind(this);
+    // this.firstname = this.firstname.bind(this);
+    // this.lastname = this.lastname.bind(this);
+    // this.companyRole = this.companyRole.bind(this);
+    // this.email = this.email.bind(this);
+    // this.password = this.password.bind(this);
 
-    if (emailRex.test(e.target.value)) {
-      validate.emailState = 'has-success';
-    } else {
-      validate.emailState = 'has-danger';
-    }
+  const handleClickCreateUser = (event) => {
+    event.preventDefault();
 
-    this.setState({ validate });
-  }
-  //THIS PORTION SHOULD SEND BACK INFO TO DATA BASE
-  submitForm(e) {
-    e.preventDefault();
-    console.log(`Email: ${this.state.email}`);
+    const user = {employeeID, firstName, lastName, companyRole, email, password}
+    console.log(user)
     
-      alert('Your account has been created' + this.state);
-      fetch('http://loclalhost:8080/user/add', {
-             method: 'POST',
-           //Convert React state to JSON & Sends it as the POST body
-             body: JSON
-      }).then(function(response){
-          console.log(response)
-          return response.json();
-      })
-     
+    fetch("http://localhost:8080/user/add", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(user)
+        })
+        .then(res=>res.json())
+        .then((result)=>{
+            setTemp(result)
+            console.log(temp)
+
+            if(temp == "new user project is added")
+            {
+                this.props.setEmployeeID(this.state.employeeID);
+                alert("User Created");
+                history.push("/Home");
+            } else {
+              alert("All fields must be filled in")
+            }
+        })
   }
-  render() {
-    const {employeeID,firstname,last_name,companyRole,email, password} = this.state;
-    return (  
+   
+  return (  
     <Auth0ProviderWithHistory>
       <div className="LoginPage">
         <h2>Create Account</h2>
-        <Form className="form" onSubmit={this.submitForm}>
+        <Form className="form" >
           <FormGroup>
             <Label for= "examplefirstname">First Name</Label>
             <Input 
@@ -83,7 +70,7 @@ class CreateAccount extends Component {
               name="FirstName"
               id="examplefirstname"
               placeholder="John"
-              onChange={this.handleChange}
+              onChange={(e) => setFirstName(e.target.value)}
               required
               />
             <Label for = "examplelastname">Last Name</Label>
@@ -92,7 +79,7 @@ class CreateAccount extends Component {
               name="lastname"
               id="lastname"
               placeholder="Smith"
-              onChange={this.handleChange}
+              onChange={(e) => setLastName(e.target.value)}
               required
               />
           </FormGroup> 
@@ -103,7 +90,7 @@ class CreateAccount extends Component {
               name="number"
               id="exampleID"
               placeholder="Employee ID"
-              onChange={this.handleChange}
+              onChange={(e) => setEmployeeID(e.target.value)}
               required
               />
           </FormGroup>
@@ -114,7 +101,7 @@ class CreateAccount extends Component {
               name="compnayRole"
               id="companyRole"
               placeholder="Software Engineer"
-              onChange={this.handleChange}
+              onChange={(e) => setCompanyRole(e.target.value)}
               required
               />
           </FormGroup>
@@ -125,7 +112,7 @@ class CreateAccount extends Component {
               name="email"
               id="exampleEmail"
               placeholder="example@brightform.com"
-              onChange={this.handleChange}
+              onChange={(e) => setEmail(e.target.value)}
               required
               />
           </FormGroup>
@@ -136,19 +123,18 @@ class CreateAccount extends Component {
               name="password"
               id="examplePassword"
               placeholder="********"
-              onChange={this.handleChange}
+              onChange={(e) => setPassword(e.target.value)}
               required
               />
           </FormGroup>
           <FormGroup>
-         <Link to={"/Home"}><Button type="submit">Sign Up</Button></Link>
+         <Button type="submit" onClick={handleClickCreateUser}>Sign Up</Button>
         </FormGroup>
          <FormText><ul><Link to={"/"}> Already have an account? Click here!</Link></ul></FormText>
       </Form>
     </div>
     </Auth0ProviderWithHistory>
     );
-  }
 };
 
 export default CreateAccount;

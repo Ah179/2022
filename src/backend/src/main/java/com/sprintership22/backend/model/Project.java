@@ -2,8 +2,13 @@ package com.sprintership22.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
+@Table(name="project")
 public class Project {
 	
 	@Id
@@ -13,9 +18,7 @@ public class Project {
 	private String description;
 	private String  startTime;
 	private String endTime;
-	/*
-	private String status;
-	*/
+	private float status;
 	
 	public Project()
 	{
@@ -72,15 +75,13 @@ public class Project {
 		this.endTime = endTime;
 	}
 	
-	/*
-	public String getStatus()
+	public float getStatus()
 	{
 		return this.status;
 	}
 	
-	public void setStatus(String status)
+	public void setStatus(float status)
 	{
 		this.status = status;
 	}
-	*/
 }

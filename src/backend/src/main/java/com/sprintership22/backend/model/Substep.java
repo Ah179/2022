@@ -15,6 +15,7 @@ public class Substep {
 	private int projectID;
 	private String name;
 	private String description;
+	private boolean status;
 	
 	/*
 	private String  startTime;
@@ -65,6 +66,16 @@ public class Substep {
 	public void setDescription(String description)
 	{
 		this.description = description;
+	}
+	
+	public boolean getStatus()
+	{
+		return this.status;
+	}
+	
+	public void setStatus(boolean status)
+	{
+		this.status = status;
 	}
 	
 	/*

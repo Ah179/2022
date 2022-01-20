@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {Component} from 'react';
 import './Login.css'
 import Auth0ProviderWithHistory from '../../auth/auth0Provider';
 import 'bootstrap/dist/css/bootstrap.min.css';

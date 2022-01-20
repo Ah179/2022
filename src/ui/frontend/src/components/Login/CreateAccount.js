@@ -11,7 +11,6 @@ import {
   Input,
   Label,
 } from 'reactstrap'; 
-//import axios from 'axios';
 
 function CreateAccount (props) {
 

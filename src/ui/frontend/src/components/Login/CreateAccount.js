@@ -51,6 +51,8 @@ function CreateAccount (props) {
             {
                 this.props.setEmployeeID(this.state.employeeID)
                 history.push("/Home");
+            } else {
+              alert("M")
             }
         })
   }

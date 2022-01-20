@@ -9,7 +9,7 @@ import Popup from './Popup'
 import { useState } from 'react'
 import UpdateProjectPopup from '../UpdateProject/UpdateProjectPopup';
 
-const Card = props => {
+function Card(props) {
     const [buttonPopup, setButtonPopup] = useState(false);
 
     return (

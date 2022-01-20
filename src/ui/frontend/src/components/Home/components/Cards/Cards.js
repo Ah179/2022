@@ -1,5 +1,5 @@
 import React, { useState, useEffect  } from 'react'
-import Card from './CardUI'
+import Card from './CardUI.js'
 
 function Cards (props)
 {

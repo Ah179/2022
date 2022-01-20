@@ -40,20 +40,14 @@ public class SubstepServiceImplementation implements SubstepService{
 	}
 
 	@Override
-	public void modifyStatus(int id) {
+	public void modifyStatus(Substep substep) {
 		
-		Substep temp = substepRepository.getById(id);
-		
-		if(temp.getStatus())
+		if (substep.getChanged())
 		{
-			temp.setStatus(false);
+			substep.setChanged(false);
+
+			substepRepository.save(substep);
 		}
-		else
-		{
-			temp.setStatus(true);
-		}
-		
-		substepRepository.save(temp);
 	}
 
 }

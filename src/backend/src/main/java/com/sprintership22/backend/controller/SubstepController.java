@@ -54,9 +54,8 @@ public class SubstepController {
 	
 	@PostMapping("/statuschange")
     public void statuschange(@RequestBody Substep substep){
-		System.out.println(""+substep);
-		substepService.modifyStatus(substep.getID());
-		System.out.println("The deed is done");
+		
+		substepService.modifyStatus(substep);
     }
 	
 }

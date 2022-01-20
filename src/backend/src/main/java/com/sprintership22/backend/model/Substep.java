@@ -16,6 +16,7 @@ public class Substep {
 	private String name;
 	private String description;
 	private boolean status;
+	private boolean changed;
 	
 	/*
 	private String  startTime;
@@ -76,6 +77,16 @@ public class Substep {
 	public void setStatus(boolean status)
 	{
 		this.status = status;
+	}
+	
+	public boolean getChanged()
+	{
+		return this.changed;
+	}
+	
+	public void setChanged(boolean changed)
+	{
+		this.changed = changed;
 	}
 	
 	/*

@@ -7,10 +7,12 @@ import React, { useState } from "react";
 import Cards from './components/Cards/Cards'
 import AddProject from "./components/AddProject/AddProject";
 import UpdateProjectPopup from "./components/UpdateProject/UpdateProjectPopup";
+import { Button } from 'react-bootstrap'
 
 function Home(props) {
 
 	const [updateProjectPopupBtn, setUpdateProjectPopupBtn] = useState(false);
+	const [addProjectButton, setAddProjectButton] = useState(false)
 	const [projectId, setProjectId] = useState('')
 	const employeeID = props.employeeID
 
@@ -22,7 +24,9 @@ function Home(props) {
 		<div className="main-dashboard">
 			<h1 className="app-title">Project Dashboard</h1>
 			<Cards employeeID={employeeID} setUpdateProjectPopupBtn={setUpdateProjectPopupBtn} setProjectId={setProjectId}/>
-			<AddProject employeeID={employeeID}/>
+			<Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>
+			{/* <AddProjectPopup employeeID={props.employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} /> */}
+			<AddProject employeeID={employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} />
 			<UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={projectId}/>
 		</div>  
       {/* <Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>{' '} */}

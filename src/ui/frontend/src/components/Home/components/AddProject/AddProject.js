@@ -1,19 +1,22 @@
 import { Button } from 'reactstrap'
 import React, { useState } from 'react'
 import AddProjectPopup from './AddProjectPopup'
+import AddProjectForm from './AddProjectForm'
 import './AddProject.css'
 
 function AddProject(props) {
 	const [addProjectButton, setAddProjectButton] = useState(false)
+	const employeeID = props.employeeID
 
-	return (
-		<div className='updateProject'>
-			<br></br>
-			{/*<button className='addProjectBtn' variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</button>*/}
-			<Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>{' '}
-			<AddProjectPopup employeeID={props.employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} />
+	return (props.trigger) ? (
+		<div className="addPopup">
+			<div className="popupContent">
+				<button className='closeBtn' onClick={() => props.setTrigger(false)}>x</button>
+				<AddProjectForm employeeID={employeeID} setTrigger={props.setTrigger}/>
+				{/* { props.children } */}
+			</div>
 		</div>
-	)
+	) : ""
 }
 
 export default AddProject

@@ -4,7 +4,7 @@ import './App.css';
 import Home from './components/Home/Home.js';
 import CreateAccount from './components/Login/CreateAccount';
 import Login from './components/Login/Login';
-import AddProjectForm from './Pages/AddProjectForm';
+import AddProjectForm from './components/Home/components/AddProject/AddProjectForm';
 import { useHistory } from "react-router-dom";
 
 function App() {

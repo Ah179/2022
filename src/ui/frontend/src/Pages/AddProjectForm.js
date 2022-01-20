@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useHistory } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
 	Button, 
@@ -11,6 +11,7 @@ import './AddProjectForm.css'
 
 function AddProjectForm(props) {
 	//const employeeID = props.employeeID
+	const history = useHistory();
 	const [name, setProjectName] = useState('')
 	const [id, setProjectId] = useState('')
 	const [description, setProjectDesc] = useState('')
@@ -70,6 +71,8 @@ function AddProjectForm(props) {
 				})
 				.then(res=>res.json())
 				.then((result)=> {
+					console.log(employeeID)
+					history.push("/Home")
 					console.log(result)
 					console.log("Done")
 				})

@@ -44,10 +44,8 @@ function CreateAccount (props) {
         })
         .then(res=>res.json())
         .then((result)=>{
-            setTemp(result)
-            console.log(temp)
 
-            if(temp == "new user project is added")
+            if(result)
             {
                 this.props.setEmployeeID(this.state.employeeID);
                 alert("User Created");

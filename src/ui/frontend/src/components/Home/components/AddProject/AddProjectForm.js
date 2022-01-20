@@ -81,6 +81,16 @@ function AddProjectForm(props) {
 				})
 				.then(res=>res.json())
 				.then((result)=> {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+					console.log(employeeID)
+					window.location.reload(false);
+					// history.push("/Home")
+					// props.setTrigger(false)
+=======
+>>>>>>> a65b35256e2ff437a6672c8475b860c156217e88
+>>>>>>> Stashed changes
 					console.log(result)
 					console.log("Add Collaborators Done")
 				})
@@ -151,7 +161,10 @@ function AddProjectForm(props) {
 		tasks.splice(index, 1)
 		setProjectTasks(tasks)
 	}
-
+	
+	const handleClickrefreshPage = (event) =>{
+		window.location.reload(false);
+	}
 	return (
 		<div className='AddProjectForm'>
  				<h2>Add Project</h2>
@@ -268,6 +281,7 @@ function AddProjectForm(props) {
 						</FormGroup>
 					</FormGroup>
 					<Button onClick={handleClickCreateProject}>SUBMIT</Button>
+					<Button onClick={handleClickrefreshPage}>Refresher</Button>
 				</Form>
 			</div>
 	)

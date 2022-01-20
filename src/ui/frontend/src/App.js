@@ -4,16 +4,9 @@ import './App.css';
 import Home from './components/Home/Home.js';
 import CreateAccount from './components/Login/CreateAccount';
 import Login from './components/Login/Login';
-import AddProjectForm from './components/Home/components/AddProject/AddProjectForm';
-import { useHistory } from "react-router-dom";
+
 
 function App() {
-  // const [token, setToken] = useState();
-
-  // if (!token){
-  //   return <Login setToken={setToken} />
-  // }
-
   const [employeeID, setEmployeeID] = useState('')
   console.log("employeeID = "+employeeID)
 
@@ -30,9 +23,6 @@ function App() {
           </Route>
           <Route path="/Home">
             <Home employeeID={employeeID} />
-          </Route>
-          <Route path="/AddProject">
-            <AddProjectForm />
           </Route>
         </Switch>
       </div>

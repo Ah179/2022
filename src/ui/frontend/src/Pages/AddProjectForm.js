@@ -61,7 +61,19 @@ function AddProjectForm() {
             console.log("New project added")
         })
 
-		
+		userProjectObject.statics.createProject = async function (collaboratorInput) {
+			try{
+				console.log(this)
+				const project = await new this(data);
+				await project.save();
+			}
+			catch(e){
+				console.log("error occured while saving a new project")
+				console.log(e)
+			}  
+		};
+
+		/*
 		user = collaboratorInput.map((collaboratorInput)=>
 			this.projectCollaborators.push({userProjectObject})
 		);
@@ -69,6 +81,7 @@ function AddProjectForm() {
 		project = taskInput.map((taskInput) =>
 			this.projectTasks.push({userProjectObject})
 		);
+		*/
 
 	}
 

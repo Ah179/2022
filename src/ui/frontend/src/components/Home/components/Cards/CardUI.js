@@ -12,6 +12,20 @@ import UpdateProjectPopup from '../UpdateProject/UpdateProjectPopup';
 function Card(props) {
     const [buttonPopup, setButtonPopup] = useState(false);
 
+    const handleClickDeleteProject = (event) => {
+        console.log(props.project)
+        fetch("http://localhost:8080/project/delete", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"},
+            body:JSON.stringify(props.project)
+        })
+        .then(res=>res.json())
+        .then((result)=> {
+            console.log(result)
+        })
+    }
+
     return (
         <div className="card text-center">
             <div className="overflow">
@@ -22,7 +36,7 @@ function Card(props) {
                     <Dropdown.Toggle variant="outline-success"></Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={() => props.setUpdateProjectPopupBtn(true)}>Update</Dropdown.Item>
-                        <Dropdown.Item href="#">Delete</Dropdown.Item>
+                        <Dropdown.Item href="#" onClick={handleClickDeleteProject}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
 

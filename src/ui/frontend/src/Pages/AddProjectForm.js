@@ -61,10 +61,14 @@ function AddProjectForm() {
             console.log("New project added")
         })
 
-		/*
+		
 		const user = collaboratorInput.map((collaboratorInput)=>
+			this.projectCollaborators.push({userProjectObject})
+		);
 
-		);*/
+		const project = taskInput.map((taskInput)) =>
+			this.projectTasks.push({userProjectObject})
+		);
 	}
 
 	const addCollaborator = (event) => {

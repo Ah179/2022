@@ -49,8 +49,8 @@ function CreateAccount (props) {
 
             if(temp == "new user project is added")
             {
-                this.props.setEmployeeID(this.state.employeeID)
-
+                this.props.setEmployeeID(this.state.employeeID);
+                alert("User Created");
                 history.push("/Home");
             } else {
               alert("All fields must be filled in")

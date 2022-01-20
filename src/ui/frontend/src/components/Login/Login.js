@@ -71,8 +71,6 @@ function Login(props) {
               id="examplePassword"
               placeholder="********"
               onChange={(e) => setPassword(e.target.value)}
-              //onChange={(event) => setPassword('password', event.target.value)}
-              //onChange={(e) => handleEndDateChange(e)}
               required
             />
           </FormGroup>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sprintership22.backend.model.Project;
+import com.sprintership22.backend.model.Substep;
 import com.sprintership22.backend.model.UserProjectObject;
 import com.sprintership22.backend.model.UserProjects;
 import com.sprintership22.backend.repository.ProjectRepository;
@@ -43,14 +44,39 @@ public class ProjectServiceImplementation implements ProjectService{
 	public List<Project> getAllProjects(int employeeID)
 	{
 		List<UserProjects> temp1 = userProjectsService.getUserAndRelatedProjects(employeeID);
-		List<Project> temp2 = new ArrayList<>();;
+		List<Project> temp2 = new ArrayList<>();
+		Project temp3;
 		
 		for (int i = 0; i < temp1.size(); i++)
 		{
-			temp2.add(getProject(temp1.get(i).getProjectID()));
+			temp3 = getProject(temp1.get(i).getProjectID());
+			temp3.setStatus(setStatus(temp3.getID()));
+			temp2.add(temp3);
 		}
 		
 		return temp2;
+	}
+	
+	@Override
+	public float setStatus(int projectID) {
+		
+		ArrayList<Substep> temp = substepService.getSubsteps(projectID);
+		int completed = 0;
+		
+		if (temp.size() == 0)
+		{
+			return 0;
+		}
+		
+		for (int i = 0; i < temp.size(); i++)
+		{
+			if (temp.get(i).getStatus())
+			{
+				completed++;
+			}
+		}
+		
+		return ((float)completed/temp.size())*100;
 	}
 	
 	@Override
@@ -100,8 +126,6 @@ public class ProjectServiceImplementation implements ProjectService{
 	@Override
 	public boolean verifyProject(Project project) {
 		
-		//System.out.println("TEST ID : "+project.getID());
-		//System.out.println("TEST NAME : "+findProjectByID(project.getID()).size());
 		return (findProjectByID(project.getID()).size() == 1);
 	}
 }

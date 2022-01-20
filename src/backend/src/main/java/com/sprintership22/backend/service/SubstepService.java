@@ -9,4 +9,5 @@ public interface SubstepService {
 	public void deleteSubstep(Substep substep);
 	public ArrayList<Substep> getSubsteps(int projectID);
 	public void deleteProjectAndRelatedSubsteps(int projectID);
+	public void modifyStatus(int id);
 }

@@ -22,6 +22,7 @@ function CreateAccount (props) {
     const [lastName, setLastName] = useState('')
     const [companyRole, setCompanyRole] = useState('')
     const [email, setEmail] = useState('')
+    const [temp, setTemp] = useState('')
 
     // this.employeeID = this.employeeID.bind(this);
     // this.firstname = this.firstname.bind(this);
@@ -53,71 +54,12 @@ function CreateAccount (props) {
             }
         })
   }
-  // handleChange = (event) => {
-  //   const { target } = event;
-  //   const value = target.type === 'checkbox' ? target.checked : target.value;
-  //   const { name } = target;
-
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // };
-  // employeeID(event){
-  //   this.setState({employeeID: event.target.value})
-  // }
-  
-  // validateEmail(e) {
-  //   const emailRex =
-  //     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  //   const { validate } = this.state;
-
-  //   if (emailRex.test(e.target.value)) {
-  //     validate.emailState = 'has-success';
-  //   } else {
-  //     validate.emailState = 'has-danger';
-  //   }
-
-  //   this.setState({ validate });
-  // }
-
-  //THIS PORTION SHOULD SEND BACK INFO TO DATA BASE
-  // submitForm(e) {
-  //   e.preventDefault();
-  //   // console.log(`Email: ${this.state.email}`);
-    
-  //     // alert('Your account has been created' + this.state);
-  //     fetch('http://loclalhost:8080/user/add', {
-  //            method: 'POST',
-  //          //Convert React state to JSON & Sends it as the POST body
-  //        headers: {
-  //          'Accept' : 'application/json',
-  //          'Content-Type' : 'application/json'
-  //        },
-  //          body: JSON.stringify({
-  //           employeeID : this.state.employeeID,
-  //           firstname : this.state.firstname,
-  //           lastname : this.state.lastname,
-  //           companyRole : this.state.companyRole,
-  //           email : this.state.email,
-  //           password : this.state.password,
-  //          })
-  //     }).then((Response) => Response.json()).then((Result) =>{
-  //       if (Result == 'new user is added') {
-	// 		  this.props.setEmployeeID(this.state.employeeID)
-	// 		  history.push('/Home');
-	// 	  }   
-  //       else 
-  //         alert('Un-authenticated User!')
-  //     })
-  // }
-  //const {employeeID,firstname,lastname,companyRole,email, password} = this.state;
-    
+   
   return (  
     <Auth0ProviderWithHistory>
       <div className="LoginPage">
         <h2>Create Account</h2>
-        <Form className="form" onLoad={handleClickCreateUser}>
+        <Form className="form" >
           <FormGroup>
             <Label for= "examplefirstname">First Name</Label>
             <Input 

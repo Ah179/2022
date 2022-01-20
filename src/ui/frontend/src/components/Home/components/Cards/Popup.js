@@ -3,6 +3,9 @@ import Button from 'react-bootstrap/Button'
 import './Popup.css';
 
 function Popup(props) {
+
+	const projectId = props.projectId
+
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">

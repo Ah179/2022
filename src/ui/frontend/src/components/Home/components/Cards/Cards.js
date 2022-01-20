@@ -36,6 +36,7 @@ function Cards(props)
                         dur={project.startTime + " - " + project.endTime}
                         var="working on it"
                         now={100}
+						projectId={project.id}
 					    setUpdateProjectPopupBtn = {props.setUpdateProjectPopupBtn}
                         />
                     </div>

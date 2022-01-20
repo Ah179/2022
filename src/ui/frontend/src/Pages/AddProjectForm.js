@@ -61,6 +61,7 @@ function AddProjectForm() {
             console.log("New project added")
         })
 
+<<<<<<< Updated upstream
 		userProjectObject.statics.createProject = async function (collaboratorInput) {
 			try{
 				console.log(this)
@@ -73,6 +74,17 @@ function AddProjectForm() {
 			}  
 		};
 
+=======
+		//added code
+		this.projectCollaborators.push({ userProjectObject});
+
+		/*
+		const user = collaboratorInput.map((collaboratorInput)=>
+
+		);*/
+
+
+>>>>>>> Stashed changes
 	}
 
 	const addCollaborator = (event) => {
@@ -84,6 +96,19 @@ function AddProjectForm() {
 			document.getElementById('collaboratorValue').value = ''
 			return
 		}
+
+	/*added code
+	const addTask= (event) => {
+		event.preventDefault()
+
+		//Input Validation
+		if(taskInput === '') {return}
+		if(isInList(projectTasks, taskInput) === true) {
+			document.getElementById('collaboratorValue').value = ''
+			return
+		}*/
+		
+
 
 		const newCollaborator = {key: collaboratorInput, value: collaboratorInput}
 		const newCollaboratorList = [...projectCollaborators, newCollaborator]
@@ -101,6 +126,10 @@ function AddProjectForm() {
 
 	const addTask = (event) => {
 		event.preventDefault()
+
+		/*added code 
+		this.projectTasks.push({ event });
+		*/
 
 		//Input Validation
 		if(taskInput === '') {return}

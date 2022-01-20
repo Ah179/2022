@@ -81,16 +81,11 @@ function AddProjectForm(props) {
 				})
 				.then(res=>res.json())
 				.then((result)=> {
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 					console.log(employeeID)
 					window.location.reload(false);
 					// history.push("/Home")
 					// props.setTrigger(false)
-=======
->>>>>>> a65b35256e2ff437a6672c8475b860c156217e88
->>>>>>> Stashed changes
+
 					console.log(result)
 					console.log("Add Collaborators Done")
 				})

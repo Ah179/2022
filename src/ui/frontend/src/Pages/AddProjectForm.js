@@ -61,7 +61,7 @@ function AddProjectForm() {
             console.log("New project added")
         })
 
-		userProjectObject.statics.createProject = async function (collaboratorInput) {
+		/*userProjectObject.statics.createProject = async function (collaboratorInput) {
 			try{
 				console.log(this)
 				const project = await new this(data);
@@ -72,7 +72,7 @@ function AddProjectForm() {
 				console.log(e)
 			}  
 		};
-
+*/
 	}
 
 	const addCollaborator = (event) => {

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {Component} from 'react';
 import './Login.css'
 import Auth0ProviderWithHistory from '../../auth/auth0Provider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Button,
   Form,
@@ -14,28 +14,46 @@ import {
 } from 'reactstrap'; 
 //import axios from 'axios';
 
-class CreateAccount extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      employeeID: '',
-      firstname:'',
-      lastname:'',
-      companyRole: '',
-      email: '',
-      password: '',
-      validate: {
-        emailState: '',
-      },
-    };
-    this.employeeID = this.employeeID.bind(this);
-    this.firstname = this.firstname.bind(this);
-    this.lastname = this.lastname.bind(this);
-    this.companyRole = this.companyRole.bind(this);
-    this.email = this.email.bind(this);
-    this.password = this.password.bind(this);
+function CreateAccount (props) {
 
-  } 
+    const history = useHistory();
+    const [employeeID, setEmployeeID] = useState('')
+    const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [companyRole, setCompanyRole] = useState('')
+    const [email, setEmail] = useState('')
+
+    // this.employeeID = this.employeeID.bind(this);
+    // this.firstname = this.firstname.bind(this);
+    // this.lastname = this.lastname.bind(this);
+    // this.companyRole = this.companyRole.bind(this);
+    // this.email = this.email.bind(this);
+    // this.password = this.password.bind(this);
+
+  const handleClickCreateUser = (event) => {
+    event.preventDefault();
+
+    const user = {employeeID, firstName, lastName, companyRole, email, password}
+    console.log(user)
+    
+    fetch("http://localhost:8080/user/add", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(user)
+        })
+        .then(res=>res.json())
+        .then((result)=>{
+            setTemp(result)
+            console.log(temp)
+
+            if(temp)
+            {
+                this.props.setEmployeeID(this.state.employeeID)
+                history.push("/Home");
+            }
+        })
+  }
   // handleChange = (event) => {
   //   const { target } = event;
   //   const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -45,82 +63,62 @@ class CreateAccount extends Component {
   //     [name]: value,
   //   });
   // };
-  employeeID(event){
-    this.setState({employeeID: event.target.value})
-  }
-
-  firstname(event){
-    this.setState({firstname: event.target.value})
-  }
-
-  lastname(event){
-    this.setState({lastname: event.target.value})
-  }
-
-  companyRole(event){
-    this.setState({companyRole: event.target.value})
-  }
-
-  email(event){
-    this.setState({email: event.target.value})
-  }
-
-  password(event){
-    this.setState({password: event.target.value})
-  }
+  // employeeID(event){
+  //   this.setState({employeeID: event.target.value})
+  // }
   
-  validateEmail(e) {
-    const emailRex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  // validateEmail(e) {
+  //   const emailRex =
+  //     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const { validate } = this.state;
+  //   const { validate } = this.state;
 
-    if (emailRex.test(e.target.value)) {
-      validate.emailState = 'has-success';
-    } else {
-      validate.emailState = 'has-danger';
-    }
+  //   if (emailRex.test(e.target.value)) {
+  //     validate.emailState = 'has-success';
+  //   } else {
+  //     validate.emailState = 'has-danger';
+  //   }
 
-    this.setState({ validate });
-  }
+  //   this.setState({ validate });
+  // }
 
   //THIS PORTION SHOULD SEND BACK INFO TO DATA BASE
-  submitForm(e) {
-    e.preventDefault();
-    // console.log(`Email: ${this.state.email}`);
+  // submitForm(e) {
+  //   e.preventDefault();
+  //   // console.log(`Email: ${this.state.email}`);
     
-      // alert('Your account has been created' + this.state);
-      fetch('http://loclalhost:8080/user/add', {
-             method: 'POST',
-           //Convert React state to JSON & Sends it as the POST body
-         headers: {
-           'Accept' : 'application/json',
-           'Content-Type' : 'application/json'
-         },
-           body: JSON.stringify({
-            employeeID : this.state.employeeID,
-            firstname : this.state.firstname,
-            lastname : this.state.lastname,
-            companyRole : this.state.companyRole,
-            email : this.state.email,
-            password : this.state.password,
-           })
-      }).then((Response) => Response.json()).then((Result) =>{
-        if (Result == 'new user is added') {
-			  this.props.setEmployeeID(this.state.employeeID)
-			  this.props.history.push('/Home');
-		  }   
-        else 
-          alert('Un-authenticated User!')
-      })
-  }
-  render() {
-    //const {employeeID,firstname,lastname,companyRole,email, password} = this.state;
-    return (  
+  //     // alert('Your account has been created' + this.state);
+  //     fetch('http://loclalhost:8080/user/add', {
+  //            method: 'POST',
+  //          //Convert React state to JSON & Sends it as the POST body
+  //        headers: {
+  //          'Accept' : 'application/json',
+  //          'Content-Type' : 'application/json'
+  //        },
+  //          body: JSON.stringify({
+  //           employeeID : this.state.employeeID,
+  //           firstname : this.state.firstname,
+  //           lastname : this.state.lastname,
+  //           companyRole : this.state.companyRole,
+  //           email : this.state.email,
+  //           password : this.state.password,
+  //          })
+  //     }).then((Response) => Response.json()).then((Result) =>{
+  //       if (Result == 'new user is added') {
+	// 		  this.props.setEmployeeID(this.state.employeeID)
+	// 		  history.push('/Home');
+	// 	  }   
+  //       else 
+  //         alert('Un-authenticated User!')
+  //     })
+  // }
+  //const {employeeID,firstname,lastname,companyRole,email, password} = this.state;
+    
+  return (  
     <Auth0ProviderWithHistory>
       <div className="LoginPage">
         <h2>Create Account</h2>
-        <Form className="form" onSubmit={this.submitForm}>
+        <Form className="form" onLoad={handleClickCreateUser}>
           <FormGroup>
             <Label for= "examplefirstname">First Name</Label>
             <Input 
@@ -128,7 +126,7 @@ class CreateAccount extends Component {
               name="FirstName"
               id="examplefirstname"
               placeholder="John"
-              onChange={this.firstname}
+              onChange={(e) => setFirstName(e.target.value)}
               required
               />
             <Label for = "examplelastname">Last Name</Label>
@@ -137,7 +135,7 @@ class CreateAccount extends Component {
               name="lastname"
               id="lastname"
               placeholder="Smith"
-              onChange={this.lastname}
+              onChange={(e) => setLastName(e.target.value)}
               required
               />
           </FormGroup> 
@@ -148,7 +146,7 @@ class CreateAccount extends Component {
               name="number"
               id="exampleID"
               placeholder="Employee ID"
-              onChange={this.employeeID}
+              onChange={(e) => setEmployeeID(e.target.value)}
               required
               />
           </FormGroup>
@@ -159,7 +157,7 @@ class CreateAccount extends Component {
               name="compnayRole"
               id="companyRole"
               placeholder="Software Engineer"
-              onChange={this.companyRole}
+              onChange={(e) => setCompanyRole(e.target.value)}
               required
               />
           </FormGroup>
@@ -170,7 +168,7 @@ class CreateAccount extends Component {
               name="email"
               id="exampleEmail"
               placeholder="example@brightform.com"
-              onChange={this.email}
+              onChange={(e) => setEmail(e.target.value)}
               required
               />
           </FormGroup>
@@ -181,19 +179,18 @@ class CreateAccount extends Component {
               name="password"
               id="examplePassword"
               placeholder="********"
-              onChange={this.password}
+              onChange={(e) => setPassword(e.target.value)}
               required
               />
           </FormGroup>
           <FormGroup>
-         <Button type="submit" onClick={this.submitForm}>Sign Up</Button>
+         <Button type="submit" onClick={handleClickCreateUser}>Sign Up</Button>
         </FormGroup>
          <FormText><ul><Link to={"/"}> Already have an account? Click here!</Link></ul></FormText>
       </Form>
     </div>
     </Auth0ProviderWithHistory>
     );
-  }
 };
 
 export default CreateAccount;

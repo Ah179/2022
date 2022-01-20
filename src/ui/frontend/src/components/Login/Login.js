@@ -26,7 +26,7 @@ function Login(props) {
 	const email = "garbage"
 	const user= {employeeID, firstName, lastName, companyRole, email, password}
     console.log(user)
-    //this.props.push("/Home");
+    //history.push("/Home");
     fetch("http://localhost:8080/user/login", {
             method:"POST",
             headers:{"Content-Type":"application/json"},

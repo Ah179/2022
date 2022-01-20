@@ -45,11 +45,11 @@ function AddProjectForm(props) {
 	const handleClickCreateProject = (event) => {
 		//event.preventDefault();
 		//const employeeID = 0
-		const firstName = "Jane"
-		const lastName = "Doe"
-		const companyRole = "Mr. World Wide"
-		const email = "test@pleasework.plz"
-		const password = "test"
+		const firstName = "garbage"
+		const lastName = "garbage"
+		const companyRole = "garbage"
+		const email = "garbage"
+		const password = "garbage"
 		const user= {employeeID, firstName, lastName, companyRole, email, password}
 		const project={id, name, description, startTime, endTime}
 		const userProjectObject = {user, project}

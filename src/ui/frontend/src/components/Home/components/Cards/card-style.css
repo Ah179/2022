@@ -1,10 +1,18 @@
 body {
     /*background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);*/
     background: #e5e5e5 !important;
+    justify-content: center;
 }
 
 .card {
+    display: "flex" !important;
+    position: "relative" !important;
     width: 20rem;
+    margin-left: 5rem !important;
+    margin-right: 0rem !important;
+    margin-top: 2rem;
+    border-radius: 1rem !important;
+    border-width: 0rem;
 }
 
 .card-title {

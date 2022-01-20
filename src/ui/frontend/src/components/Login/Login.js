@@ -39,7 +39,7 @@ function Login(props) {
 
             if(temp)
             {
-                this.props.setEmployeeID(this.state.employeeID)
+                props.setEmployeeID(employeeID)
                 history.push("/Home");
             }
         })
@@ -51,7 +51,7 @@ function Login(props) {
   return (  
       <div className="LoginPage">
         <h2>Sign In </h2>
-        <Form className="form" onLoad={handleClickLoginUser}>
+        <Form className="form">
           <FormGroup>
             <Label for="employeeID">Employee ID</Label>
             <Input

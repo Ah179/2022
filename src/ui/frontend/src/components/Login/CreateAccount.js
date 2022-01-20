@@ -33,25 +33,25 @@ function CreateAccount (props) {
   const handleClickCreateUser = (event) => {
     event.preventDefault();
 
-    const user = {employeeID, firstName, lastName, companyRole, email, password}
-    console.log(user)
+    // const user = {employeeID, firstName, lastName, companyRole, email, password}
+    // console.log(user)
     
-    fetch("http://localhost:8080/user/add", {
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(user)
-        })
-        .then(res=>res.json())
-        .then((result)=>{
-            setTemp(result)
-            console.log(temp)
+    // fetch("http://localhost:8080/user/add", {
+    //         method:"POST",
+    //         headers:{"Content-Type":"application/json"},
+    //         body:JSON.stringify(user)
+    //     })
+    //     .then(res=>res.json())
+    //     .then((result)=>{
+    //         setTemp(result)
+    //         console.log(temp)
 
-            if(temp)
-            {
-                this.props.setEmployeeID(this.state.employeeID)
-                history.push("/Home");
-            }
-        })
+    //         if(temp)
+    //         {
+    //             this.props.setEmployeeID(this.state.employeeID)
+    //             history.push("/Home");
+    //         }
+    //     })
   }
   // handleChange = (event) => {
   //   const { target } = event;

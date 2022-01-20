@@ -33,7 +33,6 @@ function Card(props) {
                 
             </div>
             <div className="card-body text-dark">
-				<UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={props.projectId}/>
                 <Dropdown className="edit-dropdown">
                     <Dropdown.Toggle variant="outline-success"></Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -48,6 +47,7 @@ function Card(props) {
                 <Popup trigger={buttonPopup} setTrigger={setButtonPopup} project={props.project}>
                     
                 </Popup>
+                <UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={props.projectId}/>
                 {/*<a href="#" className="btn btn-outline-success">Edit</a>*/}
                 <ProgressBar className="card-progress" variant={props.var} now={props.now} />
                 {/*<p className="card-text text-secondary">Status</p>*/}

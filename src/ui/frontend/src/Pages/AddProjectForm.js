@@ -9,8 +9,7 @@ import {
 } from "reactstrap"
 import './AddProjectForm.css'
 
-function AddProjectForm(props) {
-	const employeeID = props.employeeID
+function AddProjectForm() {
 	const [name, setProjectName] = useState('')
 	const [id, setProjectId] = useState('')
 	const [description, setProjectDesc] = useState('')
@@ -44,7 +43,7 @@ function AddProjectForm(props) {
 
 	const handleClickCreateProject = (event) => {
 		event.preventDefault();
-		//const employeeID = 0
+		const employeeID = 23
 		const firstName = "Jane"
 		const lastName = "Doe"
 		const companyRole = "Mr. World Wide"
@@ -62,18 +61,15 @@ function AddProjectForm(props) {
             console.log("New project added")
         })
 
-		if(name !== '' && id !== '' && description !== '' && startTime !== '' && endTime !== '') {
-			props.setTrigger(false)
-		}
-		else {
-			alert('Please input all required values')
-		}
 		
+		user = collaboratorInput.map((collaboratorInput)=>
+			this.projectCollaborators.push({userProjectObject})
+		);
 
-		/*
-		const user = collaboratorInput.map((collaboratorInput)=>
+		project = taskInput.map((taskInput) =>
+			this.projectTasks.push({userProjectObject})
+		);
 
-		);*/
 	}
 
 	const addCollaborator = (event) => {
@@ -135,8 +131,6 @@ function AddProjectForm(props) {
 							name='name'
 							id='name'
 							required
-							maxLength={15}
-							className={name.length ? '' : 'error'}
 							onChange={(e) => handleNameChange(e)}
 						/>
 					</FormGroup>
@@ -147,7 +141,6 @@ function AddProjectForm(props) {
 							name='id'
 							id='id'
 							required
-							className={id.length ? '' : 'error'}
 							onChange={(e) => handleIdChange(e)}
 						/>
 					</FormGroup>
@@ -158,7 +151,6 @@ function AddProjectForm(props) {
 							name='desc'
 							id='description'
 							required
-							className={description.length ? '' : 'error'}
 							onChange={(e) => handleDescChange(e)}
 						/>
 					</FormGroup>
@@ -169,7 +161,6 @@ function AddProjectForm(props) {
 							name="startDate"
 							id='startTime'
 							required
-							className={startTime.length ? '' : 'error'}
 							onChange={(e) => handleStartDateChange(e)}
 						/>
 					</FormGroup>
@@ -180,7 +171,6 @@ function AddProjectForm(props) {
 							name='endDate'
 							id='endTime'
 							required
-							className={endTime.length ? '' : 'error'}
 							onChange={(e) => handleEndDateChange(e)}
 						/>
 					</FormGroup>

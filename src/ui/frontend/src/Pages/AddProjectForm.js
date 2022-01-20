@@ -62,11 +62,11 @@ function AddProjectForm() {
         })
 
 		
-		const user = collaboratorInput.map((collaboratorInput)=>
+		user = collaboratorInput.map((collaboratorInput)=>
 			this.projectCollaborators.push({userProjectObject})
 		);
 
-		const project = taskInput.map((taskInput) =>
+		project = taskInput.map((taskInput) =>
 			this.projectTasks.push({userProjectObject})
 		);
 

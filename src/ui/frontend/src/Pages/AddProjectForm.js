@@ -9,7 +9,8 @@ import {
 } from "reactstrap"
 import './AddProjectForm.css'
 
-function AddProjectForm() {
+function AddProjectForm(props) {
+	//const employeeID = props.employeeID
 	const [name, setProjectName] = useState('')
 	const [id, setProjectId] = useState('')
 	const [description, setProjectDesc] = useState('')
@@ -43,12 +44,13 @@ function AddProjectForm() {
 
 	const handleClickCreateProject = (event) => {
 		event.preventDefault();
-		const employeeID = 23
-		const firstName = "Jane"
-		const lastName = "Doe"
-		const companyRole = "Mr. World Wide"
-		const email = "test@pleasework.plz"
-		const password = "test"
+		//const employeeID = 23
+		const employeeID = props.employeeID
+		const firstName = "garbage"
+		const lastName = "garbage"
+		const companyRole = "garbage"
+		const email = "garbage"
+		const password = "garbage"
 		const user= {employeeID, firstName, lastName, companyRole, email, password}
 		const project={id, name, description, startTime, endTime}
 		const userProjectObject = {user, project}
@@ -59,7 +61,24 @@ function AddProjectForm() {
             body:JSON.stringify(userProjectObject)
         }).then(()=>{
             console.log("New project added")
+			{projectCollaborators.map((userProjectObject) => (
+				//const userProjectObject = {user, project},
+				fetch("http://localhost:8080/project/addcollaborator", {
+					method:"POST",
+					headers:{"Content-Type":"application/json"},
+					body:JSON.stringify(userProjectObject)
+				})
+				.then(res=>res.json())
+				.then((result)=> {
+					console.log(result)
+					console.log("Done")
+				})
+			))}
         })
+
+		//finishAddCollab()
+
+		console.log("DONE WITH ABOVE")
 
 		/*userProjectObject.statics.createProject = async function (collaboratorInput) {
 			try{
@@ -75,21 +94,40 @@ function AddProjectForm() {
 */
 	}
 
+	/*
+	const finishAddCollab = (event) => {
+		//event.preventDefault();
+		{projectCollaborators.map((userProjectObject) => (
+			//const userProjectObject = {user, project},
+			fetch("http://localhost:8080/project/addcollaborator", {
+            	method:"POST",
+            	headers:{"Content-Type":"application/json"},
+            	body:JSON.stringify(userProjectObject)
+        	})
+			.then(res=>res.json())
+        	.then((result)=> {
+				console.log(result)
+				console.log("Done")
+        	})
+		))}
+	}*/
+
 	const addCollaborator = (event) => {
 		event.preventDefault()
 
+		
 		//Input Validation
 		if(collaboratorInput === '') {return}
 		if(isInList(projectCollaborators, collaboratorInput) === true) {
-			document.getElementById('collaboratorValue').value = ''
+			document.getElementById('collaboratorValue').user.employeeID = ''
 			return
 		}
 
-		const newCollaborator = {key: collaboratorInput, value: collaboratorInput}
+		const newCollaborator = {user:{employeeID: collaboratorInput, firstName:"garbage", lastName:"garbage", companyRole:"garbage", email:"garbage", password:"garbage"},project:{id, name, description, startTime, endTime}}
 		const newCollaboratorList = [...projectCollaborators, newCollaborator]
 
 		setProjectCollaborators(newCollaboratorList)
-		document.getElementById('collaboratorValue').value = ''
+		//document.getElementById('collaboratorValue').user.employeeID = ''
 		setCollaboratorInput('')
 	}
 
@@ -181,10 +219,10 @@ function AddProjectForm() {
 						<Label>Collaborators</Label>
 						<table>
 							{projectCollaborators.map((collaborator, index) => (
-								<tbody className='list' key={collaborator.key}>
+								<tbody className='list' key={collaborator.user.employeeID}>
 									{/* <Collaborator index={index} collaborator={collaborator} remove={this.removeCollaborator} /> */}
 									<tr>
-										<td className="listText">{collaborator.value}</td>
+										<td className="listText">{collaborator.user.employeeID}</td>
 										<td>
 											<button onClick={() => removeCollaborator(index)} className="delBtn"> - </button>
 										</td>

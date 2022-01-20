@@ -27,7 +27,7 @@ function UpdateProjectPopup(props) {
 		}
 	]
 
-	const projectId
+	const projectId = ''
 	const [taskList, setTaskList] = useState(tasks)
 
 	const toggleCompleted = (position) => {

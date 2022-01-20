@@ -4,6 +4,8 @@ import './UpdateProjectPopup.css'
 
 function UpdateProjectPopUp(props) {
 
+	const id = props.projectId
+
 	const tasks = [
 		{
 			key: 'task1',
@@ -38,7 +40,7 @@ function UpdateProjectPopUp(props) {
 	}
 
 	const handleDoneButton = () => {
-		props.setTrigger(false)
+		console.log(id)
 		//Do something like this to send each task in the task list back to backend (this is pseudocode so it will need to be styled like )
 		// taskList.map((task, index) => {
 		// 	this.substep = {task.id, task.status}
@@ -55,6 +57,7 @@ function UpdateProjectPopUp(props) {
             	console.log("Done")
         	})
 		))}
+		props.setTrigger(false)
 	}
 
 	useEffect(()=>{

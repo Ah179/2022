@@ -15,6 +15,7 @@ function App() {
   // }
 
   const [employeeID, setEmployeeID] = useState('')
+  console.log("employeeID = "+employeeID)
 
   return (
     <Router>

@@ -20,7 +20,7 @@ function Home(props) {
 		</div>
 		<div className="main-dashboard">
 			<h1 className="app-title">Project Dashboard</h1>
-			<Card setUpdateProjectPopupBtn={setUpdateProjectPopupBtn} />
+			<Card employeeID={employeeID} setUpdateProjectPopupBtn={setUpdateProjectPopupBtn} />
 			<AddProject employeeID={employeeID}/>
 			<UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} />
 		</div>  

@@ -73,16 +73,6 @@ function AddProjectForm() {
 			}  
 		};
 
-		/*
-		user = collaboratorInput.map((collaboratorInput)=>
-			this.projectCollaborators.push({userProjectObject})
-		);
-
-		project = taskInput.map((taskInput) =>
-			this.projectTasks.push({userProjectObject})
-		);
-		*/
-
 	}
 
 	const addCollaborator = (event) => {

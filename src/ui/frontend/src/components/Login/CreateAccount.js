@@ -47,7 +47,7 @@ function CreateAccount (props) {
             setTemp(result)
             console.log(temp)
 
-            if(temp)
+            if(temp == "new user project is added")
             {
                 this.props.setEmployeeID(this.state.employeeID)
                 history.push("/Home");

@@ -14,7 +14,7 @@ public class Substep {
 	
 	private int projectID;
 	private String name;
-	private String description;
+	//private String description;
 	private boolean status;
 	private boolean changed;
 	
@@ -59,6 +59,7 @@ public class Substep {
 		this.name = name;
 	}
 	
+	/*
 	public String getDescription()
 	{
 		return this.description;
@@ -68,6 +69,7 @@ public class Substep {
 	{
 		this.description = description;
 	}
+	*/
 	
 	public boolean getStatus()
 	{

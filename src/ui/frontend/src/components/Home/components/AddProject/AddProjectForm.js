@@ -7,12 +7,12 @@ import {
 	Input,
 	Label
 } from "reactstrap"
-// import { useHistory } from "react-router-dom"
+ import { useHistory } from "react-router-dom"
 import './AddProjectForm.css'
 
 function AddProjectForm(props) {
 	//const employeeID = props.employeeID
-	// const history = useHistory();
+	 const history = useHistory();
 	const [name, setProjectName] = useState('')
 	const [id, setProjectId] = useState('')
 	const [description, setProjectDesc] = useState('')
@@ -38,14 +38,21 @@ function AddProjectForm(props) {
 
 	const handleTaskInputChange = (event) => {setTaskInput(event.target.value)}
 
-	function isInList(array, key) {
+	function isInList(array, employeeID) {
 		return array.some(function(el) {
-			return el.key === key
+			return el.user.employeeID === employeeID
+		}) 
+	}
+
+	function isInList2(array, substepName) {
+		return array.some(function(el) {
+			return el.name === substepName
 		}) 
 	}
 
 	const handleClickCreateProject = (event) => {
-		event.preventDefault();
+		//event.preventDefault();
+		//props.setTrigger(false)
 		//const employeeID = 23
 		const employeeID = props.employeeID
 		const firstName = "garbage"
@@ -63,6 +70,8 @@ function AddProjectForm(props) {
             body:JSON.stringify(userProjectObject)
         }).then(()=>{
             console.log("New project added")
+			props.setTrigger(false)
+			history.push("/Home")
 			{projectCollaborators.map((userProjectObject) => (
 				//const userProjectObject = {user, project},
 				fetch("http://localhost:8080/project/addcollaborator", {
@@ -72,50 +81,27 @@ function AddProjectForm(props) {
 				})
 				.then(res=>res.json())
 				.then((result)=> {
-					console.log(employeeID)
-					// history.push("/Home")
-					props.setTrigger(false)
 					console.log(result)
-					console.log("Done")
+					console.log("Add Collaborators Done")
+				})
+			))}
+
+			{projectTasks.map((substep) => (
+				fetch("http://localhost:8080/substep/add", {
+					method:"POST",
+					headers:{"Content-Type":"application/json"},
+					body:JSON.stringify(substep)
+				})
+				.then(res=>res.json())
+				.then((result)=> {
+					console.log(result)
+					console.log("Add Substeps Done")
 				})
 			))}
         })
 
-		//finishAddCollab()
-
 		console.log("DONE WITH ABOVE")
-
-		/*userProjectObject.statics.createProject = async function (collaboratorInput) {
-			try{
-				console.log(this)
-				const project = await new this(data);
-				await project.save();
-			}
-			catch(e){
-				console.log("error occured while saving a new project")
-				console.log(e)
-			}  
-		};
-*/
 	}
-
-	/*
-	const finishAddCollab = (event) => {
-		//event.preventDefault();
-		{projectCollaborators.map((userProjectObject) => (
-			//const userProjectObject = {user, project},
-			fetch("http://localhost:8080/project/addcollaborator", {
-            	method:"POST",
-            	headers:{"Content-Type":"application/json"},
-            	body:JSON.stringify(userProjectObject)
-        	})
-			.then(res=>res.json())
-        	.then((result)=> {
-				console.log(result)
-				console.log("Done")
-        	})
-		))}
-	}*/
 
 	const addCollaborator = (event) => {
 		event.preventDefault()
@@ -124,7 +110,7 @@ function AddProjectForm(props) {
 		//Input Validation
 		if(collaboratorInput === '') {return}
 		if(isInList(projectCollaborators, collaboratorInput) === true) {
-			document.getElementById('collaboratorValue').user.employeeID = ''
+			document.getElementById('collaboratorValue').value = ''
 			return
 		}
 
@@ -132,7 +118,7 @@ function AddProjectForm(props) {
 		const newCollaboratorList = [...projectCollaborators, newCollaborator]
 
 		setProjectCollaborators(newCollaboratorList)
-		//document.getElementById('collaboratorValue').user.employeeID = ''
+		document.getElementById('collaboratorValue').value = ''
 		setCollaboratorInput('')
 	}
 
@@ -147,12 +133,12 @@ function AddProjectForm(props) {
 
 		//Input Validation
 		if(taskInput === '') {return}
-		if(isInList(projectTasks, taskInput) === true) {
+		if(isInList2(projectTasks, taskInput) === true) {
 			document.getElementById('taskValue').value = ''
 			return
 		}
 
-		const newTask = {key: taskInput, value: taskInput, isCompleted: false}
+		const newTask = {projectID: id, name: taskInput, status: false, changed: false}
 		const newTaskList = [...projectTasks, newTask]
 
 		setProjectTasks(newTaskList)
@@ -255,9 +241,9 @@ function AddProjectForm(props) {
 						<Label>Tasks</Label>
 						<table>
 							{projectTasks.map((task, index) => (
-								<tbody className='list' key={task.key}>
+								<tbody className='list' key={task.name}>
 									<tr>
-										<td className="listText">{task.value}</td>
+										<td className="listText">{task.name}</td>
 										<td>
 											<button onClick={() => removeTask(index)} className="delBtn"> - </button>
 										</td>

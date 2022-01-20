@@ -7,7 +7,7 @@ import {
 	Input,
 	Label
 } from "reactstrap"
-import { useHistory } from "react-router-dom"
+//import { useHistory } from "react-router-dom"
 import './AddProjectForm.css'
 
 function AddProjectForm(props) {
@@ -73,7 +73,7 @@ function AddProjectForm(props) {
 				.then(res=>res.json())
 				.then((result)=> {
 					console.log(employeeID)
-					history.push("/Home")
+					props.setTrigger(false)
 					console.log(result)
 					console.log("Done")
 				})

@@ -1,18 +1,19 @@
 import React, { useState, useEffect  } from 'react'
 import Card from './CardUI'
 
-function Cards(props)
+function Cards (props)
 {
     const employeeID = props.employeeID
     const [projects, setProjects] = useState([])
 
     useEffect(()=>{
-        //const employeeID = 0
+        //const employeeID = 4
 		const firstName = "garbage"
 		const lastName = "garbage"
 		const companyRole = "garbage"
 		const email = "garbage"
 		const password = "garbage"
+        console.log("CARDS employeeID = "+props.employeeID)
         const user= {employeeID, firstName, lastName, companyRole, email, password}
         console.log(user)
         fetch("http://localhost:8080/project/getall", {

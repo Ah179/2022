@@ -43,7 +43,7 @@ function AddProjectForm(props) {
 	}
 
 	const handleClickCreateProject = (event) => {
-		event.preventDefault();
+		//event.preventDefault();
 		//const employeeID = 0
 		const firstName = "Jane"
 		const lastName = "Doe"

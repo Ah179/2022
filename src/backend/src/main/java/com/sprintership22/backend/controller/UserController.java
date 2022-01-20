@@ -18,11 +18,11 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping("/add")
-	public String add(@RequestBody User user) {
+	public boolean add(@RequestBody User user) {
 		
 		User temp = userService.saveUser(user);
 		
-		return (temp != null) ? "new user is added" : "user could not be added because user with duplicate ID exist";
+		return (temp != null);
 	}
 	
 	@PostMapping("/delete")
@@ -52,6 +52,7 @@ public class UserController {
 		return true;
 	}
 	
+	/*
 	@PostMapping("/login")
 	public String login(@RequestBody User user) {
 		Boolean temp = userService.loginUser(user);
@@ -60,5 +61,5 @@ public class UserController {
 			return  "Invalid";
 		}
 		return "Success";
-	}
+	}*/
 }

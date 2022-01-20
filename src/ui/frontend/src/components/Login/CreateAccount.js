@@ -47,8 +47,8 @@ function CreateAccount (props) {
 
             if(result)
             {
-                this.props.setEmployeeID(this.state.employeeID);
                 alert("User Created");
+                props.setEmployeeID(employeeID)
                 history.push("/Home");
             } else {
               alert("All fields must be filled in")

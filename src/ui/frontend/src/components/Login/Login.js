@@ -34,16 +34,19 @@ function Login(props) {
         })
         .then(res=>res.json())
         .then((result)=>{
-            setTemp(result)
-            console.log(temp)
+            //setTemp(result)
+            //console.log(temp)
 
-            if(temp)
+            if(result)
             {
                 props.setEmployeeID(employeeID)
                 history.push("/Home");
             }
         })
   }
+
+  //Use effect
+
   // const handleClickMove = (e) => {
   //   history.push("/Home");
   // }

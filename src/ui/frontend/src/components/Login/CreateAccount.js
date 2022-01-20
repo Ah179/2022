@@ -24,12 +24,6 @@ function CreateAccount (props) {
     const [email, setEmail] = useState('')
     const [temp, setTemp] = useState('')
 
-    // this.employeeID = this.employeeID.bind(this);
-    // this.firstname = this.firstname.bind(this);
-    // this.lastname = this.lastname.bind(this);
-    // this.companyRole = this.companyRole.bind(this);
-    // this.email = this.email.bind(this);
-    // this.password = this.password.bind(this);
 
   const handleClickCreateUser = (event) => {
     event.preventDefault();

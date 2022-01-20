@@ -77,7 +77,7 @@ function Login(props) {
             />
           </FormGroup>
           <FormGroup>
-         <Button type="submit" onClick={handleClickLoginUser}>LOGIN</Button>
+         <Button onClick={handleClickLoginUser}>LOGIN</Button>
          {/* <Button onClick={handleClickMove}>TRY ME</Button> */}
         </FormGroup>
         <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>

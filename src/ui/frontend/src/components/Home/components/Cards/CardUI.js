@@ -11,6 +11,7 @@ import UpdateProjectPopup from '../UpdateProject/UpdateProjectPopup';
 
 function Card(props) {
     const [buttonPopup, setButtonPopup] = useState(false);
+	const [updateProjectPopupBtn, setUpdateProjectPopupBtn] = useState(false)
 
     const handleClickDeleteProject = (event) => {
         console.log(props.project)
@@ -32,10 +33,11 @@ function Card(props) {
                 
             </div>
             <div className="card-body text-dark">
+				<UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={props.projectId}/>
                 <Dropdown className="edit-dropdown">
                     <Dropdown.Toggle variant="outline-success"></Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#" onClick={() => props.setUpdateProjectPopupBtn(true)}>Update</Dropdown.Item>
+                        <Dropdown.Item href="#" onClick={() => setUpdateProjectPopupBtn(true)}>Update</Dropdown.Item>
                         <Dropdown.Item href="#" onClick={handleClickDeleteProject}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>

@@ -27,7 +27,7 @@ function Home(props) {
 			<Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>
 			{/* <AddProjectPopup employeeID={props.employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} /> */}
 			<AddProject employeeID={employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} />
-			<UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={projectId}/>
+			{/* <UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={projectId}/> */}
 		</div>  
       {/* <Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>{' '} */}
     </div>

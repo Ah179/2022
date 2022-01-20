@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import AddProjectPopup from './AddProjectPopup'
 import './AddProject.css'
 
-function AddProject() {
+function AddProject(props) {
 	const [addProjectButton, setAddProjectButton] = useState(false)
 
 	return (
@@ -11,7 +11,7 @@ function AddProject() {
 			<br></br>
 			{/*<button className='addProjectBtn' variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</button>*/}
 			<Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>{' '}
-			<AddProjectPopup trigger={addProjectButton} setTrigger={setAddProjectButton} />
+			<AddProjectPopup employeeID={props.employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} />
 		</div>
 	)
 }

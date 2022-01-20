@@ -52,4 +52,11 @@ public class SubstepController {
 		return substepService.getSubsteps(project.getID());
     }
 	
+	@PostMapping("/statuschange")
+    public void statuschange(@RequestBody Substep substep){
+		System.out.println(""+substep);
+		substepService.modifyStatus(substep.getID());
+		System.out.println("The deed is done");
+    }
+	
 }

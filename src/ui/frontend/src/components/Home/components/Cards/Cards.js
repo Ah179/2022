@@ -35,7 +35,7 @@ function Cards(props)
                         <Card title={project.name}
                         dur={project.startTime + " - " + project.endTime}
                         var="working on it"
-                        now={100}
+                        now={project.status}
 						project={project}
 					    setUpdateProjectPopupBtn = {props.setUpdateProjectPopupBtn}
                         />

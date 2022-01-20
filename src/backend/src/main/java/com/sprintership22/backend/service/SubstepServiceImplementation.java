@@ -39,4 +39,21 @@ public class SubstepServiceImplementation implements SubstepService{
 		}
 	}
 
+	@Override
+	public void modifyStatus(int id) {
+		
+		Substep temp = substepRepository.getById(id);
+		
+		if(temp.getStatus())
+		{
+			temp.setStatus(false);
+		}
+		else
+		{
+			temp.setStatus(true);
+		}
+		
+		substepRepository.save(temp);
+	}
+
 }

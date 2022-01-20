@@ -21,7 +21,6 @@ function Card(props) {
                 <Dropdown className="edit-dropdown">
                     <Dropdown.Toggle variant="outline-success"></Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#">Edit</Dropdown.Item>
                         <Dropdown.Item href="#" onClick={() => props.setUpdateProjectPopupBtn(true)}>Update</Dropdown.Item>
                         <Dropdown.Item href="#">Delete</Dropdown.Item>
                     </Dropdown.Menu>

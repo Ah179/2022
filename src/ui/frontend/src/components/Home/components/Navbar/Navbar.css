@@ -1,8 +1,8 @@
 .NavbarItems {
   background: linear-gradient(
     90deg,
-    rgb(57, 136, 252) 0%,
-    rgba(18, 112, 253) 100%
+    rgb(20, 105, 233) 0%,
+    rgb(0, 84, 209) 100%
   );
   height: 70px;
   display: flex;

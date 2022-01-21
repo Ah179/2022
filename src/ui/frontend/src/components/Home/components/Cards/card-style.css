@@ -51,7 +51,8 @@ body {
 .edit-dropdown {
     position: absolute !important;
     top: 1rem !important;
-    right: 1rem !important;
+    /*right: 1rem !important;*/
+    left: 1rem;
 }
 
 .container-fluid.row {

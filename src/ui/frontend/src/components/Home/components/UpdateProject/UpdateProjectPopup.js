@@ -80,7 +80,7 @@ function UpdateProjectPopUp(props) {
 		        .then((result)=> {
 		            setTaskList(result);
 		        })
-		    },[])
+		    },[]);
 
 	return (props.trigger) ? (
 		<div className='updatePopup'>

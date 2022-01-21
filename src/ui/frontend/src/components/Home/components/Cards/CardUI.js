@@ -44,11 +44,11 @@ function Card(props) {
                 <h4 className="card-title">{props.title}</h4>
                 <p className="card-text text-secondary">{props.dur}</p>
                 <Button variant="outline-success" onClick={() => setButtonPopup(true)}>More Info</Button>{' '}
-                <Popup trigger={buttonPopup} setTrigger={setButtonPopup} project={props.project} projectId={props.projectId} employeeID={props.employeeID} />
-                <UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={props.projectId}/>
+                <Popup trigger={buttonPopup} setTrigger={setButtonPopup} project={props.project} projectId={props.projectId}/>
                 {/*<a href="#" className="btn btn-outline-success">Edit</a>*/}
                 <ProgressBar className="card-progress" variant={props.var} now={props.now} />
                 {/*<p className="card-text text-secondary">Status</p>*/}
+                <UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={props.projectId}/>
             </div>
         </div>
     );

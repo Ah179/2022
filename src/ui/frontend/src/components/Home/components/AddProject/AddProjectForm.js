@@ -276,7 +276,6 @@ function AddProjectForm(props) {
 						</FormGroup>
 					</FormGroup>
 					<Button onClick={handleClickCreateProject}>SUBMIT</Button>
-					<Button onClick={handleClickrefreshPage}>Refresher</Button>
 				</Form>
 			</div>
 	)

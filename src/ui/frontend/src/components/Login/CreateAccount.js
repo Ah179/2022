@@ -21,7 +21,6 @@ function CreateAccount (props) {
     const [lastName, setLastName] = useState('')
     const [companyRole, setCompanyRole] = useState('')
     const [email, setEmail] = useState('')
-    const [temp, setTemp] = useState('')
 
 
   const handleClickCreateUser = (event) => {
@@ -43,6 +42,19 @@ function CreateAccount (props) {
                 alert("User Created");
                 props.setEmployeeID(employeeID)
                 history.push("/Home");
+
+                const currentUser = employeeID
+                const session = {currentUser}
+                console.log(session)
+                fetch("http://localhost:8080/session/savesession", {
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(session)
+                })
+                .then(res=>res.json())
+                .then((result2)=> {
+                  console.log(result2)
+                })
             } else {
               alert("All fields must be filled in")
             }

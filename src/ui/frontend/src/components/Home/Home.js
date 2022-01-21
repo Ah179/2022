@@ -1,7 +1,7 @@
 //import "@progress/kendo-theme-material/dist/all.css";
 import "./Home.css";
 import Navbar from "./components/Navbar/Navbar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import AddProjectPopup
 //import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Cards from './components/Cards/Cards'
@@ -14,7 +14,18 @@ function Home(props) {
 	const [updateProjectPopupBtn, setUpdateProjectPopupBtn] = useState(false);
 	const [addProjectButton, setAddProjectButton] = useState(false)
 	const [projectId, setProjectId] = useState('')
-	const employeeID = props.employeeID
+	const [employeeID, setID] = useState('')
+	const [count, setCount] = useState(0);
+
+	
+	useEffect(()=>{
+        fetch("http://localhost:8080/session/getsession")
+        .then(res=>res.json())
+        .then((result)=> {
+        	console.log("HOME : "+result)
+			setID(result)
+        })
+    }, []);
 
   return (
     <div className="Home">

@@ -40,7 +40,20 @@ function Login(props) {
             if(result)
             {
                 props.setEmployeeID(employeeID)
-                history.push("/Home");
+                history.push("/Home")
+
+                const currentUser = employeeID
+                const session = {currentUser}
+                console.log(session)
+                fetch("http://localhost:8080/session/savesession", {
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(session)
+                })
+                .then(res=>res.json())
+                .then((result2)=> {
+                  console.log(result2)
+                })
             }
         })
   }

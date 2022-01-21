@@ -59,7 +59,7 @@ function CreateAccount (props) {
             } 
             else 
             {
-              alert("All fields must be filled in")
+              alert("User ID or Email already exists!")
             }
         })
   }

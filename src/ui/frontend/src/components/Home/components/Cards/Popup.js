@@ -61,7 +61,6 @@ function Popup(props) {
             <div className="popup-inner">
                 <Button variant="outline-dark" className="close-btn" onClick={() => props.setTrigger(false)}>x</Button>
                 { props.children }
-				<br/>
                 <h4>Description</h4>
                 <p>{props.project.description}</p>
 				<h3>Collaborators</h3>

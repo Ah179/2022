@@ -19,14 +19,12 @@ function Login(props) {
 
   const handleClickLoginUser = (event) => {
     event.preventDefault();
-    //const employeeID = 0
   const firstName = "garbage"
 	const lastName = "garbage"
 	const companyRole = "garbage"
 	const email = "garbage"
 	const user= {employeeID, firstName, lastName, companyRole, email, password}
     console.log(user)
-    //history.push("/Home");
     fetch("http://localhost:8080/user/login", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
@@ -34,14 +32,8 @@ function Login(props) {
         })
         .then(res=>res.json())
         .then((result)=>{
-            //setTemp(result)
-            //console.log(temp)
-
             if(result)
-            {
-
-                
-                
+            {                               
                 const currentUser = employeeID
                 const session = {currentUser}
                 console.log(session)
@@ -52,10 +44,8 @@ function Login(props) {
                 })
                 .then(res=>res.json())
                 .then((result2)=> {
-
                   console.log(result2)
                 })
-
                 props.setEmployeeID(employeeID)
                 history.push("/Home")
                 window.location.reload(false);
@@ -66,12 +56,6 @@ function Login(props) {
             }
         })
   }
-
-  //Use effect
-
-  // const handleClickMove = (e) => {
-  //   history.push("/Home");
-  // }
 
   return (  
       <div className="LoginPage">
@@ -101,7 +85,6 @@ function Login(props) {
           </FormGroup>
           <FormGroup>
          <Button onClick={handleClickLoginUser}>LOGIN</Button>
-         {/* <Button onClick={handleClickMove}>TRY ME</Button> */}
         </FormGroup>
         <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>

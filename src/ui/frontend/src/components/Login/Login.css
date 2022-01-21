@@ -1,3 +1,4 @@
+
 .LoginPage {
     border: 2px solid #d3d3d3;
     border-radius: .5em;
@@ -8,8 +9,9 @@
     padding: 1em;
     text-align: left;
     width: 600px;
+
   }
-  
+
   .form {
     padding: 1em;
   }

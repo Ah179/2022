@@ -226,6 +226,7 @@ function AddProjectForm(props) {
 							name='name'
 							id='name'
 							required
+							className={name.length ? '' : 'error'}
 							onChange={(e) => handleNameChange(e)}
 						/>
 					</FormGroup>
@@ -236,6 +237,7 @@ function AddProjectForm(props) {
 							name='id'
 							id='id'
 							required
+							className={id.length ? '' : 'error'}
 							onChange={(e) => handleIdChange(e)}
 						/>
 					</FormGroup>
@@ -246,6 +248,7 @@ function AddProjectForm(props) {
 							name='desc'
 							id='description'
 							required
+							className={description.length ? '' : 'error'}
 							onChange={(e) => handleDescChange(e)}
 						/>
 					</FormGroup>
@@ -256,6 +259,7 @@ function AddProjectForm(props) {
 							name="startDate"
 							id='startTime'
 							required
+							className={startTime.length ? '' : 'error'}
 							onChange={(e) => handleStartDateChange(e)}
 						/>
 					</FormGroup>
@@ -266,6 +270,7 @@ function AddProjectForm(props) {
 							name='endDate'
 							id='endTime'
 							required
+							className={endTime.length ? '' : 'error'}
 							onChange={(e) => handleEndDateChange(e)}
 						/>
 					</FormGroup>

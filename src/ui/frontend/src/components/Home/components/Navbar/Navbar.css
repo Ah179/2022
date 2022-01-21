@@ -16,6 +16,11 @@
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
+  size: 2rem;
+}
+
+.logo {
+  height: 40px;
 }
 
 .fa-react {

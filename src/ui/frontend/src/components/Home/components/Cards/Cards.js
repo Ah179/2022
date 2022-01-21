@@ -47,7 +47,7 @@ function Cards (props)
                     <div className="col-md-4">
                         <Card title={project.name}
                         dur={project.startTime + " - " + project.endTime}
-                        var="success"
+                        var="primary"
                         now={project.status}
 						project={project}
 						projectId={project.id}

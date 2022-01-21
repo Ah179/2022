@@ -49,7 +49,7 @@ function Card(props) {
                 <UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={props.projectId}/>
                 <Popup trigger={buttonPopup} setTrigger={setButtonPopup} project={props.project} projectId={props.projectId} employeeID={props.employeeID}/>
                 {/*<a href="#" className="btn btn-outline-success">Edit</a>*/}
-                <ProgressBar className="card-progress" variant={props.var} now={props.now} />
+                <ProgressBar className="card-progress" variant={props.var} animated now={props.now} />
                 {/*<p className="card-text text-secondary">Status</p>*/}
             </div>
         </div>

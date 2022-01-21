@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button'
 import './Popup.css';
 
@@ -7,6 +7,38 @@ function Popup(props) {
 	const project = props.project
 	const projectId = props.projectId
 	const[projectCollaborators, setCollaborators] = useState([])
+	const employeeID = props.employeeID
+
+	useEffect(() => {
+		const firstName = "garbage"
+		const lastName = "garbage"
+		const companyRole = "garbage"
+		const email = "garbage"
+		const password = "garbage"
+		
+		const id = projectId
+		const name = "garbage"
+		const description = "garbage"
+		const startTime = "garbage"
+		const endTime = "garbage"
+		const status = 0
+		
+		const user = {employeeID,firstName, lastName, companyRole, email, password}
+		const project = {id, name, description, startTime, endTime, status}
+		const userProjectObject = {user,project}
+
+		console.log(userProjectObject)
+		fetch("http://localhost:8080/project/getcollaborators", {
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"},
+				body:JSON.stringify(userProjectObject)
+		})
+		.then(res=>res.json())
+		.then((result) => {
+			console.log(result)
+		})
+	},[])
 
     return (props.trigger) ? (
         <div className="popup">

@@ -66,9 +66,10 @@ function CreateAccount (props) {
    
   return (  
     <Auth0ProviderWithHistory>
+      <div className="fullPage">
       <div className="LoginPage">
-        <h2>Create Account</h2>
         <Form className="form" >
+        <h2>Create Account</h2>
           <FormGroup>
             <Label for= "examplefirstname">First Name</Label>
             <Input 
@@ -138,6 +139,7 @@ function CreateAccount (props) {
         </FormGroup>
          <FormText><ul><Link to={"/"}> Already have an account? Click here!</Link></ul></FormText>
       </Form>
+    </div>
     </div>
     </Auth0ProviderWithHistory>
     );

@@ -36,7 +36,7 @@ function Card(props) {
             </div>
             <div className="card-body text-dark">
                 <Dropdown className="edit-dropdown">
-                    <Dropdown.Toggle variant="outline-success"></Dropdown.Toggle>
+                    <Dropdown.Toggle variant="outline-primary"></Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item href="#" onClick={() => setUpdateProjectPopupBtn(true)}>Update</Dropdown.Item>
                         <Dropdown.Item href="#" onClick={handleClickDeleteProject}>Delete</Dropdown.Item>
@@ -45,7 +45,7 @@ function Card(props) {
 
                 <h4 className="card-title">{props.title}</h4>
                 <p className="card-text text-secondary">{props.dur}</p>
-                <Button variant="outline-success" onClick={() => setButtonPopup(true)}>More Info</Button>{' '}
+                <Button variant="outline-primary" onClick={() => setButtonPopup(true)}>More Info</Button>{' '}
                 <UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={props.projectId}/>
                 <Popup trigger={buttonPopup} setTrigger={setButtonPopup} project={props.project} projectId={props.projectId} employeeID={props.employeeID}/>
                 {/*<a href="#" className="btn btn-outline-success">Edit</a>*/}

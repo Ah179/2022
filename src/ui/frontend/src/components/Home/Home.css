@@ -7,11 +7,15 @@
   margin-bottom: 2rem;
 }
 
-.btn {
-  display: grid;
+.add-btn {
+  /*display: grid;
   justify-content: center !important;
   margin-right: 0rem !important;
-  margin-top: 3rem !important;
+  margin-top: 3rem !important;*/
+  display: grid;
+  position: absolute !important;
+  top: 5rem !important;
+  right: 8px !important;
 }
 
 .dashboardAside {

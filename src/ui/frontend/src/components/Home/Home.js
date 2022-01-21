@@ -54,7 +54,7 @@ function Home(props) {
 		<div className="main-dashboard">
 			<h1 className="app-title">{users.firstName} {users.lastName}'s Project Dashboard</h1>
 			<Cards employeeID={employeeID} setUpdateProjectPopupBtn={setUpdateProjectPopupBtn} setProjectId={setProjectId}/>
-			<Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>
+			<Button className="add-btn" variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>
 			{/* <AddProjectPopup employeeID={props.employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} /> */}
 			<AddProject employeeID={employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} />
 			{/* <UpdateProjectPopup trigger={updateProjectPopupBtn} setTrigger={setUpdateProjectPopupBtn} projectId={projectId}/> */}

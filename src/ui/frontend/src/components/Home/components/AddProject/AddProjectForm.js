@@ -54,55 +54,110 @@ function AddProjectForm(props) {
 		//event.preventDefault();
 		//props.setTrigger(false)
 		//const employeeID = 23
-		const employeeID = props.employeeID
-		const firstName = "garbage"
-		const lastName = "garbage"
-		const companyRole = "garbage"
-		const email = "garbage"
-		const password = "garbage"
-		const user= {employeeID, firstName, lastName, companyRole, email, password}
-		const project={id, name, description, startTime, endTime}
-		const userProjectObject = {user, project}
-		console.log(userProjectObject)
-		fetch("http://localhost:8080/project/add", {
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(userProjectObject)
-        }).then(()=>{
-            console.log("New project added")
+		if(name !== '' && id !== '' && description !== '' && startTime !== '' && endTime !== '') {
 			props.setTrigger(false)
-			history.push("/Home")
-			{projectCollaborators.map((userProjectObject) => (
-				//const userProjectObject = {user, project},
-				fetch("http://localhost:8080/project/addcollaborator", {
-					method:"POST",
-					headers:{"Content-Type":"application/json"},
-					body:JSON.stringify(userProjectObject)
-				})
-				.then(res=>res.json())
-				.then((result)=> {
-					console.log(employeeID)
-					// history.push("/Home")
-					// props.setTrigger(false)
+			const employeeID = props.employeeID
+			const firstName = "garbage"
+			const lastName = "garbage"
+			const companyRole = "garbage"
+			const email = "garbage"
+			const password = "garbage"
+			const user= {employeeID, firstName, lastName, companyRole, email, password}
+			const project={id, name, description, startTime, endTime}
+			const userProjectObject = {user, project}
+			console.log(userProjectObject)
+			fetch("http://localhost:8080/project/add", {
+				method:"POST",
+				headers:{"Content-Type":"application/json"},
+				body:JSON.stringify(userProjectObject)
+			}).then(()=>{
+				console.log("New project added")
+				props.setTrigger(false)
+				history.push("/Home")
+				{projectCollaborators.map((userProjectObject) => (
+					//const userProjectObject = {user, project},
+					fetch("http://localhost:8080/project/addcollaborator", {
+						method:"POST",
+						headers:{"Content-Type":"application/json"},
+						body:JSON.stringify(userProjectObject)
+					})
+					.then(res=>res.json())
+					.then((result)=> {
+						console.log(employeeID)
+						// history.push("/Home")
+						// props.setTrigger(false)
 
-					console.log(result)
-					console.log("Add Collaborators Done")
-				})
-			))}
+						console.log(result)
+						console.log("Add Collaborators Done")
+					})
+				))}
 
-			{projectTasks.map((substep) => (
-				fetch("http://localhost:8080/substep/add", {
-					method:"POST",
-					headers:{"Content-Type":"application/json"},
-					body:JSON.stringify(substep)
-				})
-				.then(res=>res.json())
-				.then((result)=> {
-					console.log(result)
-					console.log("Add Substeps Done")
-				})
-			))}
-        })
+				{projectTasks.map((substep) => (
+					fetch("http://localhost:8080/substep/add", {
+						method:"POST",
+						headers:{"Content-Type":"application/json"},
+						body:JSON.stringify(substep)
+					})
+					.then(res=>res.json())
+					.then((result)=> {
+						console.log(result)
+						console.log("Add Substeps Done")
+					})
+				))}
+			})
+		}
+		else {
+			alert('Please input all required values')
+		}
+		// const employeeID = props.employeeID
+		// const firstName = "garbage"
+		// const lastName = "garbage"
+		// const companyRole = "garbage"
+		// const email = "garbage"
+		// const password = "garbage"
+		// const user= {employeeID, firstName, lastName, companyRole, email, password}
+		// const project={id, name, description, startTime, endTime}
+		// const userProjectObject = {user, project}
+		// console.log(userProjectObject)
+		// fetch("http://localhost:8080/project/add", {
+        //     method:"POST",
+        //     headers:{"Content-Type":"application/json"},
+        //     body:JSON.stringify(userProjectObject)
+        // }).then(()=>{
+        //     console.log("New project added")
+		// 	props.setTrigger(false)
+		// 	history.push("/Home")
+		// 	{projectCollaborators.map((userProjectObject) => (
+		// 		//const userProjectObject = {user, project},
+		// 		fetch("http://localhost:8080/project/addcollaborator", {
+		// 			method:"POST",
+		// 			headers:{"Content-Type":"application/json"},
+		// 			body:JSON.stringify(userProjectObject)
+		// 		})
+		// 		.then(res=>res.json())
+		// 		.then((result)=> {
+		// 			console.log(employeeID)
+		// 			// history.push("/Home")
+		// 			// props.setTrigger(false)
+
+		// 			console.log(result)
+		// 			console.log("Add Collaborators Done")
+		// 		})
+		// 	))}
+
+		// 	{projectTasks.map((substep) => (
+		// 		fetch("http://localhost:8080/substep/add", {
+		// 			method:"POST",
+		// 			headers:{"Content-Type":"application/json"},
+		// 			body:JSON.stringify(substep)
+		// 		})
+		// 		.then(res=>res.json())
+		// 		.then((result)=> {
+		// 			console.log(result)
+		// 			console.log("Add Substeps Done")
+		// 		})
+		// 	))}
+        // })
 
 		window.location.reload(false);
 		console.log("DONE WITH ABOVE")

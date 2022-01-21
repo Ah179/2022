@@ -43,21 +43,8 @@ function Home(props) {
                 setUser(result2);
             })
         })
+
     }, []);
-	
-
-	/*
-	const loadUser = () =>
-	{
-		fetch("http://localhost:8080/session/getsession")
-        .then(res=>res.json())
-        .then((result)=> {
-        	console.log("HOME : "+result)
-			setID(result)
-        })
-	}*/
-
-	//onload
 
   return (
     <div className="Home">

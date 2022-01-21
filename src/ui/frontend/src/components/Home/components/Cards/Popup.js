@@ -61,16 +61,6 @@ function Popup(props) {
             <div className="popup-inner">
                 <Button variant="outline-dark" className="close-btn" onClick={() => props.setTrigger(false)}>x</Button>
                 { props.children }
-				<h1>{project.name}</h1>
-				<div>
-					<h2>ID: </h2>
-					<h2>{projectId}</h2>
-				</div>
-				<br/>
-				<div className='projectDur'>
-					<h4>Project Duration: </h4>
-					<h5>{project.startTime + " - " + project.endTime}</h5>	
-				</div>
 				<br/>
                 <h4>Description</h4>
                 <p>{props.project.description}</p>

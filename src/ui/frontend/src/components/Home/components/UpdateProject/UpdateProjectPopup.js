@@ -58,6 +58,8 @@ function UpdateProjectPopUp(props) {
             	console.log("Done")
         	})
 		))}
+
+		window.location.reload(false);
 	}
 
 	useEffect(()=>{

@@ -25,6 +25,8 @@ function Card(props) {
         .then((result)=> {
             console.log(result)
         })
+
+        window.location.reload(false);
     }
 
     return (

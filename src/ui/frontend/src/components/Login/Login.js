@@ -39,9 +39,9 @@ function Login(props) {
 
             if(result)
             {
-                props.setEmployeeID(employeeID)
-                history.push("/Home")
 
+                
+                
                 const currentUser = employeeID
                 const session = {currentUser}
                 console.log(session)
@@ -52,9 +52,16 @@ function Login(props) {
                 })
                 .then(res=>res.json())
                 .then((result2)=> {
+
                   console.log(result2)
                 })
-            } else {
+
+                props.setEmployeeID(employeeID)
+                history.push("/Home")
+                window.location.reload(false);
+            } 
+            else 
+            {
               alert("Employee ID or Password is incorrect!");
             }
         })

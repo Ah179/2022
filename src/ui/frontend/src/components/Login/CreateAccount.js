@@ -39,10 +39,6 @@ function CreateAccount (props) {
 
             if(result)
             {
-                alert("User Created");
-                props.setEmployeeID(employeeID)
-                history.push("/Home");
-
                 const currentUser = employeeID
                 const session = {currentUser}
                 console.log(session)
@@ -55,7 +51,14 @@ function CreateAccount (props) {
                 .then((result2)=> {
                   console.log(result2)
                 })
-            } else {
+
+                alert("User Created");
+                props.setEmployeeID(employeeID)
+                history.push("/Home");
+                window.location.reload(false);
+            } 
+            else 
+            {
               alert("All fields must be filled in")
             }
         })

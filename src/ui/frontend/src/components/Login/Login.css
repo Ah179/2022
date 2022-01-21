@@ -1,6 +1,6 @@
 
 .LoginPage {
-    border: 2px solid #d3d3d3;
+    border: 2px transparent;
     border-radius: .5em;
     margin-bottom: 1em;
     margin-left: auto;
@@ -10,12 +10,16 @@
     padding: 1em;
     text-align: left;
     width: 600px;
-    background-color: white; 
+    background-color: transparent; 
+        box-shadow: 10px 10px 5px rgb(45, 45, 49) 100%;
 
   }
 
   .form {
     padding: 1em;
+    border-radius: .5em;
+    background-color: white; 
+    box-shadow: 10px 10px 5px rgb(45, 45, 49) 100%;
   }
   
   label {

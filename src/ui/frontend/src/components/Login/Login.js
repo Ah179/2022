@@ -60,8 +60,8 @@ function Login(props) {
   return (
     <div className="fullPage">
       <div className="LoginPage">
-        <h2>Sign In </h2>
         <Form className="form">
+        <h2>Sign In </h2>
           <FormGroup>
             <Label for="employeeID">Employee ID</Label>
             <Input

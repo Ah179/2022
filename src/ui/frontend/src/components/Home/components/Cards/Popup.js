@@ -67,10 +67,8 @@ function Popup(props) {
 				<h4>Project Duration: {project.startTime + " - " + project.endTime}</h4>
 				<br/>
                 <h4>Description</h4>
-                <br/>
                 <p>{props.project.description}</p>
 				<h3>Collaborators</h3>
-				<br/>
 				{projectCollaborators.map((collaborator, index) => (
 					<div 
 						className='list-div'
@@ -82,7 +80,6 @@ function Popup(props) {
 				))}
 				<br/>
 				<h4>Tasks</h4>
-				<br/>
 				{projectTasks.map((task, index) => (
 					<div 
 						className='list-div'

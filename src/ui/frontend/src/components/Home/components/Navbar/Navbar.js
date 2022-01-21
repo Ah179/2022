@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MenuItems } from "./MenuItems"
 import './Navbar.css'
+import logo from './public/1736440.png';
 
 class Navbar extends Component {
     state = { clicked: false }
@@ -12,7 +13,8 @@ class Navbar extends Component {
     render() {
         return(
             <nav className="NavbarItems">
-                <h1 className="navbar-logo">BrightForm<i className="fab fa-react"></i></h1>
+                <h1 className="navbar-logo">BrightForm</h1>
+                <img src={logo} alt=""/>
                 <div className="menu-icon" onClick={this.handleClick}>
                     <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>

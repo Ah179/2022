@@ -64,7 +64,10 @@ function Popup(props) {
 				<h1>{project.name}</h1>
 				<h2>ID: {projectId}</h2>
 				<br/>
-				<h4>Project Duration: {project.startTime + " - " + project.endTime}</h4>
+				<div className='projectDur'>
+					<h4>Project Duration: </h4>
+					<h5>{project.startTime + " - " + project.endTime}</h5>	
+				</div>
 				<br/>
                 <h4>Description</h4>
                 <p>{props.project.description}</p>

@@ -44,7 +44,7 @@
 }
 
 .list-div {
-  background-color: lightgray;
+  background-color: #ECECEC;
   border-radius: 5px;
   display: flex;
   margin-top: 5px;
@@ -54,3 +54,24 @@
 .list-name {
   padding: 5px;
 }
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+h2 {
+	text-align: center;
+	font-weight: bold;
+}
+
+h5 {
+	font-size: 10px;
+}
+
+.projectDur {
+	display: flex;
+}
+
+

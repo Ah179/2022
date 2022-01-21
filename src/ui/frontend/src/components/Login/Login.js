@@ -57,7 +57,8 @@ function Login(props) {
         })
   }
 
-  return (  
+  return (
+    <div className="fullPage">
       <div className="LoginPage">
         <h2>Sign In </h2>
         <Form className="form">
@@ -88,6 +89,7 @@ function Login(props) {
         </FormGroup>
         <FormText><ul><Link to={"./CreateAccount"}> Don't have an account? Create one here!</Link></ul></FormText>
       </Form>
+    </div>
     </div>
     );
 }

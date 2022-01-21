@@ -54,6 +54,8 @@ function Login(props) {
                 .then((result2)=> {
                   console.log(result2)
                 })
+            } else {
+              alert("Employee ID or Password is incorrect!");
             }
         })
   }

@@ -25,3 +25,15 @@
     top: 0px !important;
     right: 8px !important;
 }
+
+.collaborator-div {
+	background-color: lightgray;
+	border-radius: 5px;
+	display: flex;
+	margin-top: 5px;
+	padding: 10px;
+}
+
+.collaborator-name {
+	padding: 5px;
+}

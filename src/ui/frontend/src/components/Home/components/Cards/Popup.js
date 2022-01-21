@@ -57,7 +57,7 @@ function Popup(props) {
 						className='collaborator-div'
 						key = {collaborator.employeeID}
 						>
-						<h5 className='collaborator-name'>{collaborator.employeeID} - {collaborator.firstName} {collaborator.lastName} - {collaborator.email}</h5>
+						<h5 className='collaborator-name'>{collaborator.employeeID} - {collaborator.companyRole} - {collaborator.firstName} {collaborator.lastName} - {collaborator.email}</h5>
 
 					</div>
 				))}

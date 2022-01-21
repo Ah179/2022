@@ -7,6 +7,7 @@ function Popup(props) {
 	//const project = props.project
 	const projectId = props.projectId
 	const[projectCollaborators, setCollaborators] = useState([])
+	const [projectTasks, setTasks] = useState([])
 	const employeeID = props.employeeID
 
 	useEffect(() => {
@@ -54,11 +55,19 @@ function Popup(props) {
 				<br/>
 				{projectCollaborators.map((collaborator, index) => (
 					<div 
-						className='collaborator-div'
+						className='list-div'
 						key = {collaborator.employeeID}
 						>
-						<h5 className='collaborator-name'>{collaborator.employeeID} - {collaborator.companyRole} - {collaborator.firstName} {collaborator.lastName} - {collaborator.email}</h5>
+						<h5 className='list-name'>{collaborator.employeeID} - {collaborator.companyRole} - {collaborator.firstName} {collaborator.lastName} - {collaborator.email}</h5>
 
+					</div>
+				))}
+				{projectTasks.map((task, index) => (
+					<div 
+						className='list-div'
+						key = {task.id}
+						>
+						<h5 className='list-name'>{task.name}</h5>
 					</div>
 				))}
                 {/* <p>The project tasks go here.</p> */}

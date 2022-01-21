@@ -37,7 +37,8 @@ body {
 }
 
 .card-progress {
-    background-color: white !important;
+    /*background-color: white !important;*/
+    background-color: #0275d8;
     padding-left: 8px;
     padding-right: 8px;
     padding-top: 8px;

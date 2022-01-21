@@ -4,9 +4,9 @@ import './Popup.css';
 
 function Popup(props) {
 
-	//const project = props.project
+	const project = props.project
 	const projectId = props.projectId
-	const[projectCollaborators, setCollaborators] = useState([])
+	const [projectCollaborators, setCollaborators] = useState([])
 	const [projectTasks, setTasks] = useState([])
 	const employeeID = props.employeeID
 
@@ -61,7 +61,12 @@ function Popup(props) {
             <div className="popup-inner">
                 <Button variant="outline-dark" className="close-btn" onClick={() => props.setTrigger(false)}>x</Button>
                 { props.children }
-                <h3>Description</h3>
+				<h1>{project.name}</h1>
+				<h2>ID: {projectId}</h2>
+				<br/>
+				<h4>Project Duration: {project.startTime + " - " + project.endTime}</h4>
+				<br/>
+                <h4>Description</h4>
                 <br/>
                 <p>{props.project.description}</p>
 				<h3>Collaborators</h3>
@@ -76,7 +81,7 @@ function Popup(props) {
 					</div>
 				))}
 				<br/>
-				<h3>Tasks</h3>
+				<h4>Tasks</h4>
 				<br/>
 				{projectTasks.map((task, index) => (
 					<div 
@@ -86,7 +91,6 @@ function Popup(props) {
 						<h5 className='list-name'>{task.name}</h5>
 					</div>
 				))}
-                {/* <p>The project tasks go here.</p> */}
             </div>
         </div>
     ) : "";

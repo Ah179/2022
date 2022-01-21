@@ -4,7 +4,7 @@ import './Popup.css';
 
 function Popup(props) {
 
-	const project = props.project
+	//const project = props.project
 	const projectId = props.projectId
 	const[projectCollaborators, setCollaborators] = useState([])
 	const employeeID = props.employeeID
@@ -36,9 +36,11 @@ function Popup(props) {
 		})
 		.then(res=>res.json())
 		.then((result) => {
+			setCollaborators(result)
 			console.log(result)
+			console.log("DONE IN POPUP")
 		})
-	},[])
+	},[]);
 
     return (props.trigger) ? (
         <div className="popup">
@@ -47,7 +49,7 @@ function Popup(props) {
                 { props.children }
                 <h3>Description</h3>
                 <br/>
-                <p>{project.description}</p>
+                <p>{props.project.description}</p>
 				<h3>Collaborators</h3>
 				<br/>
 				{projectCollaborators.map((collaborator, index) => (
@@ -55,7 +57,7 @@ function Popup(props) {
 						className='collaborator-div'
 						key = {collaborator.employeeID}
 						>
-						<h5 className='collaborator-name'>{collaborator.firstName} {collaborator.lastName} - {collaborator.employeeID}</h5>
+						<h5 className='collaborator-name'>{collaborator.employeeID} - {collaborator.firstName} {collaborator.lastName} - {collaborator.email}</h5>
 
 					</div>
 				))}

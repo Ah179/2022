@@ -51,7 +51,8 @@ function Cards (props)
                         now={project.status}
 						project={project}
 						projectId={project.id}
-					    setUpdateProjectPopupBtn = {props.setUpdateProjectPopupBtn}
+                        employeeID={employeeID}
+                        
 					    //setUpdateProjectPopupBtn = {props.setUpdateProjectPopupBtn}
                         />
                     </div>

@@ -17,7 +17,6 @@ function Home(props) {
 	const [employeeID, setID] = useState('')
 	const [count, setCount] = useState(0);
 
-	
 	useEffect(()=>{
         fetch("http://localhost:8080/session/getsession")
         .then(res=>res.json())
@@ -26,6 +25,20 @@ function Home(props) {
 			setID(result)
         })
     }, []);
+	
+
+	/*
+	const loadUser = () =>
+	{
+		fetch("http://localhost:8080/session/getsession")
+        .then(res=>res.json())
+        .then((result)=> {
+        	console.log("HOME : "+result)
+			setID(result)
+        })
+	}*/
+
+	//onload
 
   return (
     <div className="Home">

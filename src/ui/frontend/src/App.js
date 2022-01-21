@@ -7,7 +7,7 @@ import Login from './components/Login/Login';
 
 
 function App() {
-  const [employeeID, setEmployeeID] = useState('')
+  const [employeeID, setEmployeeID] = useState(-1)
   console.log("employeeID = "+employeeID)
 
   return (
@@ -22,6 +22,7 @@ function App() {
             <CreateAccount setEmployeeID={setEmployeeID} />
           </Route>
           <Route path="/Home">
+            {/* {(employeeID !== -1) ? <Home employeeID={employeeID} />:''}   */}
             <Home employeeID={employeeID} />
           </Route>
         </Switch>

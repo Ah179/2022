@@ -6,6 +6,7 @@
     height: 100vh;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
 
     display: flex;
     justify-content: center;
@@ -14,16 +15,32 @@
 
 .popup-inner {
     position: relative;
-    padding: 32px;
+    padding: 20px;
     width: 100%;
-    max-width: 640px;
+    /* max-width: 640px; */
     background-color: #fff;
+
+	margin: 0 auto;
+	height: auto;
+	max-height: 80vh;
+	margin-top: calc(100vh - 85vh - 105px);
+	border-radius: 7px;
+	border: 1px solid #999;
+	overflow: auto;
+	text-align: left;
 }
 
 .popup-inner .close-btn {
-    position: absolute !important;
+    /* position: absolute !important;
     top: 0px !important;
-    right: 8px !important;
+    right: 8px !important; */
+	position: absolute;
+	top: 40px;
+	right: 30px;
+	background-color: #fff;
+	border: 0px;
+	font-weight: bolder;
+	font-size: large;
 }
 
 .list-div {

@@ -105,9 +105,6 @@ function AddProjectForm(props) {
 					})
 				))}
 			})
-
-			window.location.reload(false);
-			console.log("DONE WITH ABOVE")
 		}
 		else {
 			alert('Please input all required values')
@@ -161,6 +158,9 @@ function AddProjectForm(props) {
 		// 		})
 		// 	))}
         // })
+
+		window.location.reload(false);
+		console.log("DONE WITH ABOVE")
 	}
 
 	const addCollaborator = (event) => {

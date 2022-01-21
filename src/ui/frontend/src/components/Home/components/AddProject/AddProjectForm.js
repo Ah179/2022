@@ -54,8 +54,8 @@ function AddProjectForm(props) {
 		//event.preventDefault();
 		//props.setTrigger(false)
 		//const employeeID = 23
-		if(name !== '' && id !== '' && description !== '' && startTime !== '' && endTime !== '') {
-			props.setTrigger(false)
+		if(name !== '' && id !== '' && description !== '' && startTime !== '' && endTime !== '') 
+		{
 			const employeeID = props.employeeID
 			const firstName = "garbage"
 			const lastName = "garbage"
@@ -104,14 +104,16 @@ function AddProjectForm(props) {
 						console.log("Add Substeps Done")
 					})
 				))}
+
+				props.setTrigger(false)
+				history.push("/Home")
+				window.location.reload(false);
 			})
 
-			props.setTrigger(false)
-			history.push("/Home")
-			window.location.reload(false);
 			console.log("DONE WITH ABOVE")
 		}
-		else {
+		else 
+		{
 			alert('Please input all required values')
 		}
 		// const employeeID = props.employeeID

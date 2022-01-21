@@ -71,9 +71,9 @@ function AddProjectForm(props) {
 				headers:{"Content-Type":"application/json"},
 				body:JSON.stringify(userProjectObject)
 			}).then(()=>{
+
 				console.log("New project added")
-				props.setTrigger(false)
-				history.push("/Home")
+				
 				{projectCollaborators.map((userProjectObject) => (
 					//const userProjectObject = {user, project},
 					fetch("http://localhost:8080/project/addcollaborator", {
@@ -106,6 +106,8 @@ function AddProjectForm(props) {
 				))}
 			})
 
+			props.setTrigger(false)
+			history.push("/Home")
 			window.location.reload(false);
 			console.log("DONE WITH ABOVE")
 		}

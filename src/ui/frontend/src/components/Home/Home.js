@@ -16,6 +16,8 @@ function Home(props) {
 	const [projectId, setProjectId] = useState('')
 	const [employeeID, setID] = useState('')
 	const [count, setCount] = useState(0);
+	const [users, setUser] = useState('')
+
 
 	useEffect(()=>{
         fetch("http://localhost:8080/session/getsession")
@@ -23,6 +25,23 @@ function Home(props) {
         .then((result)=> {
         	console.log("HOME : "+result)
 			setID(result)
+			const employeeID = result
+			const firstName = "garbage"
+			const lastName = "garbage"
+			const companyRole = "garbage"
+			const email = "garbage"
+			const password = "garbage"
+			const user= {employeeID, firstName, lastName, companyRole, email, password}
+			fetch("http://localhost:8080/user/getuser", {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"},
+                body:JSON.stringify(user)
+            })
+            .then(res=>res.json())
+            .then((result2)=> {
+                setUser(result2);
+            })
         })
     }, []);
 	
@@ -46,7 +65,7 @@ function Home(props) {
 			<Navbar />
 		</div>
 		<div className="main-dashboard">
-			<h1 className="app-title">Project Dashboard</h1>
+			<h1 className="app-title">{users.firstName} {users.lastName}'s Project Dashboard</h1>
 			<Cards employeeID={employeeID} setUpdateProjectPopupBtn={setUpdateProjectPopupBtn} setProjectId={setProjectId}/>
 			<Button variant="outline-dark" onClick={() => setAddProjectButton(true)}>Add Project</Button>
 			{/* <AddProjectPopup employeeID={props.employeeID} trigger={addProjectButton} setTrigger={setAddProjectButton} /> */}

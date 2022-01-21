@@ -41,6 +41,19 @@ function Popup(props) {
 			console.log(result)
 			console.log("DONE IN POPUP")
 		})
+
+		fetch("http://localhost:8080/substep/getall", {
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"},
+				body:JSON.stringify(project)
+		})
+		.then(res=>res.json())
+		.then((result) => {
+			setTasks(result)
+			console.log(result)
+			console.log("DONE IN POPUP2")
+		})
 	},[]);
 
     return (props.trigger) ? (
@@ -62,6 +75,9 @@ function Popup(props) {
 
 					</div>
 				))}
+				<br/>
+				<h3>Tasks</h3>
+				<br/>
 				{projectTasks.map((task, index) => (
 					<div 
 						className='list-div'

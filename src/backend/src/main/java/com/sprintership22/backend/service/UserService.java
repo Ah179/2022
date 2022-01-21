@@ -12,4 +12,5 @@ public interface UserService {
 	public ArrayList<User> emailExists(String email);
 	public ArrayList<User> findUser(int employeeID, String password);
 	public User loginUser(User user);
+	public User getUser(int employeeID);
 }

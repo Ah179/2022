@@ -82,4 +82,17 @@ public class UserServiceImplementation implements UserService {
 		
 		return temp.get(0);
 	}
+
+	@Override
+	public User getUser(int employeeID) {
+		
+		ArrayList<User> temp = userRepository.findUserByID(employeeID);
+		
+		if (temp.size() == 1)
+		{
+			return temp.get(0);
+		}
+		
+		return null;
+	}
 }

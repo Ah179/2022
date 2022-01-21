@@ -52,14 +52,9 @@ public class UserController {
 		return true;
 	}
 	
-	/*
-	@PostMapping("/login")
-	public String login(@RequestBody User user) {
-		Boolean temp = userService.loginUser(user);
+	@PostMapping("/getuser")
+	public User getuser(@RequestBody User user) {
+		return userService.getUser(user.getEmployeeID());
+	}
 
-		if (!temp){
-			return  "Invalid";
-		}
-		return "Success";
-	}*/
 }

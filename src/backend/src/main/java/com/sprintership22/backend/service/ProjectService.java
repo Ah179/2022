@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sprintership22.backend.model.Project;
+import com.sprintership22.backend.model.User;
 import com.sprintership22.backend.model.UserProjectObject;
 
 public interface ProjectService {
@@ -16,4 +17,5 @@ public interface ProjectService {
 	public boolean deleteProject(Project project);
 	public ArrayList<Project> findProjectByID(int id);
 	public boolean verifyProject(Project project);
+	public List<User> getCollaborators(User user, Project project);
 }

@@ -41,6 +41,9 @@ public class ProjectController {
 	@PostMapping("/addcollaborator")
 	public String addcollaborator(@RequestBody UserProjectObject userProjectObject) {
 		
+		System.out.println("User : "+userProjectObject.getUser().getEmployeeID());
+		//System.out.println("Project : "+userProjectObject.getProject().getID());
+		
 		boolean temp = projectService.addCollaborator(userProjectObject);
 		
 		return (temp) ? "collaborator has been added" : "collaborator could not be added because project does not exist";
@@ -59,4 +62,10 @@ public class ProjectController {
 		System.out.println("User ID "+user.getEmployeeID());
 		return projectService.getAllProjects(user.getEmployeeID()); //user.getEmployeeID()
     }
+	
+	@PostMapping("/getcollaborators")
+	public List<User> getcollaborator(@RequestBody UserProjectObject userProjectObject) {
+		
+		return projectService.getCollaborators(userProjectObject.getUser(), userProjectObject.getProject());
+	}
 }

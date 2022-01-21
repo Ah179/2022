@@ -82,7 +82,6 @@ function AddProjectForm(props) {
 				.then(res=>res.json())
 				.then((result)=> {
 					console.log(employeeID)
-					window.location.reload(false);
 					// history.push("/Home")
 					// props.setTrigger(false)
 
@@ -105,6 +104,7 @@ function AddProjectForm(props) {
 			))}
         })
 
+		window.location.reload(false);
 		console.log("DONE WITH ABOVE")
 	}
 

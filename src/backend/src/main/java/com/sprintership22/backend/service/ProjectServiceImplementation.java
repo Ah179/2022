@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sprintership22.backend.model.Project;
 import com.sprintership22.backend.model.Substep;
+import com.sprintership22.backend.model.User;
 import com.sprintership22.backend.model.UserProjectObject;
 import com.sprintership22.backend.model.UserProjects;
 import com.sprintership22.backend.repository.ProjectRepository;
+import com.sprintership22.backend.repository.UserRepository;
 
 @Service
 public class ProjectServiceImplementation implements ProjectService{
@@ -22,6 +24,9 @@ public class ProjectServiceImplementation implements ProjectService{
 	
 	@Autowired
 	private SubstepService substepService;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	@Override
 	public Project saveProject(UserProjectObject userProjectObject) {
@@ -127,5 +132,21 @@ public class ProjectServiceImplementation implements ProjectService{
 	public boolean verifyProject(Project project) {
 		
 		return (findProjectByID(project.getID()).size() == 1);
+	}
+
+	@Override
+	public List<User> getCollaborators(User user, Project project) {
+		
+		List<UserProjects> temp1 = userProjectsService.getProjectAndRelatedUsers(project.getID());
+		List<User> temp2 = new ArrayList<>();
+		
+		for (int i = 0; i < temp1.size(); i++)
+		{
+			if (temp1.get(i).getUserID() != user.getEmployeeID())
+			{
+				temp2.add(userRepository.getById(temp1.get(i).getUserID()));
+			}
+		}
+		return temp2;
 	}
 }
